@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://liuyapeng.xyz</id>
+    <id>http://urkey.github.io</id>
     <title>刘亚鹏主页</title>
-    <updated>2020-11-09T06:47:40.822Z</updated>
+    <updated>2020-11-09T06:49:28.336Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://liuyapeng.xyz"/>
-    <link rel="self" href="http://liuyapeng.xyz/atom.xml"/>
+    <link rel="alternate" href="http://urkey.github.io"/>
+    <link rel="self" href="http://urkey.github.io/atom.xml"/>
     <subtitle>刘亚鹏个人主页</subtitle>
-    <logo>http://liuyapeng.xyz/images/avatar.png</logo>
-    <icon>http://liuyapeng.xyz/favicon.ico</icon>
+    <logo>http://urkey.github.io/images/avatar.png</logo>
+    <icon>http://urkey.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 刘亚鹏主页</rights>
     <entry>
         <title type="html"><![CDATA[买的一个人域名]]></title>
-        <id>http://liuyapeng.xyz/post/mai-de-yi-ge-ren-yu-ming/</id>
-        <link href="http://liuyapeng.xyz/post/mai-de-yi-ge-ren-yu-ming/">
+        <id>http://urkey.github.io/post/mai-de-yi-ge-ren-yu-ming/</id>
+        <link href="http://urkey.github.io/post/mai-de-yi-ge-ren-yu-ming/">
         </link>
         <updated>2020-11-09T05:40:53.000Z</updated>
         <content type="html"><![CDATA[<p>有一天突然想起来要买一个个人域名，以自己的名字。于是搜了这么一个<em>liuyapeng.xyz</em>。刚开始是有点担忧的，泄露个人名字在网络上是有风险的，但是又不想在网络上生活中太过于无闻，也是因为兴趣，所以，也托管一个个人网页。</p>
@@ -21,8 +21,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>http://liuyapeng.xyz/post/hello-gridea/</id>
-        <link href="http://liuyapeng.xyz/post/hello-gridea/">
+        <id>http://urkey.github.io/post/hello-gridea/</id>
+        <link href="http://urkey.github.io/post/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
