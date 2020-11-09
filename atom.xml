@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://urkey.github.io</id>
     <title>刘亚鹏主页</title>
-    <updated>2020-11-09T07:13:08.839Z</updated>
+    <updated>2020-11-09T07:13:24.836Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://urkey.github.io"/>
     <link rel="self" href="https://urkey.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://urkey.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 刘亚鹏主页</rights>
     <entry>
-        <title type="html"><![CDATA[买的一个人域名]]></title>
+        <title type="html"><![CDATA[买的个人域名]]></title>
         <id>https://urkey.github.io/post/mai-de-yi-ge-ren-yu-ming/</id>
         <link href="https://urkey.github.io/post/mai-de-yi-ge-ren-yu-ming/">
         </link>
