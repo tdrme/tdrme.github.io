@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://liuyapeng.xyz</id>
-    <title>刘亚鹏主页</title>
-    <updated>2020-11-09T13:52:42.146Z</updated>
+    <title>听得入迷主页</title>
+    <updated>2020-11-09T14:05:01.594Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://liuyapeng.xyz"/>
     <link rel="self" href="https://liuyapeng.xyz/atom.xml"/>
-    <subtitle>刘亚鹏个人主页</subtitle>
+    <subtitle>听得入迷空间分站，是typecho备用计划</subtitle>
     <logo>https://liuyapeng.xyz/images/avatar.png</logo>
     <icon>https://liuyapeng.xyz/favicon.ico</icon>
-    <rights>All rights reserved 2020, 刘亚鹏主页</rights>
+    <rights>All rights reserved 2020, 听得入迷主页</rights>
     <entry>
         <title type="html"><![CDATA[买的个人域名]]></title>
         <id>https://liuyapeng.xyz/mai-de-yi-ge-ren-yu-ming/</id>

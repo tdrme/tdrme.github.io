@@ -5,9 +5,9 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>友情链接 - 刘亚鹏主页</title>
+<title>友情链接 - 听得入迷主页</title>
 
-<link rel="shortcut icon" href="https://liuyapeng.xyz/favicon.ico?v=1604929916466">
+<link rel="shortcut icon" href="https://liuyapeng.xyz/favicon.ico?v=1604930698848">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://liuyapeng.xyz/styles/main.css">
@@ -35,7 +35,7 @@
     <div class="navbar-brand">
         <img class="user-avatar" src="/images/avatar.png" alt="头像">
         <div class="site-name gt-c-content-color-first">
-            刘亚鹏主页
+            听得入迷主页
         </div>
     </div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -87,7 +87,7 @@
             
         </div>
         <div style="text-align: center">
-            <form id="gridea-search-form" style="position: relative" data-update="1604929916466" action="/search/index.html">
+            <form id="gridea-search-form" style="position: relative" data-update="1604930698848" action="/search/index.html">
                 <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
                 <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
             </form>
@@ -130,7 +130,7 @@
 
 
             <div class="site-footer gt-c-content-color-first">
-    <div class="slogan gt-c-content-color-first">刘亚鹏个人主页</div>
+    <div class="slogan gt-c-content-color-first">听得入迷空间分站，是typecho备用计划</div>
     <div class="social-container">
         
             
@@ -147,7 +147,28 @@
         
     </div>
     <div class="footer-info">
-        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+        <span id="showtime"></span>  
+<script language="javascript">   
+function show_date_time(){   
+window.setTimeout("show_date_time()", 1000);   
+BirthDay=new Date("11/09/2020 22:03:00");//这个日期是可以修改的   
+today=new Date();   
+timeold=(today.getTime()-BirthDay.getTime());   
+sectimeold=timeold/1000   
+secondsold=Math.floor(sectimeold);   
+msPerDay=24*60*60*1000  
+e_daysold=timeold/msPerDay   
+daysold=Math.floor(e_daysold);   
+e_hrsold=(e_daysold-daysold)*24;   
+hrsold=Math.floor(e_hrsold);   
+e_minsold=(e_hrsold-hrsold)*60;   
+minsold=Math.floor((e_hrsold-hrsold)*60);   
+seconds=Math.floor((e_minsold-minsold)*60);  
+showtime.innerHTML="网站已运行："+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";   }   
+show_date_time();   
+</script>   
+<p>
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
     </div>
     <div>
         Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
