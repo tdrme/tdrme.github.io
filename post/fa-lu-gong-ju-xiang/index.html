@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+<meta name="viewport"
+    content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, width=device-width" />
+<meta name="renderer" content="webkit">
+<meta name="format-detection" content="telephone=no, email=no, address=no">
+
+
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#292a2d" media="(prefers-color-scheme: dark)">
+
+
+<link rel="shortcut icon" href="/images/theme/IMG_20250827_010403.png">
+<link rel="stylesheet" href="/styles/main.min.css">
+
+
+<style>:root{--accent-color:#28df99;}</style>
+
+
+<script>
+    // 自动为所有 target="_blank" 的链接添加 rel="noopener noreferrer"
+    document.addEventListener('DOMContentLoaded', function () {
+        var links = document.querySelectorAll('a[target="_blank"]');
+        links.forEach(function (link) {
+            var rel = link.getAttribute('rel') || '';
+            if (rel.indexOf('noopener') === -1) {
+                rel += ' noopener';
+            }
+            if (rel.indexOf('noreferrer') === -1) {
+                rel += ' noreferrer';
+            }
+            link.setAttribute('rel', rel.trim());
+        });
+    });
+</script>
+
+<script>
+    // declaraction of document.ready() function.
+    (function () {
+        var ie = !!(window.attachEvent && !window.opera);
+        var wk = /webkit\/(\d+)/i.test(navigator.userAgent) && (RegExp.$1 < 525);
+        var fn = [];
+        var run = function () {
+            for (var i = 0; i < fn.length; i++) fn[i]();
+        };
+        var d = document;
+        d.ready = function (f) {
+            if (!ie && !wk && d.addEventListener)
+                return d.addEventListener('DOMContentLoaded', f, false);
+            if (fn.push(f) > 1) return;
+            if (ie)
+                (function () {
+                    try {
+                        d.documentElement.doScroll('left');
+                        run();
+                    } catch (err) {
+                        setTimeout(arguments.callee, 0);
+                    }
+                })();
+            else if (wk)
+                var t = setInterval(function () {
+                    if (/^(loaded|complete)$/.test(d.readyState))
+                        clearInterval(t), run();
+                }, 0);
+        };
+    })();
+
+
+    document.ready(
+        function () {
+            var _Blog = window._Blog || {};
+
+            const getSystemTheme = () => {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    return 'dark';
+                }
+                return 'light';
+            };
+
+            const configDefault = 'dark';
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme');
+            const initialTheme = currentTheme || configDefault || getSystemTheme();
+            const isDark = initialTheme === 'dark';
+
+            const updateButtons = (dark) => {
+                const sunBtn = document.getElementById("theme-toggle-sun");
+                const moonBtn = document.getElementById("theme-toggle-moon");
+                const mobileSunBtn = document.getElementById("mobile-theme-toggle-sun");
+                const mobileMoonBtn = document.getElementById("mobile-theme-toggle-moon");
+
+                if (dark) {
+                    if (sunBtn) sunBtn.style.display = 'none';
+                    if (moonBtn) moonBtn.style.display = 'inline-block';
+                    if (mobileSunBtn) mobileSunBtn.style.display = 'none';
+                    if (mobileMoonBtn) mobileMoonBtn.style.display = 'inline-block';
+                } else {
+                    if (sunBtn) sunBtn.style.display = 'inline-block';
+                    if (moonBtn) moonBtn.style.display = 'none';
+                    if (mobileSunBtn) mobileSunBtn.style.display = 'inline-block';
+                    if (mobileMoonBtn) mobileMoonBtn.style.display = 'none';
+                }
+            };
+
+            const updateThemeColor = (dark) => {
+                const themeColor = dark ? '#292a2d' : '#ffffff';
+                const metaTags = document.querySelectorAll('meta[name="theme-color"]');
+                if (metaTags.length > 0) {
+                    // 保留第一个，移除其他的，避免重复
+                    for (let i = 1; i < metaTags.length; i++) {
+                        metaTags[i].remove();
+                    }
+                    metaTags[0].setAttribute('content', themeColor);
+                    metaTags[0].removeAttribute('media');
+                } else {
+                    const meta = document.createElement('meta');
+                    meta.name = 'theme-color';
+                    meta.content = themeColor;
+                    document.head.appendChild(meta);
+                }
+            };
+
+            const applyTheme = (dark) => {
+                const body = document.getElementsByTagName('body')[0];
+                if (dark) {
+                    body.classList.add('dark-theme');
+                } else {
+                    body.classList.remove('dark-theme');
+                }
+                updateButtons(dark);
+                updateThemeColor(dark);
+            };
+
+            // Initial application
+            applyTheme(isDark);
+            if (!currentTheme) {
+                window.localStorage && window.localStorage.setItem('theme', initialTheme);
+            }
+
+            _Blog.toggleTheme = function () {
+                const toggleFunc = (e) => {
+                    // Prevent bubbling if needed, though buttons are distinct now
+                    if (e) e.stopPropagation();
+
+                    const body = document.getElementsByTagName('body')[0];
+                    const isCurrentlyDark = body.classList.contains('dark-theme');
+
+                    if (isCurrentlyDark) {
+                        body.classList.remove('dark-theme');
+                        updateButtons(false);
+                        window.localStorage && window.localStorage.setItem('theme', 'light');
+                    } else {
+                        body.classList.add('dark-theme');
+                        updateButtons(true);
+                        window.localStorage && window.localStorage.setItem('theme', 'dark');
+                    }
+                };
+
+                const sunBtn = document.getElementById("theme-toggle-sun");
+                const moonBtn = document.getElementById("theme-toggle-moon");
+                const mobileSunBtn = document.getElementById("mobile-theme-toggle-sun");
+                const mobileMoonBtn = document.getElementById("mobile-theme-toggle-moon");
+
+                if (sunBtn) sunBtn.addEventListener('click', toggleFunc);
+                if (moonBtn) moonBtn.addEventListener('click', toggleFunc);
+                if (mobileSunBtn) mobileSunBtn.addEventListener('click', toggleFunc);
+                if (mobileMoonBtn) mobileMoonBtn.addEventListener('click', toggleFunc);
+            };
+            _Blog.toggleTheme();
+
+            if (window.matchMedia && !configDefault) {
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                    const newTheme = e.matches ? 'dark' : 'light';
+                    applyTheme(e.matches);
+                    window.localStorage && window.localStorage.setItem('theme', newTheme);
+                });
+            }
+        }
+    );
+</script>
+
+<script>
+    // Reading Progress Component
+    document.addEventListener('DOMContentLoaded', () => {
+        const progressValue = document.querySelector('.reading-value');
+        const progressCircle = document.querySelector('.progress-ring__circle');
+        const container = document.querySelector('.reading-progress-container');
+
+        // Exit if elements don't exist (e.g., not on a post page)
+        if (!progressValue || !progressCircle || !container) {
+            return;
+        }
+
+        // SVG Circle setup
+        const radius = progressCircle.r.baseVal.value;
+        const circumference = 2 * Math.PI * radius;
+
+        progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+        progressCircle.style.strokeDashoffset = circumference;
+
+        function setProgress(percent) {
+            const safePercent = Math.min(100, Math.max(0, percent));
+            progressValue.textContent = `${Math.round(safePercent)}%`;
+            const offset = circumference - (safePercent / 100) * circumference;
+            progressCircle.style.strokeDashoffset = offset;
+        }
+
+        function onScroll() {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+            if (scrollHeight <= 0) {
+                setProgress(0);
+                return;
+            }
+
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            setProgress(scrollPercent);
+
+            // Show/Hide logic: Show if scrolled more than 100px
+            if (scrollTop > 100) {
+                container.classList.add('show');
+            } else {
+                container.classList.remove('show');
+            }
+        }
+
+        // Initialize
+        onScroll();
+
+        // Listen for scroll events
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // Recalculate on resize
+        window.addEventListener('resize', onScroll);
+    });
+</script>
+
+
+
+
+
+
+
+    <meta name="generator" content="Gridea Pro 1.2.2">
+    <title>法律工具箱 | 听得入迷</title>
+
+    
+<meta name="description" content="国家政务服务平台 (www.gov.cn) 法律法规与国家标准 法律检索|案例检索|类案检索|法律法规数据库|律师智能检索工具——律呗 (farbun.com) [国家法律法规数据库 (npc.gov.cn)](https://flk.npc.gov&amp;hellip;">
+<meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
+<link rel="canonical" href="https://gridea.tdrme.cn/post/fa-lu-gong-ju-xiang/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"法律工具箱","url":"https://gridea.tdrme.cn/post/fa-lu-gong-ju-xiang/","description":"国家政务服务平台 (www.gov.cn) 法律法规与国家标准 法律检索|案例检索|类案检索|法律法规数据库|律师智能检索工具——律呗 (farbun.com) [国家法律法规数据库 (npc.gov.cn)](https://flk.npc.gov\u0026hellip;","datePublished":"2026-06-10T08:59:47+08:00","dateModified":"2026-06-10T01:01:40+08:00","author":{"@type":"Person","name":"听得入迷"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"听得入迷"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://gridea.tdrme.cn","name":"听得入迷","position":1},{"@type":"ListItem","item":"https://gridea.tdrme.cn/post/fa-lu-gong-ju-xiang/","name":"法律工具箱","position":2}]}</script>
+<!--logo-->
+<!-- 浏览器标签页显示的图标 -->
+<link rel="icon" href="https://www.tdrme.cn/logoB.svg" type="image/svg+xml" sizes="200x200">
+<!-- 收藏夹使用的图标 -->
+<link rel="bookmark" href="https://www.tdrme.cn/logoW.svg" type="image/svg+xml" sizes="200x200">
+<!-- 旧版浏览器兼容性支持 -->
+<link rel="shortcut icon" href="https://www.tdrme.cn/logoB.svg" type="image/svg+xml">
+</head>
+
+<body class="">
+
+    
+<script>
+    (function () {
+        const getSystemTheme = () => {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return 'dark';
+            }
+            return 'light';
+        };
+
+        const configDefault = 'dark';
+        const savedTheme = localStorage.getItem('theme');
+        const theme = savedTheme || configDefault || getSystemTheme();
+
+        if (theme === 'dark') {
+            document.body.classList.add('dark-theme');
+        }
+
+        if (!savedTheme) {
+            localStorage.setItem('theme', theme);
+        }
+    })();
+</script>
+<header class="mod-head">
+    <div class="mod-head__left">
+        <div class="mod-head__logo">
+            <a href="/">
+                
+                <img class="avatar" alt="avatar" src="/images/theme/IMG_20250827_010418.png">
+                
+            </a>
+        </div>
+    </div>
+
+    <div class="mod-head__right">
+        <span>
+            <button id="theme-toggle-sun" class="tiptap-button theme-toggle-sun" aria-label="Switch to dark mode">
+                <svg width="18" height="18" class="tiptap-button-icon" viewBox="0 0 24 24" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 1C12.5523 1 13 1.44772 13 2V4C13 4.55228 12.5523 5 12 5C11.4477 5 11 4.55228 11 4V2C11 1.44772 11.4477 1 12 1Z"
+                        fill="currentColor"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12ZM12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M13 20C13 19.4477 12.5523 19 12 19C11.4477 19 11 19.4477 11 20V22C11 22.5523 11.4477 23 12 23C12.5523 23 13 22.5523 13 22V20Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M4.22282 4.22289C4.61335 3.83236 5.24651 3.83236 5.63704 4.22289L7.04704 5.63289C7.43756 6.02341 7.43756 6.65658 7.04704 7.0471C6.65651 7.43762 6.02335 7.43762 5.63283 7.0471L4.22282 5.6371C3.8323 5.24658 3.8323 4.61341 4.22282 4.22289Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M18.367 16.9529C17.9765 16.5623 17.3433 16.5623 16.9528 16.9529C16.5623 17.3434 16.5623 17.9766 16.9528 18.3671L18.3628 19.7771C18.7533 20.1676 19.3865 20.1676 19.777 19.7771C20.1675 19.3866 20.1675 18.7534 19.777 18.3629L18.367 16.9529Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M1 12C1 11.4477 1.44772 11 2 11H4C4.55228 11 5 11.4477 5 12C5 12.5523 4.55228 13 4 13H2C1.44772 13 1 12.5523 1 12Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M20 11C19.4477 11 19 11.4477 19 12C19 12.5523 19.4477 13 20 13H22C22.5523 13 23 12.5523 23 12C23 11.4477 22.5523 11 22 11H20Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M7.04704 16.9529C7.43756 17.3434 7.43756 17.9766 7.04704 18.3671L5.63704 19.7771C5.24651 20.1676 4.61335 20.1676 4.22282 19.7771C3.8323 19.3866 3.8323 18.7534 4.22283 18.3629L5.63283 16.9529C6.02335 16.5623 6.65651 16.5623 7.04704 16.9529Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M19.777 5.6371C20.1675 5.24657 20.1675 4.61341 19.777 4.22289C19.3865 3.83236 18.7533 3.83236 18.3628 4.22289L16.9528 5.63289C16.5623 6.02341 16.5623 6.65658 16.9528 7.0471C17.3433 7.43762 17.9765 7.43762 18.367 7.0471L19.777 5.6371Z"
+                        fill="currentColor"></path>
+                </svg>
+            </button>
+            <button id="theme-toggle-moon" class="tiptap-button theme-toggle-moon" aria-label="Switch to light mode">
+                <svg width="18" height="18" class="tiptap-button-icon" viewBox="0 0 24 24" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 11.5955 21.7564 11.2309 21.3827 11.0761C21.009 10.9213 20.5789 11.0069 20.2929 11.2929C19.287 12.2988 17.9226 12.864 16.5 12.864C15.0774 12.864 13.713 12.2988 12.7071 11.2929C11.7012 10.287 11.136 8.92261 11.136 7.5C11.136 6.07739 11.7012 4.71304 12.7071 3.70711C12.9931 3.42111 13.0787 2.99099 12.9239 2.61732C12.7691 2.24364 12.4045 2 12 2ZM7.55544 5.34824C8.27036 4.87055 9.05353 4.51389 9.87357 4.28778C9.39271 5.27979 9.13604 6.37666 9.13604 7.5C9.13604 9.45304 9.91189 11.3261 11.2929 12.7071C12.6739 14.0881 14.547 14.864 16.5 14.864C17.6233 14.864 18.7202 14.6073 19.7122 14.1264C19.4861 14.9465 19.1295 15.7296 18.6518 16.4446C17.7727 17.7602 16.5233 18.7855 15.0615 19.391C13.5997 19.9965 11.9911 20.155 10.4393 19.8463C8.88743 19.5376 7.46197 18.7757 6.34315 17.6569C5.21447 16.538 4.4624 15.1126 4.15372 13.5607C3.84504 12.0089 4.00347 10.4003 4.60897 8.93853C5.21447 7.47672 6.23985 6.22729 7.55544 5.34824Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M19 2C19.5523 2 20 2.44772 20 3V4H21C21.5523 4 22 4.44772 22 5C22 5.55228 21.5523 6 21 6H20V7C20 7.55228 19.5523 8 19 8C18.4477 8 18 7.55228 18 7V6H17C16.4477 6 16 5.55228 16 5C16 4.44772 16.4477 4 17 4H18V3C18 2.44772 18.4477 2 19 2Z"
+                        fill="currentColor"></path>
+                </svg>
+            </button>
+        </span>
+    </div>
+</header>
+<!-- <a href="#" id="back-to-top" style="display: inline;"> ^ </a> -->
+
+<article class="mod-post mod-post__type-post">
+    <header>
+        <h1 class="mod-post__title">
+            法律工具箱
+        </h1>
+    </header>
+
+    <div class="mod-post__meta">
+        <time datetime="2026-06-10">
+            2026-06-10
+        </time> • 15 分钟阅读 •
+         </div>
+
+
+
+            <div class="mod-post__entry wzulli">
+                
+                <p><a href="https://gjzwfw.www.gov.cn/">国家政务服务平台 (www.gov.cn)</a></p>
+<h3 id="heading"><strong>法律法规与国家标准</strong></h3>
+<p><a href="https://tool.farbun.com/">法律检索|案例检索|类案检索|法律法规数据库|律师智能检索工具——律呗 (farbun.com)</a></p>
+<p><a href="https://flk.npc.gov.cn/">国家法律法规数据库 (npc.gov.cn)</a></p>
+<p><a href="https://www.moj.gov.cn/pub/sfbgw/index.html">中华人民共和国司法部 (moj.gov.cn)</a></p>
+<p><a href="https://www.chinacourt.org/law.shtml">中国法院网法律文库 (chinacourt.org)</a></p>
+<p><a href="https://china.findlaw.cn/fagui/">法律法规查询-找法网法规库提供法律法规、司法解释等查询服务 - 找法网(findlaw.cn)</a></p>
+<p><a href="https://sousuo.www.gov.cn/zcwjk/">国务院政策文件库 (www.gov.cn)</a></p>
+<p><a href="https://www.elegislation.gov.hk/">电子版香港法例 - 主页 (elegislation.gov.hk)</a></p>
+<p><a href="https://www.gov.mo/zh-hans/content/laws/">法律法规 – 澳门特别行政区政府入口网站 (www.gov.mo)</a></p>
+<p><a href="https://std.samr.gov.cn/">首页 - 全国标准信息公共服务平台 (samr.gov.cn)</a></p>
+<p><a href="https://www.sac.gov.cn/">国家标准化管理委员会 (sac.gov.cn)</a></p>
+<p><a href="https://sppt.cfsa.net.cn:8086/db">食品安全国家标准数据检索平台 (cfsa.net.cn)</a></p>
+<p><a href="http://www.nhc.gov.cn/sps/s3594/202403/c54748d1921a4fa196aa2658aa095d37.shtml">食品安全国家标准目录（截至2024年3月共1610项） (nhc.gov.cn)</a></p>
+<p><a href="https://www.mee.gov.cn/">中华人民共和国生态环境部 (mee.gov.cn)</a></p>
+<p><a href="https://www.mee.gov.cn/ywgz/fgbz/bz/bzgl/">标准管理_中华人民共和国生态环境部 (mee.gov.cn)</a></p>
+<p><a href="https://caselaw.findlaw.com/">美国案例与法典检索Case Law Resources</a></p>
+<p><a href="https://www.un.org/zh/documents/ods/">联合国文件数据库</a></p>
+<p><a href="https://neris.csrc.gov.cn/falvfagui/">债券期货法规数据库系统</a></p>
+<p><a href="http://xzfg.moj.gov.cn/search2.html">国家行政法规库 (moj.gov.cn)</a></p>
+<h3 id="heading-1"><strong>主体信息</strong></h3>
+<p><a href="https://www.chinamartyrs.gov.cn/x_lsyml/">中华英烈名录</a></p>
+<p><a href="https://www.gsxt.gov.cn/index.html">国家企业信用信息公示系统 (gsxt.gov.cn)</a></p>
+<p><a href="http://www.pbccrc.org.cn/">中国人民银行征信中心 (pbccrc.org.cn)</a></p>
+<p><a href="https://chinanpo.mca.gov.cn/">中国社会组织政务服务平台 (mca.gov.cn)</a></p>
+<p><a href="https://www.cods.org.cn/gscx/">全国组织机构统一社会信用代码查询平台 - 全国组织机构统一社会信用代码数据服务中心 (cods.org.cn)</a></p>
+<p><a href="https://std.samr.gov.cn/">全国标准信息公共服务平台 (samr.gov.cn)</a></p>
+<p><a href="https://www.sara.gov.cn/resource/common/zjjcxxcxxt/index.html">宗教基础信息查询系统 (sara.gov.cn)</a></p>
+<p><a href="https://chinanpo.mca.gov.cn/cszzgg">慈善组织公告 (mca.gov.cn)</a></p>
+<p><a href="https://www.xunrenzhaoren.com/">寻人找人网 - 寻亲网、寻人启事网、全国寻人找人寻亲网站平台 (xunrenzhaoren.com)</a></p>
+<p><a href="https://www.chinaxunqin.com/">中国寻亲网-寻亲网-寻人网-寻人启事网-帮您寻找您的家人-官方网站www.chinaxunqin.com</a></p>
+<p><a href="https://www.ccgp.gov.cn/index.shtml">中国政府采购网 (ccgp.gov.cn)</a></p>
+<p><a href="https://pccz.court.gov.cn/pcajxxw/index/xxwsy">全国企业破产重整案件信息网 (court.gov.cn)</a></p>
+<p><a href="http://gjsy.gov.cn/sydwfrxxcx/">事业单位法人登记信息查询-机关赋码和事业单位登记管理平台 (gjsy.gov.cn)</a></p>
+<p><a href="https://www.sec.gov/">SEC 美国证券交易委员会</a></p>
+<p><a href="https://ngo.mps.gov.cn/ngo/portal/index.do">境外非政府组织办事服务平台 (mps.gov.cn)</a></p>
+<p><a href="https://www.e-services.cr.gov.hk/">香港地区公司信息查询</a></p>
+<p><a href="https://alltwcompany.com/">全台湾公司及商号基本资料、营业资讯查询系统 - 台湾公司数据库 (alltwcompany.com)</a></p>
+<p><a href="http://www.innocom.gov.cn/">高新技术企业认定工作网 (innocom.gov.cn)</a></p>
+<p><a href="https://icidp.iachina.cn/">中国保险行业信息披露系统 (iachina.cn)</a></p>
+<h3 id="heading-2"><strong>司法案例与行政处罚</strong></h3>
+<p><a href="https://wenshu.court.gov.cn/">中国裁判文书网(court.gov.cn)</a></p>
+<p><a href="https://rmfyalk.court.gov.cn/">人民法院案例库 (court.gov.cn)</a></p>
+<p><a href="https://eastlawlibrary.court.gov.cn/court-digital-library-search/page/caseFilesDatabase/historicMajorCases.html">新中国案件库 (court.gov.cn)</a></p>
+<p><a href="https://cfws.samr.gov.cn/">中国市场监督行政处罚文书网</a></p>
+<p><a href="http://gongbao.court.gov.cn/">中华人民共和国最高人民法院公报 (court.gov.cn)</a></p>
+<p><a href="http://gongbao.court.gov.cn/ArticleList.html?serial_no=zdxal">指导性案例 - 中华人民共和国最高人民法院公报 (court.gov.cn)</a></p>
+<p><a href="https://openlaw.cn/">Openlaw 开放法律联盟</a></p>
+<p><a href="https://lawsnote.com/">Lawsnote七法－法學資料庫</a></p>
+<p><a href="https://www.judiciary.hk/zh_cn/home/index.html">香港司法机构 - 主页 (judiciary.hk)</a></p>
+<p><a href="https://www.mee.gov.cn/ywdt/bgt/xzcf/">生态环境部行政处罚决定查询</a></p>
+<h3 id="heading-3"><strong>知识产权与网络游戏</strong></h3>
+<p><a href="https://pss-system.cponline.cnipa.gov.cn/conventionalSearch">中国专利检索及分析</a></p>
+<p><a href="https://cponline.cnipa.gov.cn/">国家只是产权局专利业务办理系统 (cnipa.gov.cn)</a></p>
+<p><a href="https://www.cnipa.gov.cn/">国家知识产权局 (cnipa.gov.cn)</a></p>
+<p><a href="https://cpquery.cponline.cnipa.gov.cn/">中国及多国专利审查信息查询系统</a></p>
+<p><a href="https://sbj.cnipa.gov.cn/sbj/sbcx/">商标查询 (cnipa.gov.cn)</a></p>
+<p><a href="https://www.ccopyright.com.cn/">中国版权保护中心 (ccopyright.com.cn)</a></p>
+<p><a href="http://www.sbfl.cn/">商标分类2024版-商标分类表、基于尼斯商标分类、第十一版商标分类2024版 (sbfl.cn)</a></p>
+<p><a href="https://branddb.wipo.int/zh/">WIPO 品牌数据库 Global Brand Database</a></p>
+<p><a href="https://www.cas.cn/cg/">成果转化&mdash;-中国科学院 (cas.cn)</a></p>
+<p><a href="https://sjk11.e-library.com.cn/kns55/brief/result.aspx?dbPrefix=SNAD">国家科技成果数据库 (e-library.com.cn)</a></p>
+<p><a href="https://www.nppa.gov.cn/bsfw/jggs/yxspjg/">游戏审批结果查询 - 国家新闻出版署 (nppa.gov.cn)</a></p>
+<p><a href="https://www.wipo.int/portal/zh/index.html">世界知识产权组织</a></p>
+<p><a href="https://worldwide.espacenet.com/">Espacenet 欧洲专利局专利检索</a></p>
+<h3 id="heading-4"><strong>事实查</strong></h3>
+<p>搜狗微信搜索</p>
+<p>百度新闻</p>
+<p>微博</p>
+<p><a href="https://index.baidu.com/">百度指数</a></p>
+<p><a href="https://www.stats.gov.cn/">国家统计局 (stats.gov.cn)</a></p>
+<p><a href="https://ncha.gjzwfw.gov.cn/">国家文物局 (gjzwfw.gov.cn)</a></p>
+<p><a href="http://gl.ncha.gov.cn/#/Industry/Collection-Collection?title=%E5%85%A8%E5%9B%BD%E7%8F%8D%E8%B4%B5%E6%96%87%E7%89%A9%E6%95%B0%E6%8D%AE%E5%BA%93">国家文物局综合行政管理平台 (ncha.gov.cn)</a></p>
+<p><a href="https://app.gjzwfw.gov.cn/jmopen/webapp/html5/gjwwjqggcwwmlcx/index.html">[国家文物局]全国馆藏文物名录查询 (gjzwfw.gov.cn)</a></p>
+<p><a href="http://gl.ncha.gov.cn/#/Home">国家文物局综合行政管理平台 (ncha.gov.cn)</a></p>
+<p><a href="https://www.unoosa.org/oosa/osoindex/search-ng.jspx">SearchOSOidx 外太空物体索引</a></p>
+<p><a href="http://cx.cnca.cn/CertECloud/index/index/page">全国认证认可信息公共服务平台 (cnca.cn)</a></p>
+<p><a href="http://211.159.153.75/">标准地图服务系统</a></p>
+<p><a href="https://data.court.gov.cn/pages/index.html">中国司法大数据服务网 (court.gov.cn)</a></p>
+<h3 id="heading-5"><strong>房地产与土地</strong></h3>
+<p><a href="https://www.landchina.com/">中国土地市场网</a></p>
+<p><a href="https://www.mnr.gov.cn/">自然资源部门户网站 (mnr.gov.cn)</a></p>
+<p><a href="https://jzsc.mohurd.gov.cn/">全国建筑市场监管公共服务平台（四库一平台） (mohurd.gov.cn)</a></p>
+<h3 id="heading-6"><strong>健康与生命科学</strong></h3>
+<p><a href="https://www.nmpa.gov.cn/">国家药品监督管理局 (nmpa.gov.cn)</a></p>
+<p><a href="https://zwfw.nhc.gov.cn/cxx/">查信息_卫健委政务服务平台 (nhc.gov.cn)</a></p>
+<p><a href="http://zgcx.nhc.gov.cn:9090/unit">全国医疗机构查询</a></p>
+<h3 id="heading-7"><strong>食品与农业</strong></h3>
+<p><a href="https://zwfw.samr.gov.cn/needSearch">食品查询-商业平台</a></p>
+<p><a href="https://chinatrace.org/platform/">中国食品（产品）安全追溯平台 (chinatrace.org)</a></p>
+<p><a href="http://www.ancc.org.cn/">中国物品编码中心 (ancc.org.cn)</a></p>
+<p><a href="https://zwfw.samr.gov.cn/needSearch">食品生产许可证证书查询</a></p>
+<p><a href="http://qsst.moa.gov.cn/">国家农产品质量安全追溯管理信息平台 (moa.gov.cn)</a></p>
+<h3 id="heading-8"><strong>争议解决</strong></h3>
+<p><a href="https://splcgk.court.gov.cn/gzfwww/">中国审判流程信息公开网 (court.gov.cn)</a></p>
+<p><a href="https://tingshen.court.gov.cn/">中国庭审公开网 (court.gov.cn)</a></p>
+<p><a href="http://zxgk.court.gov.cn/">中国执行信息公开网 (court.gov.cn)</a></p>
+<p><a href="https://www.12309.gov.cn/12309/ajxxgk/index.shtml">案件信息公开 (12309.gov.cn)</a></p>
+<p><a href="https://dwwtjd.court.gov.cn/#/indexPage/indexContent">人民法院委托鉴定系统</a></p>
+<p><a href="https://www.court.gov.cn/susongyangshi/5.html">诉讼文书样式 - 中华人民共和国最高人民法院 (court.gov.cn)</a></p>
+<p><a href="https://rmfygg.court.gov.cn/web/rmfyportal/noticeinfo">最新公告 - 人民法院公告网 (court.gov.cn)</a></p>
+<p><a href="https://songda.court.gov.cn/sd/">人民法院送达平台</a></p>
+<p><a href="https://www.rmfysszc.gov.cn/">司法拍卖-人民法院诉讼资产网 (rmfysszc.gov.cn)</a></p>
+<p><a href="https://sf.taobao.com/">司法拍卖 - 阿里资产_法拍房产，土地，股权，厂房，机动车等人民法院司法拍卖 (taobao.com)</a></p>
+<h3 id="heading-9"><strong>税收与海关</strong></h3>
+<p><a href="https://www.chinatax.gov.cn/">国家税务局</a></p>
+<p><a href="https://www.casc.org.cn/qykjzz/">财政部会计准则委员会 (casc.org.cn)</a></p>
+<p><a href="https://www.mofcom.gov.cn/index.html">中华人民共和国商务部 (mofcom.gov.cn)</a></p>
+<p><a href="http://stats.customs.gov.cn/">海关统计数据查询平台 (customs.gov.cn)</a></p>
+<p><a href="https://online.customs.gov.cn/">互联网+海关 (customs.gov.cn)</a></p>
+<p><a href="https://12366.chinatax.gov.cn/">国家税务总局12366纳税服务平台 (chinatax.gov.cn)</a></p>
+<p><a href="http://credit.customs.gov.cn/ccppwebserver/pages/ccpp/html/ccppindex.html">中国海关企业进出口信用信息公示平台 (customs.gov.cn)</a></p>
+<p><a href="https://www.safe.gov.cn/safe/whxzcfxxcx/index.html">外汇行政处罚信息查询_国家外汇管理局门户网站 (safe.gov.cn)</a></p>
+<h3 id="heading-10"><strong>互联网管理</strong></h3>
+<p><a href="https://beian.mps.gov.cn/">全国互联网安全管理服务平台-公安联网备案</a></p>
+<p><a href="https://wap.miit.gov.cn/">中华人民共和国工业和信息化部 (miit.gov.cn)</a></p>
+<p><a href="https://ythzxfw.miit.gov.cn/index">工业和信息化部政务服务平台 (miit.gov.cn)</a></p>
+<p><a href="https://www.cac.gov.cn/">中央网络安全和信息化委员会办公室 (cac.gov.cn)</a></p>
+<p><a href="https://beian.miit.gov.cn/#/Integrated/index">ICP/IP地址/域名信息备案管理系统 (miit.gov.cn)</a></p>
+<p><a href="https://www.cnnvd.org.cn/home/childHome">国家信息安全漏洞库 (cnnvd.org.cn)</a></p>
+<p><a href="https://www.chinaz.com/">站长之家 - 站长资讯-我们致力于为中文网站提供动力！ (chinaz.com)</a></p>
+<p><a href="https://zh-hans.ipshu.com/">IP查询 | IP地址查询 | IP地址 (简体中文) 🔍 (ipshu.com)</a></p>
+<p><a href="https://www.cnnic.net.cn/">中国互联网络信息中心 (cnnic.net.cn)</a></p>
+<p><a href="https://webwhois.cnnic.cn/HelpServlet">whois 信息查询-中国互联网信息中心</a></p>
+<p><a href="https://bcbeian.ifcert.cn/index">区块链信息服务备案管理系统 (ifcert.cn)</a></p>
+<p><a href="https://www.12377.cn/">违法和不良信息举报中心 (12377.cn)</a></p>
+<p><a href="http://www.whwx.gov.cn/zcfg/zcwj/202106/t20210629_1729036.shtml">全国网络安全等级保护测评机构推荐目录 (whwx.gov.cn)</a></p>
+<p><a href="http://www.itsec.gov.cn/">信息安全等级测评师查询</a></p>
+<p><a href="https://www.ispl.cn/ispl/jsp/common/ProductList_Public.jsp">网络安全专用产品-产品查询 (ispl.cn)</a></p>
+<p><a href="https://www.cverc.org.cn/index.htm">CVERC-国家计算机病毒应急处理中心</a></p>
+<p><a href="http://www.mstl.org.cn/html/about/infosec/index.html">公安部信息安全产品检测中心_机构介绍_公安部第三研究所检测中心 - Powered by GSCMS (mstl.org.cn)</a></p>
+<p><a href="https://dxzhgl.miit.gov.cn/#/home">电信业务市场综合管理信息系统 (miit.gov.cn)</a></p>
+<p><a href="https://www.nvdb.org.cn/index">工业和信息化部网络安全威胁和漏洞信息共享平台 (nvdb.org.cn)</a></p>
+<h3 id="heading-11"><strong>资本市场</strong></h3>
+<p><a href="https://jwtz.ndrc.gov.cn/jwtz/home">全国境外投资管理和服务网络系统 (ndrc.gov.cn)</a></p>
+<p><a href="http://www.cninfo.com.cn/new/index.jsp">巨潮资讯网 (cninfo.com.cn)</a></p>
+<p><a href="https://www.ndrc.gov.cn/zwfw/">政务服务-国家发展和改革委员会 (ndrc.gov.cn)</a></p>
+<p><a href="https://gs.amac.org.cn/amac-infodisc/res/pof/fund/index.html">私募基金公示 - 中国证券投资基金业协会 (amac.org.cn)</a></p>
+<p><a href="https://www.neeq.com.cn/index.html">全国中小企业股份转让系统 (neeq.com.cn)</a></p>
+<p><a href="https://pjcy.mof.gov.cn/html/index.html?q=0.0.2#/home">财政部全国财政电子票据查验平台 (mof.gov.cn)</a></p>
+<p><a href="https://neris.csrc.gov.cn/shixinchaxun/">失信查询平台 (csrc.gov.cn)</a></p>
+<p><a href="https://cicc.court.gov.cn/html/1/218/347/index.html">国际商事法庭 | CICC - 域外法律查明平台 (court.gov.cn)</a></p>
+<p><a href="https://icis.corp.delaware.gov/Ecorp/EntitySearch/NameSearch.aspx">特拉华州公司查询</a></p>
+<p><a href="https://www.companies.sg/zh">Companies.sg - 新加坡公司搜索</a></p>
+<p><a href="https://find-and-update.company-information.service.gov.uk/">英国公司信息查询</a></p>
+<p><a href="https://abr.business.gov.au/">澳大利亚公司信息查询</a></p>
+<p><a href="https://traderegistry.fr/company-search/">法国公司查询</a></p>
+<h3 id="heading-12"><strong>法律服务(其他)</strong></h3>
+<p><a href="https://12348.moj.gov.cn/#/homepage">中国法律服务网 (moj.gov.cn)</a></p>
+<h3 id="heading-13"><strong>关于</strong></h3>
+<p>本页内容用于个人使用，内容源于<a href="https://legalkit.xyz/">律盒</a>。如果对你有用，我很荣幸。如有错误可以留言反馈。</p>
+
+            </div>
+
+</article>
+
+
+
+
+
+
+<div class="mod-post__poster">
+</div>
+
+</div>
+
+
+
+
+
+
+<!-- Reading Progress Component -->
+<div class="reading-progress-container">
+  <span class="reading-label">阅读进度</span>
+  <span class="reading-value">0%</span>
+  <svg class="progress-ring" viewBox="0 0 24 24">
+    <!-- Background Circle -->
+    <circle class="progress-ring__circle-bg" stroke-width="3" fill="transparent" r="10" cx="12" cy="12" />
+    <!-- Progress Circle -->
+    <circle class="progress-ring__circle" stroke-width="3" fill="transparent" r="10" cx="12" cy="12" />
+  </svg>
+</div>
+<footer id="footer" class="footer">
+    <nav>
+        
+        
+        <a class="menu-item" href="/">首页</a>
+        
+         · 
+        <a class="menu-item" href="/post">博客</a>
+        
+         · 
+        <a class="menu-item" href="/memos">闪念</a>
+        
+         · 
+        <a class="menu-item" href="/archives">归档</a>
+        
+         · 
+        <a class="menu-item" href="/tags">标签</a>
+        
+         · 
+        <a class="menu-item" href="/links">友链</a>
+        
+         · 
+        <a class="menu-item" href="/post/about">关于</a>
+        
+    </nav>
+
+    <div class="Copyright">Copyright &copy; <span class="current-year"></span> <a href="https://gridea.tdrme.cn">听得入迷</a></div>
+    <script>document.querySelector('.current-year').textContent = new Date().getFullYear();</script>
+
+    <div class="index_footer">
+        Powered by <a href="https://www.gridea.pro/" target="_blank">Gridea Pro</a>
+<br>
+<a href="https://www.travellings.cn/go" target="_blank">🚇开往</a>-<a href="https://www.foreverblog.cn/go.html"" target="_blank">🌀虫洞</a>-<a href="https://travel.moe/go?travel=on" target="_blank">🪐异次元之旅</a>
+<br>
+<a href="https://icp.redcha.cn/beian/ICP-2025080059.html" title="茶ICP备2025080059号" target="_blank">茶ICP备2025080059号</a>-
+<a href="https://icp.gov.moe/?keyword=20241205" target="_blank">萌ICP备20241205号</a><br> ·
+        <a class="rss" href="/feed.xml" target="_blank" rel="noopener noreferrer">
+            <i class="ri-rss-line"></i>RSS
+        </a>
+    </div>
+</footer>
+
+
+
+
+    
+
+    
+<style>
+/*b站iframe优化*/
+.iframe_video{
+        position:relative;
+        height:0;
+        padding-bottom:56.25%;
+        overflow:hidden
+}
+
+.iframe_video embed,.iframe_video iframe,.iframe_video object{
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%
+}
+</style>
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: amore-jinja2 v1.1.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+
+</html>

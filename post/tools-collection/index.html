@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+<meta name="viewport"
+    content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, width=device-width" />
+<meta name="renderer" content="webkit">
+<meta name="format-detection" content="telephone=no, email=no, address=no">
+
+
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#292a2d" media="(prefers-color-scheme: dark)">
+
+
+<link rel="shortcut icon" href="/images/theme/IMG_20250827_010403.png">
+<link rel="stylesheet" href="/styles/main.min.css">
+
+
+<style>:root{--accent-color:#28df99;}</style>
+
+
+<script>
+    // 自动为所有 target="_blank" 的链接添加 rel="noopener noreferrer"
+    document.addEventListener('DOMContentLoaded', function () {
+        var links = document.querySelectorAll('a[target="_blank"]');
+        links.forEach(function (link) {
+            var rel = link.getAttribute('rel') || '';
+            if (rel.indexOf('noopener') === -1) {
+                rel += ' noopener';
+            }
+            if (rel.indexOf('noreferrer') === -1) {
+                rel += ' noreferrer';
+            }
+            link.setAttribute('rel', rel.trim());
+        });
+    });
+</script>
+
+<script>
+    // declaraction of document.ready() function.
+    (function () {
+        var ie = !!(window.attachEvent && !window.opera);
+        var wk = /webkit\/(\d+)/i.test(navigator.userAgent) && (RegExp.$1 < 525);
+        var fn = [];
+        var run = function () {
+            for (var i = 0; i < fn.length; i++) fn[i]();
+        };
+        var d = document;
+        d.ready = function (f) {
+            if (!ie && !wk && d.addEventListener)
+                return d.addEventListener('DOMContentLoaded', f, false);
+            if (fn.push(f) > 1) return;
+            if (ie)
+                (function () {
+                    try {
+                        d.documentElement.doScroll('left');
+                        run();
+                    } catch (err) {
+                        setTimeout(arguments.callee, 0);
+                    }
+                })();
+            else if (wk)
+                var t = setInterval(function () {
+                    if (/^(loaded|complete)$/.test(d.readyState))
+                        clearInterval(t), run();
+                }, 0);
+        };
+    })();
+
+
+    document.ready(
+        function () {
+            var _Blog = window._Blog || {};
+
+            const getSystemTheme = () => {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    return 'dark';
+                }
+                return 'light';
+            };
+
+            const configDefault = 'dark';
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme');
+            const initialTheme = currentTheme || configDefault || getSystemTheme();
+            const isDark = initialTheme === 'dark';
+
+            const updateButtons = (dark) => {
+                const sunBtn = document.getElementById("theme-toggle-sun");
+                const moonBtn = document.getElementById("theme-toggle-moon");
+                const mobileSunBtn = document.getElementById("mobile-theme-toggle-sun");
+                const mobileMoonBtn = document.getElementById("mobile-theme-toggle-moon");
+
+                if (dark) {
+                    if (sunBtn) sunBtn.style.display = 'none';
+                    if (moonBtn) moonBtn.style.display = 'inline-block';
+                    if (mobileSunBtn) mobileSunBtn.style.display = 'none';
+                    if (mobileMoonBtn) mobileMoonBtn.style.display = 'inline-block';
+                } else {
+                    if (sunBtn) sunBtn.style.display = 'inline-block';
+                    if (moonBtn) moonBtn.style.display = 'none';
+                    if (mobileSunBtn) mobileSunBtn.style.display = 'inline-block';
+                    if (mobileMoonBtn) mobileMoonBtn.style.display = 'none';
+                }
+            };
+
+            const updateThemeColor = (dark) => {
+                const themeColor = dark ? '#292a2d' : '#ffffff';
+                const metaTags = document.querySelectorAll('meta[name="theme-color"]');
+                if (metaTags.length > 0) {
+                    // 保留第一个，移除其他的，避免重复
+                    for (let i = 1; i < metaTags.length; i++) {
+                        metaTags[i].remove();
+                    }
+                    metaTags[0].setAttribute('content', themeColor);
+                    metaTags[0].removeAttribute('media');
+                } else {
+                    const meta = document.createElement('meta');
+                    meta.name = 'theme-color';
+                    meta.content = themeColor;
+                    document.head.appendChild(meta);
+                }
+            };
+
+            const applyTheme = (dark) => {
+                const body = document.getElementsByTagName('body')[0];
+                if (dark) {
+                    body.classList.add('dark-theme');
+                } else {
+                    body.classList.remove('dark-theme');
+                }
+                updateButtons(dark);
+                updateThemeColor(dark);
+            };
+
+            // Initial application
+            applyTheme(isDark);
+            if (!currentTheme) {
+                window.localStorage && window.localStorage.setItem('theme', initialTheme);
+            }
+
+            _Blog.toggleTheme = function () {
+                const toggleFunc = (e) => {
+                    // Prevent bubbling if needed, though buttons are distinct now
+                    if (e) e.stopPropagation();
+
+                    const body = document.getElementsByTagName('body')[0];
+                    const isCurrentlyDark = body.classList.contains('dark-theme');
+
+                    if (isCurrentlyDark) {
+                        body.classList.remove('dark-theme');
+                        updateButtons(false);
+                        window.localStorage && window.localStorage.setItem('theme', 'light');
+                    } else {
+                        body.classList.add('dark-theme');
+                        updateButtons(true);
+                        window.localStorage && window.localStorage.setItem('theme', 'dark');
+                    }
+                };
+
+                const sunBtn = document.getElementById("theme-toggle-sun");
+                const moonBtn = document.getElementById("theme-toggle-moon");
+                const mobileSunBtn = document.getElementById("mobile-theme-toggle-sun");
+                const mobileMoonBtn = document.getElementById("mobile-theme-toggle-moon");
+
+                if (sunBtn) sunBtn.addEventListener('click', toggleFunc);
+                if (moonBtn) moonBtn.addEventListener('click', toggleFunc);
+                if (mobileSunBtn) mobileSunBtn.addEventListener('click', toggleFunc);
+                if (mobileMoonBtn) mobileMoonBtn.addEventListener('click', toggleFunc);
+            };
+            _Blog.toggleTheme();
+
+            if (window.matchMedia && !configDefault) {
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                    const newTheme = e.matches ? 'dark' : 'light';
+                    applyTheme(e.matches);
+                    window.localStorage && window.localStorage.setItem('theme', newTheme);
+                });
+            }
+        }
+    );
+</script>
+
+<script>
+    // Reading Progress Component
+    document.addEventListener('DOMContentLoaded', () => {
+        const progressValue = document.querySelector('.reading-value');
+        const progressCircle = document.querySelector('.progress-ring__circle');
+        const container = document.querySelector('.reading-progress-container');
+
+        // Exit if elements don't exist (e.g., not on a post page)
+        if (!progressValue || !progressCircle || !container) {
+            return;
+        }
+
+        // SVG Circle setup
+        const radius = progressCircle.r.baseVal.value;
+        const circumference = 2 * Math.PI * radius;
+
+        progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+        progressCircle.style.strokeDashoffset = circumference;
+
+        function setProgress(percent) {
+            const safePercent = Math.min(100, Math.max(0, percent));
+            progressValue.textContent = `${Math.round(safePercent)}%`;
+            const offset = circumference - (safePercent / 100) * circumference;
+            progressCircle.style.strokeDashoffset = offset;
+        }
+
+        function onScroll() {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+            if (scrollHeight <= 0) {
+                setProgress(0);
+                return;
+            }
+
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            setProgress(scrollPercent);
+
+            // Show/Hide logic: Show if scrolled more than 100px
+            if (scrollTop > 100) {
+                container.classList.add('show');
+            } else {
+                container.classList.remove('show');
+            }
+        }
+
+        // Initialize
+        onScroll();
+
+        // Listen for scroll events
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // Recalculate on resize
+        window.addEventListener('resize', onScroll);
+    });
+</script>
+
+
+
+
+
+
+
+    <meta name="generator" content="Gridea Pro 1.2.2">
+    <title>工具箱收藏 | 听得入迷</title>
+
+    
+<meta name="description" content="浏览器扩展插件 谷歌 Chrome [火狐 Firefox](https://addons.mozilla.org/zh-CN/firefox/addo&amp;hellip;">
+<meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
+<link rel="canonical" href="https://gridea.tdrme.cn/post/tools-collection/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"工具箱收藏","url":"https://gridea.tdrme.cn/post/tools-collection/","description":"浏览器扩展插件 谷歌 Chrome [火狐 Firefox](https://addons.mozilla.org/zh-CN/firefox/addo\u0026hellip;","datePublished":"2026-06-10T01:09:15+08:00","dateModified":"2026-06-10T01:09:15+08:00","author":{"@type":"Person","name":"听得入迷"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"听得入迷"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://gridea.tdrme.cn","name":"听得入迷","position":1},{"@type":"ListItem","item":"https://gridea.tdrme.cn/post/tools-collection/","name":"工具箱收藏","position":2}]}</script>
+<!--logo-->
+<!-- 浏览器标签页显示的图标 -->
+<link rel="icon" href="https://www.tdrme.cn/logoB.svg" type="image/svg+xml" sizes="200x200">
+<!-- 收藏夹使用的图标 -->
+<link rel="bookmark" href="https://www.tdrme.cn/logoW.svg" type="image/svg+xml" sizes="200x200">
+<!-- 旧版浏览器兼容性支持 -->
+<link rel="shortcut icon" href="https://www.tdrme.cn/logoB.svg" type="image/svg+xml">
+</head>
+
+<body class="">
+
+    
+<script>
+    (function () {
+        const getSystemTheme = () => {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return 'dark';
+            }
+            return 'light';
+        };
+
+        const configDefault = 'dark';
+        const savedTheme = localStorage.getItem('theme');
+        const theme = savedTheme || configDefault || getSystemTheme();
+
+        if (theme === 'dark') {
+            document.body.classList.add('dark-theme');
+        }
+
+        if (!savedTheme) {
+            localStorage.setItem('theme', theme);
+        }
+    })();
+</script>
+<header class="mod-head">
+    <div class="mod-head__left">
+        <div class="mod-head__logo">
+            <a href="/">
+                
+                <img class="avatar" alt="avatar" src="/images/theme/IMG_20250827_010418.png">
+                
+            </a>
+        </div>
+    </div>
+
+    <div class="mod-head__right">
+        <span>
+            <button id="theme-toggle-sun" class="tiptap-button theme-toggle-sun" aria-label="Switch to dark mode">
+                <svg width="18" height="18" class="tiptap-button-icon" viewBox="0 0 24 24" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12 1C12.5523 1 13 1.44772 13 2V4C13 4.55228 12.5523 5 12 5C11.4477 5 11 4.55228 11 4V2C11 1.44772 11.4477 1 12 1Z"
+                        fill="currentColor"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12ZM12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M13 20C13 19.4477 12.5523 19 12 19C11.4477 19 11 19.4477 11 20V22C11 22.5523 11.4477 23 12 23C12.5523 23 13 22.5523 13 22V20Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M4.22282 4.22289C4.61335 3.83236 5.24651 3.83236 5.63704 4.22289L7.04704 5.63289C7.43756 6.02341 7.43756 6.65658 7.04704 7.0471C6.65651 7.43762 6.02335 7.43762 5.63283 7.0471L4.22282 5.6371C3.8323 5.24658 3.8323 4.61341 4.22282 4.22289Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M18.367 16.9529C17.9765 16.5623 17.3433 16.5623 16.9528 16.9529C16.5623 17.3434 16.5623 17.9766 16.9528 18.3671L18.3628 19.7771C18.7533 20.1676 19.3865 20.1676 19.777 19.7771C20.1675 19.3866 20.1675 18.7534 19.777 18.3629L18.367 16.9529Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M1 12C1 11.4477 1.44772 11 2 11H4C4.55228 11 5 11.4477 5 12C5 12.5523 4.55228 13 4 13H2C1.44772 13 1 12.5523 1 12Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M20 11C19.4477 11 19 11.4477 19 12C19 12.5523 19.4477 13 20 13H22C22.5523 13 23 12.5523 23 12C23 11.4477 22.5523 11 22 11H20Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M7.04704 16.9529C7.43756 17.3434 7.43756 17.9766 7.04704 18.3671L5.63704 19.7771C5.24651 20.1676 4.61335 20.1676 4.22282 19.7771C3.8323 19.3866 3.8323 18.7534 4.22283 18.3629L5.63283 16.9529C6.02335 16.5623 6.65651 16.5623 7.04704 16.9529Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M19.777 5.6371C20.1675 5.24657 20.1675 4.61341 19.777 4.22289C19.3865 3.83236 18.7533 3.83236 18.3628 4.22289L16.9528 5.63289C16.5623 6.02341 16.5623 6.65658 16.9528 7.0471C17.3433 7.43762 17.9765 7.43762 18.367 7.0471L19.777 5.6371Z"
+                        fill="currentColor"></path>
+                </svg>
+            </button>
+            <button id="theme-toggle-moon" class="tiptap-button theme-toggle-moon" aria-label="Switch to light mode">
+                <svg width="18" height="18" class="tiptap-button-icon" viewBox="0 0 24 24" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 11.5955 21.7564 11.2309 21.3827 11.0761C21.009 10.9213 20.5789 11.0069 20.2929 11.2929C19.287 12.2988 17.9226 12.864 16.5 12.864C15.0774 12.864 13.713 12.2988 12.7071 11.2929C11.7012 10.287 11.136 8.92261 11.136 7.5C11.136 6.07739 11.7012 4.71304 12.7071 3.70711C12.9931 3.42111 13.0787 2.99099 12.9239 2.61732C12.7691 2.24364 12.4045 2 12 2ZM7.55544 5.34824C8.27036 4.87055 9.05353 4.51389 9.87357 4.28778C9.39271 5.27979 9.13604 6.37666 9.13604 7.5C9.13604 9.45304 9.91189 11.3261 11.2929 12.7071C12.6739 14.0881 14.547 14.864 16.5 14.864C17.6233 14.864 18.7202 14.6073 19.7122 14.1264C19.4861 14.9465 19.1295 15.7296 18.6518 16.4446C17.7727 17.7602 16.5233 18.7855 15.0615 19.391C13.5997 19.9965 11.9911 20.155 10.4393 19.8463C8.88743 19.5376 7.46197 18.7757 6.34315 17.6569C5.21447 16.538 4.4624 15.1126 4.15372 13.5607C3.84504 12.0089 4.00347 10.4003 4.60897 8.93853C5.21447 7.47672 6.23985 6.22729 7.55544 5.34824Z"
+                        fill="currentColor"></path>
+                    <path
+                        d="M19 2C19.5523 2 20 2.44772 20 3V4H21C21.5523 4 22 4.44772 22 5C22 5.55228 21.5523 6 21 6H20V7C20 7.55228 19.5523 8 19 8C18.4477 8 18 7.55228 18 7V6H17C16.4477 6 16 5.55228 16 5C16 4.44772 16.4477 4 17 4H18V3C18 2.44772 18.4477 2 19 2Z"
+                        fill="currentColor"></path>
+                </svg>
+            </button>
+        </span>
+    </div>
+</header>
+<!-- <a href="#" id="back-to-top" style="display: inline;"> ^ </a> -->
+
+<article class="mod-post mod-post__type-post">
+    <header>
+        <h1 class="mod-post__title">
+            工具箱收藏
+        </h1>
+    </header>
+
+    <div class="mod-post__meta">
+        <time datetime="2026-06-10">
+            2026-06-10
+        </time> • 22 分钟阅读 •
+         </div>
+
+
+
+            <div class="mod-post__entry wzulli">
+                
+                <h2 id="heading"><strong>浏览器扩展插件</strong></h2>
+<p><a href="https://chrome.google.com/webstore/detail/fly63%E5%B7%A5%E5%85%B7%E7%AE%B1/oicicpjppdafaknaepojmjpjoinimbel">谷歌 Chrome</a></p>
+<p><a href="https://addons.mozilla.org/zh-CN/firefox/addon/fly63%E5%B7%A5%E5%85%B7%E7%AE%B1/">火狐 Firefox</a></p>
+<p><a href="https://microsoftedge.microsoft.com/addons/detail/akpeonmkmdaifdnliibdoklpjcecdcnk">微软 Edge</a></p>
+<p><a href="https://fly63.com/lib/plug/flytool.crx">crx文件下载</a><a href="https://fly63.com/article/detial/12173">(离线安装指南)</a></p>
+<h2 id="heading-1"><strong>在线转换</strong></h2>
+<p><a href="https://fly63.com/tool/csass">Sass/Less/Stylus在线转换工具</a></p>
+<p><a href="https://fly63.com/tool/color">RGB/RGBA/HEX/HSL/HSV颜色在线转换工具</a></p>
+<p><a href="https://fly63.com/tool/giftxt">免费快速将视频转换成Gif</a></p>
+<p><a href="https://fly63.com/tool/htmarkdown">Html/MarkDown在线互转工具</a></p>
+<p><a href="https://fly63.com/tool/jsonyaml">JSON/YAML在线转换</a></p>
+<p><a href="https://fly63.com/php/changeurl">下载链接转换</a></p>
+<p><a href="https://fly63.com/tool/svg2img">SVG转PNG工具</a></p>
+<p><a href="https://fly63.com/tool/quchong">文本符号替换工具(换行，空格，逗号)</a></p>
+<p><a href="https://fly63.com/tool/textreplace">文本在线批量替换工具</a></p>
+<p><a href="https://fly63.com/tool/unitable">度量衡单位在线换算工具</a></p>
+<p><a href="https://fly63.com/tool/jsonscv">json转Excel/csv工具</a></p>
+<p><a href="https://fly63.com/tool/etc/#?id=4">时间戳转换_在线时间单位转换器</a></p>
+<p><a href="https://fly63.com/tool/etc/#?id=3">在线url网址编码、解码</a></p>
+<p><a href="https://fly63.com/tool/coordinate">地理坐标转换工具</a></p>
+<p><a href="https://fly63.com/tool/htaccess2nginx">Htaccess在线转换nginx</a></p>
+<p><a href="https://fly63.com/tool/radix">进制转换工具</a></p>
+<p><a href="https://fly63.com/tool/renmingbi">人民币大写转换工具</a></p>
+<p><a href="https://fly63.com/tool/unicode">中文/Unicode在线转换</a></p>
+<p><a href="https://fly63.com/tool/pinyin">在线中文汉字转换拼音工具</a></p>
+<p><a href="https://fly63.com/tool/fantizi">简体/繁体字转换</a></p>
+<p><a href="https://fly63.com/tool/taag">ASCII字符艺术生成器</a></p>
+<p><a href="https://fly63.com/tool/json2go">json转golang struct对象</a></p>
+<p><a href="https://fly63.com/tool/daxiaoxie">英文字母大小写/空格/下划线/驼峰等转换工具</a></p>
+<p><a href="https://fly63.com/tool/xml2json">XML转JSON、JSON转XML工具</a></p>
+<h2 id="heading-2"><strong>加密/解密</strong></h2>
+<p><a href="https://fly63.com/tool/cipher">在线加密解密【Base64、AES、DES】</a></p>
+<p><a href="https://fly63.com/tool/jsblur">Js加密混淆/压缩工具</a></p>
+<p><a href="https://fly63.com/tool/txtencrypt">文本隐藏加密工具</a></p>
+<p><a href="https://fly63.com/tool/des">DES在线加密解密</a></p>
+<p><a href="https://fly63.com/tool/md5">md5在线加密工具</a></p>
+<p><a href="https://fly63.com/tool/password">随机密码生成工具</a></p>
+<p><a href="https://fly63.com/tool/morse">摩斯电码翻译器_摩斯电码编码解码</a></p>
+<p><a href="https://fly63.com/tool/urlcode">URL网址16进制加密工具</a></p>
+<p><a href="https://fly63.com/tool/transcoding">在线编码转换工具</a></p>
+<p><a href="https://fly63.com/tool/escape">Escape加密/解密</a></p>
+<p><a href="https://fly63.com/tool/passafe">密码安全性在线检测</a></p>
+<h2 id="heading-3"><strong>站长工具</strong></h2>
+<p><a href="https://fly63.com/php/weiyuanchuang">免费在线智能AI文章伪原创工具</a></p>
+<p><a href="https://fly63.com/tool/aishort">AI提示词常用指令</a></p>
+<p><a href="https://fly63.com/tool/markdown">Markdown在线编辑器</a></p>
+<p><a href="https://fly63.com/tool/etc">站长常用转换工具【编码解码】</a></p>
+<p><a href="https://fly63.com/tool/weixinmd">Markdown微信公众号排版编辑器</a></p>
+<p><a href="https://fly63.com/php/ipquery">域名/IP地址查询</a></p>
+<p><a href="https://fly63.com/tool/preview">自适应网页多端预览工具</a></p>
+<p><a href="https://fly63.com/tool/meta">meta标签在线生成工具</a></p>
+<p><a href="https://fly63.com/tool/email">电子邮箱网址大全</a></p>
+<p><a href="https://fly63.com/php/shorturl">免费短链接生成工具</a></p>
+<p><a href="https://fly63.com/tool/robots">Robots文件生成器</a></p>
+<p><a href="https://fly63.com/php/whois">域名whois查询</a></p>
+<p><a href="https://fly63.com/php/mailer">邮件群发营销工具</a></p>
+<p><a href="https://fly63.com/tool/clearhtm">在线html/js/css标签过滤工具</a></p>
+<p><a href="https://fly63.com/php/icp">ICP备案查询_网站域名备案查询</a></p>
+<p><a href="https://fly63.com/php/useragent">浏览器内核版本检测器_查看userAgent信息</a></p>
+<p><a href="https://fly63.com/tool/redirect">网站301转向/跳转代码生成工具</a></p>
+<p><a href="https://fly63.com/php/hotnews">今日热榜_实时新闻分享</a></p>
+<p><a href="https://fly63.com/tool/m3u8">m3u8视频在线提取工具</a></p>
+<p><a href="https://fly63.com/php/wxCheck">微信域名拦截检测</a></p>
+<p><a href="https://fly63.com/tool/pdfdraw">PDF文字识别</a></p>
+<p><a href="https://fly63.com/tool/textcensoring">敏感词/违禁词检测</a></p>
+<p><a href="https://fly63.com/tool/keywordParticiple">关键词重复词组分析工具(文本去重)</a></p>
+<h2 id="heading-4"><strong>代码相关</strong></h2>
+<p><a href="https://fly63.com/tool/editoronline">代码在线编辑器IDE</a></p>
+<p><a href="https://fly63.com/tool/code">在线js代码生成工具</a></p>
+<p><a href="https://fly63.com/php/http">HTTP在线模拟测试工具</a></p>
+<p><a href="https://fly63.com/tool/textdiff">Diff在线文本比较工具</a></p>
+<p><a href="https://fly63.com/tool/html2js">html转js在线工具</a></p>
+<p><a href="https://fly63.com/tool/uuid">uuid在线生成器</a></p>
+<p><a href="https://fly63.com/tool/curl2code">curl命令转代码</a></p>
+<p><a href="https://fly63.com/tool/sqlformat">sql格式化</a></p>
+<p><a href="https://fly63.com/php/crawl">网页数据采集抓取</a></p>
+<p><a href="https://fly63.com/tool/JsonFormat">JSON在线解析工具</a></p>
+<p><a href="https://fly63.com/tool/JsonToModel">JSON生成JavaBean、C#实体类</a></p>
+<p><a href="https://fly63.com/tool/code2img">代码转图片_高雅程序员必备工具</a></p>
+<p><a href="https://fly63.com/tool/sqldesigner">sql在线数据库设计工具</a></p>
+<p><a href="https://fly63.com/tool/element-form">Element表单代码生成器</a></p>
+<p><a href="https://fly63.com/tool/beautify">Javascript或HTML在线美化，格式化</a></p>
+<p><a href="https://fly63.com/tool/regex">正则表达式调试工具</a></p>
+<p><a href="https://fly63.com/tool/regextest">正则表达式在线测试工具</a></p>
+<p><a href="https://fly63.com/tool/runcode">HTML/CSS/Javascript在线代码运行工具</a></p>
+<p><a href="https://fly63.com/tool/jon">JSON格式化及高亮</a></p>
+<p><a href="https://fly63.com/tool/htmcpr">HTML在线压缩工具</a></p>
+<p><a href="https://fly63.com/tool/linux">Linux常用命令查询工具</a></p>
+<p><a href="https://fly63.com/tool/crontab">Crontab表达式在线生成器</a></p>
+<p><a href="https://fly63.com/tool/vim">VIM编辑器模拟_vim命令学习工具</a></p>
+<hr />
+<p><a href="https://fly63.com/php/codevar">程序员代码变量命名工具</a></p>
+<p><a href="https://fly63.com/tool/1loc">275个简洁1行Js代码片段</a></p>
+<h2 id="css"><strong>CSS样式</strong></h2>
+<p><a href="https://fly63.com/tool/cstriangle">CSS三角形生成器</a></p>
+<p><a href="https://fly63.com/tool/sprite">cssSprite/精灵图/雪碧图样式生成工具</a></p>
+<p><a href="https://fly63.com/tool/clippath">一个在线的路径裁剪工具</a></p>
+<p><a href="https://fly63.com/tool/cstxt">在线生成字体CSS样式工具</a></p>
+<p><a href="https://fly63.com/tool/gradient">CSS渐变色生成器</a></p>
+<p><a href="https://fly63.com/tool/svgchange">SVG图形路径变形工具</a></p>
+<p><a href="https://fly63.com/tool/cssel/#debug">CSS选择器演示</a></p>
+<p><a href="https://fly63.com/tool/cs3">CSS3在线样式生成器</a></p>
+<p><a href="https://fly63.com/tool/neumorphism">CSS新拟态设计风格生成器【Neumorphism】</a></p>
+<p><a href="https://fly63.com/tool/glassmorphism">Css玻璃拟物化风格生成器【Glassmorphism】</a></p>
+<p><a href="https://fly63.com/tool/flexbox">CSS3 Flexbox 在线演示</a></p>
+<p><a href="https://fly63.com/tool/cs">CSS代码美化工具</a></p>
+<p><a href="https://fly63.com/tool/rgbcolor">网页颜色在线取色器</a></p>
+<p><a href="https://fly63.com/tool/html5">HTML5 标签含义之元素周期表</a></p>
+<p><a href="https://fly63.com/tool/animate">Animate.css动画演示</a></p>
+<p><a href="https://fly63.com/tool/csbtn">CSS按钮生成器</a></p>
+<p><a href="https://fly63.com/tool/shadow">漂亮的CSS阴影 box-shadow样式</a></p>
+<p><a href="https://fly63.com/tool/colorMatch">web颜色搭配方案/设计网页配色表</a></p>
+<p><a href="https://fly63.com/tool/csspack">CSS在线压缩/格式化工具</a></p>
+<p><a href="https://fly63.com/tool/loading">css loading炫酷的加载动画</a></p>
+<p><a href="https://fly63.com/tool/cssplit">CSS分割线在线制作</a></p>
+<h2 id="heading-5"><strong>二维码</strong></h2>
+<p><a href="https://fly63.com/php/wxerm">微信小程序二维码生成工具</a></p>
+<p><a href="https://fly63.com/tool/wifiewm">WIFI二维码生成器</a></p>
+<p><a href="https://fly63.com/tool/ewm">二维码在线生成器</a></p>
+<p><a href="https://fly63.com/php/decoder">二维码在线解码工具</a></p>
+<p><a href="https://fly63.com/php/barcode">条形码生成器</a></p>
+<p><a href="https://fly63.com/tool/alipay">支付宝微信收款码二合一</a></p>
+<h2 id="heading-6"><strong>图片处理</strong></h2>
+<p><a href="https://fly63.com/tool/base64">图片在线转换Base64数据</a></p>
+<p><a href="https://fly63.com/tool/imgformat">图片格式webp/png/jpeg转换工具</a></p>
+<p><a href="https://fly63.com/tool/pdf2img">PDF文件转换图片工具</a></p>
+<p><a href="https://fly63.com/tool/img2char">在线将图片生成ascii字符画</a></p>
+<p><a href="https://fly63.com/tool/imagecolor">图片主色调在线获取工具</a></p>
+<p><a href="https://fly63.com/tool/bitmap">占位图在线生成</a></p>
+<p><a href="https://fly63.com/tool/picys">图片在线压缩工具</a></p>
+<p><a href="https://fly63.com/php/ico">图片在线生成ICO图标</a></p>
+<p><a href="https://fly63.com/tool/rmind">在线思维导图</a></p>
+<p><a href="https://fly63.com/tool/imgcut">在线图片裁剪/生成</a></p>
+<p><a href="https://fly63.com/tool/svgeditor">SVG在线编辑器</a></p>
+<p><a href="https://fly63.com/tool/watermark">图片加水印工具</a></p>
+<p><a href="https://fly63.com/tool/drawsvg">在线生成流程图、时序图工具</a></p>
+<p><a href="https://fly63.com/tool/diagram_sfd">画图工具_流程图、标注图、矢量图</a></p>
+<p><a href="https://fly63.com/tool/videoposter">在线视频截图</a></p>
+<p><a href="https://fly63.com/tool/avatar">图片合成工具_头像加圣诞帽、口罩</a></p>
+<p><a href="https://fly63.com/tool/jiugongge">生成九宫格图片</a></p>
+<p><a href="https://fly63.com/tool/gifres">Gif图片分解成序列帧</a></p>
+<p><a href="https://fly63.com/tool/imgfilter">照片加滤镜特效</a></p>
+<p><a href="https://fly63.com/tool/imgedit">图片编辑工具</a></p>
+<p><a href="https://fly63.com/tool/favicon">网页地址栏favicon图标制作</a></p>
+<p><a href="https://fly63.com/tool/tesseract">图片文字提取工具</a></p>
+<p><a href="https://fly63.com/tool/whiteboard">在线画桌白板工具</a></p>
+<p><a href="https://fly63.com/tool/pixeldraw">在线像素画板工具</a></p>
+<p><a href="https://fly63.com/tool/pixelit">照片转像素风格画</a></p>
+<p><a href="https://fly63.com/tool/shotPhoto">在线截图美化工具</a></p>
+<h2 id="heading-7"><strong>生活工具</strong></h2>
+<p><a href="https://fly63.com/tool/calendar">公历农历转换查询工具</a></p>
+<p><a href="https://fly63.com/php/mobile">手机号码归属地查询</a></p>
+<p><a href="https://fly63.com/tool/relationship">中国亲戚关系计算器</a></p>
+<p><a href="https://fly63.com/tool/areacode">世界各国区号时差查询</a></p>
+<p><a href="https://fly63.com/tool/nianling">在线年龄计算器</a></p>
+<p><a href="https://fly63.com/tool/nianlvli">年化收益计算器（年化利率计算器）</a></p>
+<p><a href="http://tb.fly63.com/">淘宝/天猫超市优惠券</a></p>
+<p><a href="https://fly63.com/tool/fangdai">房贷计算器</a></p>
+<p><a href="https://fly63.com/tool/test">心理测试工具</a></p>
+<p><a href="https://fly63.com/tool/chart">在线图表工具_饼状/折线/柱状/漏斗/雷达图</a></p>
+<p><a href="https://fly63.com/tool/yuansu">化学元素周期表查询工具</a></p>
+<p><a href="https://fly63.com/tool/gerenshui">个人所得税计算器</a></p>
+<p><a href="https://fly63.com/tool/fuli">复利计算器_复利增值在线计算</a></p>
+<p><a href="https://fly63.com/tool/dream">周公解梦查询大全</a></p>
+<p><a href="https://fly63.com/tool/huayu">花语大全 - 查询各种花的花语</a></p>
+<p><a href="https://fly63.com/tool/day">天数间隔计算器</a></p>
+<p><a href="https://fly63.com/tool/garbage">生活垃圾分类查询</a></p>
+<p><a href="https://fly63.com/tool/qiming">古诗词在线起名/取名</a></p>
+<p><a href="https://fly63.com/tool/zipcode">国内邮政编码大全</a></p>
+<p><a href="https://fly63.com/tool/worldtime">世界各地时间转换查询工具</a></p>
+<p><a href="https://fly63.com/tool/bjx">百家姓排名查询大全</a></p>
+<p><a href="https://fly63.com/tool/dzg">弟子规全文及解释</a></p>
+<p><a href="https://fly63.com/tool/bankinfo">银行卡号归属地查询</a></p>
+<p><a href="https://fly63.com/tool/chepai">国内车牌号码归属地查询</a></p>
+<p><a href="https://fly63.com/tool/miaobiao">在线秒表记时器</a></p>
+<p><a href="https://fly63.com/tool/xuexing">子女血型遗存查询</a></p>
+<p><a href="https://fly63.com/tool/size">（服装）尺码对照表</a></p>
+<p><a href="https://fly63.com/tool/laohuangli">老黄历查询（吉日/星宿/时辰）</a></p>
+<p><a href="https://fly63.com/tool/relax">白噪音,聆听大自然的声音</a></p>
+<p><a href="https://fly63.com/tool/lrc_editor">lrc歌词在线编辑工具</a></p>
+<p><a href="https://fly63.com/tool/purine">食物嘌呤查询_痛风及高尿酸血症饮食表</a></p>
+<p><a href="https://fly63.com/tool/food">食物营养成分查询</a></p>
+<p><a href="https://fly63.com/tool/heshui">饮水量计算器_每日喝水量</a></p>
+<p><a href="https://fly63.com/tool/phone">常用电话号码大全</a></p>
+<p><a href="https://fly63.com/tool/tomato">番茄钟计时器</a></p>
+<p><a href="https://fly63.com/tool/coin">抛硬币做决定</a></p>
+<p><a href="https://fly63.com/tool/jieri">世界节日大全,阳历农历节日查询</a></p>
+<p><a href="https://fly63.com/tool/usDollarsConvert">英文金额大写转换工具</a></p>
+<p><a href="https://fly63.com/tool/vita">简历模板,在线制作简历</a></p>
+<h2 id="heading-8"><strong>娱乐相关</strong></h2>
+<p><a href="https://fly63.com/php/dujitang">毒鸡汤语录</a></p>
+<p><a href="https://fly63.com/php/juzi">经典语录大全</a></p>
+<p><a href="http://fly63.com/tool/wing">微信翅膀昵称生成器</a></p>
+<p><a href="https://fly63.com/tool/wxCreate">微信整蛊生成器</a></p>
+<p><a href="https://fly63.com/php/todayHistory">历史上的今天</a></p>
+<p><a href="https://fly63.com/tool/chi">今天吃什么？</a></p>
+<p><a href="https://fly63.com/php/emojiPkg">常用表情包大全</a></p>
+<p><a href="https://fly63.com/tool/game">在线网页小游戏_上班无聊摸鱼</a></p>
+<p><a href="https://fly63.com/tool/papapa">计算多少天后啪啪啪</a></p>
+<p><a href="https://fly63.com/tool/cyjl">成语接龙查询器</a></p>
+<p><a href="https://fly63.com/tool/xiehouyu">歇后语查询工具</a></p>
+<p><a href="https://fly63.com/tool/yanyu">民间谚语在线查询</a></p>
+<p><a href="https://fly63.com/tool/naojin">脑筋急转弯在线查询</a></p>
+<p><a href="https://fly63.com/tool/love">土味情话查询生成器</a></p>
+<p><a href="https://fly63.com/tool/rkl">绕口令大全</a></p>
+<p><a href="https://fly63.com/tool/joke">笑话大全</a></p>
+<p><a href="https://fly63.com/tool/bullshitGenerator">狗屁不通文章生成器</a></p>
+<p><a href="https://fly63.com/tool/rainbowfart">彩虹屁文章生成器</a></p>
+<p><a href="https://fly63.com/php/poetry">每日一首古诗词</a></p>
+<p><a href="https://fly63.com/tool/app">好玩的IOS优质App推荐</a></p>
+<p><a href="https://fly63.com/tool/guitar">谷歌吉他在线版</a></p>
+<p><a href="https://fly63.com/php/wedog">舔狗日记</a></p>
+<p><a href="https://fly63.com/php/caihongpi">彩虹屁文案语录</a></p>
+<p><a href="https://fly63.com/tool/lookEmojis">查找不动的表情包_emoji小游戏</a></p>
+<h2 id="heading-9"><strong>文档教程</strong></h2>
+<p><a href="https://fly63.com/tool/es6">ECMAScript 6 入门</a></p>
+<p><a href="https://fly63.com/tool/npmdoc">npm 中文文档</a></p>
+<p><a href="https://fly63.com/tool/nodedoc">Node.js中文文档</a></p>
+<p><a href="https://fly63.com/tool/normdoc">中文技术文档的写作规范</a></p>
+<p><a href="https://fly63.com/manual/layui/web">layui镜像文档</a></p>
+<p><a href="https://fly63.com/manual/cs">css在线参考手册,包含CSS2、CSS3等内容</a></p>
+<p><a href="https://fly63.com/manual/jquery">Jquery在线参考手册</a></p>
+<p><a href="https://fly63.com/manual/JavaScript">JavaScript在线参考手册</a></p>
+<p><a href="https://fly63.com/tool/rectdoc">React.js 中文参考文档</a></p>
+<p><a href="https://fly63.com/tool/nginxdoc">Nginx中文文档</a></p>
+<h2 id="heading-10"><strong>其它工具</strong></h2>
+<p><a href="https://fly63.com/tool/ascii">ASCII码对照表</a></p>
+<p><a href="https://fly63.com/tool/table">常用对照表</a></p>
+<p><a href="https://fly63.com/tool/domain">域名分类大全、顶级域名后缀查询</a></p>
+<p><a href="https://fly63.com/tool/zitie">字帖生成器</a></p>
+<p><a href="https://fly63.com/tool/zishutongji">字数统计工具</a></p>
+<p><a href="https://fly63.com/tool/filetype">文件格式/类型识别工具</a></p>
+<p><a href="https://fly63.com/tool/chaizi">在线中文拆字解字</a></p>
+<p><a href="https://fly63.com/tool/text-ench">中英混排文档在线排版工具</a></p>
+<p><a href="https://fly63.com/tool/dao">网址导航，上网从这里开始</a></p>
+<p><a href="https://fly63.com/tool/paiban">在线排版工具</a></p>
+<p><a href="https://fly63.com/tool/jisuanqi">科学计算器</a></p>
+<p><a href="http://hao.fly63.com/">简约导航</a></p>
+<p><a href="https://fly63.com/tool/sudoku">数独题目生成器</a></p>
+<p><a href="https://fly63.com/tool/24dian">24点计算器_在线24点解法器</a></p>
+<p><a href="https://fly63.com/tool/zidian">汉语字典_在线汉字查询</a></p>
+<p><a href="https://fly63.com/tool/chengyu">成语词典</a></p>
+<p><a href="https://fly63.com/tool/audioedit">在线音频编辑器_Audio Editor</a></p>
+<p><a href="https://fly63.com/tool/screenRecord">在线高清录屏</a></p>
+<p><a href="https://fly63.com/tool/prime">质数计算器_质数(素数)在线判断</a></p>
+<p><a href="https://fly63.com/tool/random">随机数生成器_支持带小数点</a></p>
+<p><a href="https://fly63.com/tool/fangcha">方差、标准差计算器</a></p>
+<p><a href="https://fly63.com/tool/ipjisuan">IP网络地址/子网掩码计算与转换工具</a></p>
+<p><a href="https://fly63.com/tool/fooplot">fooplot数学函数绘图器工具</a></p>
+<p><a href="https://fly63.com/tool/sanjiaohanshu">三角函数计算器_弧度与度在线换算</a></p>
+<p><a href="https://fly63.com/tool/sanjiaoxingjiaodu">三角形的角度计算器_周长/面积/内径/半径</a></p>
+<p><a href="https://fly63.com/tool/baifenbi">百分比在线计算器</a></p>
+<p><a href="https://fly63.com/tool/fuhao">个性特殊符号大全</a></p>
+<p><a href="https://fly63.com/tool/zrds">自然对数计算器</a></p>
+<p><a href="https://fly63.com/tool/cxy">程序员一站式导航</a></p>
+<p><a href="https://fly63.com/tool/segmentit">汉语在线分词工具</a></p>
+<p><a href="https://fly63.com/tool/weirdfonts">神奇字体_怪异英文生成器</a></p>
+<p><a href="https://fly63.com/tool/keyboardcode">键盘键码keyCode对照表</a></p>
+<p><a href="https://fly63.com/tool/shoudu">世界各国首都中英文对照表</a></p>
+<p><a href="https://fly63.com/tool/currency">世界各地货币查询工具</a></p>
+<p><a href="https://fly63.com/tool/ipv4">IPv4子网查询表</a></p>
+<h2 id="heading-11"><strong>第三方工具</strong></h2>
+<p><a href="https://fly63.com/tool/other.html?u=qmsjmfb">网名在线生成器</a></p>
+<p><a href="https://fly63.com/tool/other.html?u=learner">在线打字记忆单词</a></p>
+<p><a href="https://fly63.com/tool/other.html?u=buttons">创意的按钮CSS样式</a></p>
+<p><a href="https://fly63.com/tool/other.html?u=jiumodiary">鸠摩搜书_电子书搜索引擎</a></p>
+<p><a href="https://fly63.com/tool/other.html?u=coderunner">在线运行代码</a></p>
+<p><a href="https://fly63.com/tool/other.html?u=runoob">菜鸟在线编译工具</a></p>
+<p><a href="https://fly63.com/tool/other.html?u=converter">多媒体文件转换器</a></p>
+<p><a href="https://fly63.com/tool/other.html?u=photopea">在线制作编辑图片ps精简版</a></p>
+<p><a href="https://fly63.com/tool/other.html?u=fabiaoqing">表情包在线网站</a></p>
+<p><a href="https://fly63.com/tool/other.html?u=bigjpg">图片智能放大</a></p>
+<p><a href="https://fly63.com/tool/other.html?u=ezgif">在线GIF编辑优化</a></p>
+<p><a href="https://online-audio-converter.com/">音频格式转换</a></p>
+<p><a href="https://tinypng.com/">tinypng图片压缩</a></p>
+<p><a href="https://docsmall.com/">在线文件压缩_支持多种格式</a></p>
+<p><a href="https://smallpdf.com/cn/pdf-tools">在线PDF工具</a></p>
+<h2 id="heading-12"><strong>用户推荐</strong></h2>
+<p><a href="https://r.xjq.icu/">在线编写,运行代码</a></p>
+<p><a href="https://woc.space/">全球不限速大文件交付/协作平台</a></p>
+<blockquote>
+<p><a href="https://github.com/bestxtools/awesome-toolbox-chinese">awesome-toolbox-chinese</a></p>
+</blockquote>
+
+            </div>
+
+</article>
+
+
+
+
+
+
+<div class="mod-post__poster">
+</div>
+
+</div>
+
+
+
+
+
+
+<!-- Reading Progress Component -->
+<div class="reading-progress-container">
+  <span class="reading-label">阅读进度</span>
+  <span class="reading-value">0%</span>
+  <svg class="progress-ring" viewBox="0 0 24 24">
+    <!-- Background Circle -->
+    <circle class="progress-ring__circle-bg" stroke-width="3" fill="transparent" r="10" cx="12" cy="12" />
+    <!-- Progress Circle -->
+    <circle class="progress-ring__circle" stroke-width="3" fill="transparent" r="10" cx="12" cy="12" />
+  </svg>
+</div>
+<footer id="footer" class="footer">
+    <nav>
+        
+        
+        <a class="menu-item" href="/">首页</a>
+        
+         · 
+        <a class="menu-item" href="/post">博客</a>
+        
+         · 
+        <a class="menu-item" href="/memos">闪念</a>
+        
+         · 
+        <a class="menu-item" href="/archives">归档</a>
+        
+         · 
+        <a class="menu-item" href="/tags">标签</a>
+        
+         · 
+        <a class="menu-item" href="/links">友链</a>
+        
+         · 
+        <a class="menu-item" href="/post/about">关于</a>
+        
+    </nav>
+
+    <div class="Copyright">Copyright &copy; <span class="current-year"></span> <a href="https://gridea.tdrme.cn">听得入迷</a></div>
+    <script>document.querySelector('.current-year').textContent = new Date().getFullYear();</script>
+
+    <div class="index_footer">
+        Powered by <a href="https://www.gridea.pro/" target="_blank">Gridea Pro</a>
+<br>
+<a href="https://www.travellings.cn/go" target="_blank">🚇开往</a>-<a href="https://www.foreverblog.cn/go.html"" target="_blank">🌀虫洞</a>-<a href="https://travel.moe/go?travel=on" target="_blank">🪐异次元之旅</a>
+<br>
+<a href="https://icp.redcha.cn/beian/ICP-2025080059.html" title="茶ICP备2025080059号" target="_blank">茶ICP备2025080059号</a>-
+<a href="https://icp.gov.moe/?keyword=20241205" target="_blank">萌ICP备20241205号</a><br> ·
+        <a class="rss" href="/feed.xml" target="_blank" rel="noopener noreferrer">
+            <i class="ri-rss-line"></i>RSS
+        </a>
+    </div>
+</footer>
+
+
+
+
+    
+
+    
+<style>
+/*b站iframe优化*/
+.iframe_video{
+        position:relative;
+        height:0;
+        padding-bottom:56.25%;
+        overflow:hidden
+}
+
+.iframe_video embed,.iframe_video iframe,.iframe_video object{
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%
+}
+</style>
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: amore-jinja2 v1.1.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+
+</html>
