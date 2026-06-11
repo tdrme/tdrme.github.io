@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tdrme.github.io/sitemap.xml
+Sitemap: https://tdrme.tdrme.cn/sitemap.xml
