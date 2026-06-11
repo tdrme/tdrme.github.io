@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tdrme.tdrme.cn/sitemap.xml
+Sitemap: https://gridea.tdrme.cn/sitemap.xml
