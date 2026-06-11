@@ -2,33 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://tdrme.tdrme.cn/</loc>
-    <lastmod>2026-06-11T21:35:46+08:00</lastmod>
+    <lastmod>2026-06-12T02:01:04+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/post/with-mark-twain/</loc>
-    <lastmod>2026-06-11T20:21:50+08:00</lastmod>
+    <lastmod>2026-06-11T21:49:06+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tdrme.tdrme.cn/post-images/with-mark-twain.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/post/share-spongebob-seasons-1-13/</loc>
-    <lastmod>2026-06-11T20:21:58+08:00</lastmod>
+    <lastmod>2026-06-11T21:52:38+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tdrme.tdrme.cn/post-images/share-spongebob-seasons-1-13.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/post/wub-prohibiting-windows-updates/</loc>
-    <lastmod>2026-06-11T20:22:02+08:00</lastmod>
+    <lastmod>2026-06-11T22:23:37+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tdrme.tdrme.cn/post-images/wub-prohibiting-windows-updates.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/post/wps2019-government-version/</loc>
-    <lastmod>2026-06-11T20:22:09+08:00</lastmod>
+    <lastmod>2026-06-11T23:52:08+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tdrme.tdrme.cn/post-images/wps2019-government-version.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/post/fa-lu-gong-ju-xiang/</loc>
@@ -38,27 +50,39 @@
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/post/noteshelf-notes-with-resources-chosen-note-app/</loc>
-    <lastmod>2026-06-11T20:22:56+08:00</lastmod>
+    <lastmod>2026-06-12T00:20:47+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tdrme.tdrme.cn/post-images/noteshelf-notes-with-resources-chosen-note-app.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/post/simple-bookmark-navigation-page/</loc>
-    <lastmod>2026-06-11T20:23:01+08:00</lastmod>
+    <lastmod>2026-06-11T21:43:05+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tdrme.tdrme.cn/post-images/simple-bookmark-navigation-page.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/post/star-wars-new-4k-reset/</loc>
-    <lastmod>2026-06-11T20:23:05+08:00</lastmod>
+    <lastmod>2026-06-12T00:27:04+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tdrme.tdrme.cn/post-images/star-wars-new-4k-reset.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/post/free-commercial-fonts-pack-download/</loc>
-    <lastmod>2026-06-11T20:23:10+08:00</lastmod>
+    <lastmod>2026-06-12T00:33:19+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tdrme.tdrme.cn/post-images/free-commercial-fonts-pack-download.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/post/tools-collection/</loc>
@@ -68,33 +92,48 @@
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/post/share-adobe-2023-suite-cracked/</loc>
-    <lastmod>2026-06-10T01:05:26+08:00</lastmod>
+    <lastmod>2026-06-12T00:39:37+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tdrme.tdrme.cn/post-images/share-adobe-2023-suite-cracked.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/post/windows-official-image-download/</loc>
-    <lastmod>2026-06-11T20:24:05+08:00</lastmod>
+    <lastmod>2026-06-12T00:40:35+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tdrme.tdrme.cn/post-images/windows-official-image-download.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/post/extract-smart-home-noise/</loc>
-    <lastmod>2026-06-11T20:24:10+08:00</lastmod>
+    <lastmod>2026-06-12T01:58:36+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tdrme.tdrme.cn/post-images/extract-smart-home-noise.jpg</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/post/adobe2020-suite/</loc>
-    <lastmod>2026-06-11T20:24:42+08:00</lastmod>
+    <lastmod>2026-06-12T01:59:33+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tdrme.tdrme.cn/post-images/share-adobe-2023-suite-cracked.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/post/qq-links-guide/</loc>
-    <lastmod>2026-06-11T20:24:47+08:00</lastmod>
+    <lastmod>2026-06-12T02:00:16+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tdrme.tdrme.cn/post-images/qq-links-guide.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/post/high-school-chinese-people2004pdf/</loc>
@@ -104,43 +143,43 @@
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/post/</loc>
-    <lastmod>2026-06-11T21:35:46+08:00</lastmod>
+    <lastmod>2026-06-12T02:01:04+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/tags/</loc>
-    <lastmod>2026-06-11T21:35:46+08:00</lastmod>
+    <lastmod>2026-06-12T02:01:04+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/archives/</loc>
-    <lastmod>2026-06-11T21:35:46+08:00</lastmod>
+    <lastmod>2026-06-12T02:01:04+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/tag/fen-xiang/</loc>
-    <lastmod>2026-06-11T21:35:46+08:00</lastmod>
+    <lastmod>2026-06-12T02:01:04+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/tag/ka-pian/</loc>
-    <lastmod>2026-06-11T21:35:46+08:00</lastmod>
+    <lastmod>2026-06-12T02:01:04+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/tag/ri-chang/</loc>
-    <lastmod>2026-06-11T21:35:46+08:00</lastmod>
+    <lastmod>2026-06-12T02:01:04+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://tdrme.tdrme.cn/links/</loc>
-    <lastmod>2026-06-11T21:35:46+08:00</lastmod>
+    <lastmod>2026-06-12T02:01:04+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
