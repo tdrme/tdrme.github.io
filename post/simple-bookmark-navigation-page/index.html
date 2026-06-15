@@ -43,13 +43,13 @@
 <meta property="og:title" content="简单的书签导航页" />
 <meta property="og:type" content="article" />
 
-<meta property="og:image" content="/post-images/simple-bookmark-navigation-page.jpg" />
+<meta property="og:image" content="https://2.tdrme.cn/tdrme/img/main/20260615220929421.jpg" />
 
 
 <meta name="description" content="做了一个只有两个文件的导航页，只包含两个文件php+md。md文件负责记录分类超链接，php引用md里的内容生成导航页。这个导航页简单无数据库使用也简单。 使用方式 只需要修改bookmarks.md中的内容即可添加链接，然后访问php页面即可。添加了简单的密码访问功能，默认是关闭的，需要用的话就看index.php的注释，注释很详细。 第一版 ##&amp;hellip;">
 <meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
 <link rel="canonical" href="https://gridea.tdrme.cn/post/simple-bookmark-navigation-page/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"简单的书签导航页","url":"https://gridea.tdrme.cn/post/simple-bookmark-navigation-page/","description":"做了一个只有两个文件的导航页，只包含两个文件php+md。md文件负责记录分类超链接，php引用md里的内容生成导航页。这个导航页简单无数据库使用也简单。 使用方式 只需要修改bookmarks.md中的内容即可添加链接，然后访问php页面即可。添加了简单的密码访问功能，默认是关闭的，需要用的话就看index.php的注释，注释很详细。 第一版 ##\u0026hellip;","image":"/post-images/simple-bookmark-navigation-page.jpg","datePublished":"2026-06-10T01:11:19+08:00","dateModified":"2026-06-11T21:43:05+08:00","author":{"@type":"Person","name":"听得入迷"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"听得入迷"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"简单的书签导航页","url":"https://gridea.tdrme.cn/post/simple-bookmark-navigation-page/","description":"做了一个只有两个文件的导航页，只包含两个文件php+md。md文件负责记录分类超链接，php引用md里的内容生成导航页。这个导航页简单无数据库使用也简单。 使用方式 只需要修改bookmarks.md中的内容即可添加链接，然后访问php页面即可。添加了简单的密码访问功能，默认是关闭的，需要用的话就看index.php的注释，注释很详细。 第一版 ##\u0026hellip;","image":"https://2.tdrme.cn/tdrme/img/main/20260615220929421.jpg","datePublished":"2026-06-10T01:11:19+08:00","dateModified":"2026-06-16T01:11:17+08:00","author":{"@type":"Person","name":"听得入迷"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"听得入迷"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://gridea.tdrme.cn","name":"听得入迷","position":1},{"@type":"ListItem","item":"https://gridea.tdrme.cn/post/simple-bookmark-navigation-page/","name":"简单的书签导航页","position":2}]}</script>
 <!--logo-->
 <!-- 浏览器标签页显示的图标 -->
@@ -208,7 +208,7 @@
 
   
   <div class="article-feature">
-    <img src="/post-images/simple-bookmark-navigation-page.jpg" alt="简单的书签导航页" />
+    <img src="https://2.tdrme.cn/tdrme/img/main/20260615220929421.jpg" alt="简单的书签导航页" />
   </div>
   
 
@@ -218,9 +218,9 @@
 <p>只需要修改<strong>bookmarks.md</strong>中的内容即可添加链接，然后访问php页面即可。添加了简单的密码访问功能，默认是关闭的，需要用的话就看index.php的注释，注释很详细。</p>
 <h3 id="heading-1">第一版</h3>
 <h5 id="heading-2">文件结构：</h5>
-<pre><code>|- index.php
-|- bookmarks.md //书签填在这里
-|- bg.jpg //拟物风格的多一个图片背景
+<pre><code class="language-markdown">    |- index.php
+    |- bookmarks.md //书签填在这里
+    |- bg.jpg //拟物风格的多一个图片背景
 </code></pre>
 <h5 id="bookmarksmd"><strong>bookmarks.md</strong>链接填写格式：</h5>
 <pre><code class="language-markdown">## 搜索引擎
@@ -244,8 +244,8 @@
 <h3 id="webstack202654">类webstack主题，2026年5月4日</h3>
 <p>现在ai更强了就小小改一下，现在可以显示 favicon 图标了，<del>默认获取网站根目录的</del> <del>favicon.ico</del> <del>文件</del>暂时没实现，还有点问题，但是无伤大雅，也可以在 <strong>bookmarks.md</strong> 添加图标链接。没有图标会以符号占位。</p>
 <h5 id="heading-4">文件结构</h5>
-<pre><code>|- index.php
-|- bookmarks.md //书签填在这里
+<pre><code class="language-markdown">    |- index.php
+    |- bookmarks.md //书签填在这里
 </code></pre>
 <h5 id="bookmarksmd-1"><strong>bookmarks.md</strong></h5>
 <pre><code class="language-markdown">## 搜索引擎
@@ -275,7 +275,7 @@
     <a href="/post/noteshelf-notes-with-resources-chosen-note-app/" class="post-nav-card post-nav-card--prev">
       
       <div class="post-nav-card__img">
-        <img src="/post-images/noteshelf-notes-with-resources-chosen-note-app.jpg" alt="Noteshelf笔记_含资源_最终选择的笔记软件" loading="lazy" />
+        <img src="https://2.tdrme.cn/tdrme/img/main/20260616010623554.jpg" alt="Noteshelf笔记_含资源_最终选择的笔记软件" loading="lazy" />
       </div>
       
       <div class="post-nav-card__body">
@@ -293,7 +293,7 @@
       </div>
       
       <div class="post-nav-card__img">
-        <img src="/post-images/star-wars-new-4k-reset.jpg" alt="《星游记》全集新4K重置" loading="lazy" />
+        <img src="https://2.tdrme.cn/tdrme/img/main/20260616011300625.jpg" alt="《星游记》全集新4K重置" loading="lazy" />
       </div>
       
       <span class="post-nav-card__arrow">&rarr;</span>
