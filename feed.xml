@@ -6,30 +6,8 @@
     <description></description>
     <language>zh-cn</language>
     <generator>Gridea Pro</generator>
-    <lastBuildDate>Wed, 17 Jun 2026 16:03:25 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jun 2026 15:58:35 +0800</lastBuildDate>
     <atom:link href="https://blog.tdrme.cn/feed.xml" rel="self" type="application/rss+xml"></atom:link>
-    <item>
-      <title>typecho面包屑导航</title>
-      <link>https://blog.tdrme.cn/post/9fFrhf/</link>
-      <guid isPermaLink="true">https://blog.tdrme.cn/post/9fFrhf/</guid>
-      <pubDate>Thu, 18 Jun 2026 00:02:49 +0800</pubDate>
-      <description><![CDATA[<p>这是typecho社区文档给的官方方案</p>
-<pre><code class="language-php">&lt;!--面包屑导航--&gt;
-&lt;div class=&quot;crumbs_patch&quot; style=&quot;padding:10px 20px 10px 20px; border-bottom:1px solid var(--border-dark);font-size:1em;&quot;&gt;
-      &lt;a href=&quot;&lt;?php $this-&gt;options-&gt;siteUrl(); ?&gt;&quot;&gt;&lt;i class=&quot;fa fa-fw fa-home column-icon&quot;&gt;&lt;/i&gt;主页&lt;/a&gt; / &lt;/li&gt;
-      &lt;?php if ($this-&gt;is('index')): ?&gt;&lt;!-- 页面为首页时 --&gt;Latest Post
-      &lt;?php elseif ($this-&gt;is('post')): ?&gt;&lt;!-- 页面为文章单页时 --&gt;
-      &lt;?php $this-&gt;category(); ?&gt; / 正文
-      &lt;?php else: ?&gt;&lt;!-- 页面为其他页时 --&gt;
-      &lt;?php $this-&gt;archiveTitle(' &amp;raquo; ','',''); ?&gt;
-      &lt;?php endif; ?&gt;
-&lt;/div&gt;
-&lt;!--面包屑导航--&gt;
-</code></pre>
-]]></description>
-      <category>技术教程</category>
-      <enclosure url="https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp" length="0" type="image/webp"></enclosure>
-    </item>
     <item>
       <title>b站iframe宽度自适应</title>
       <link>https://blog.tdrme.cn/post/W1fVSY/</link>
@@ -676,6 +654,17 @@ M(Manual)手动。</p>
 ]]></description>
       <category>卡片</category>
       <enclosure url="https://2.tdrme.cn/tdrme/img/main/20260617181415863.jpeg" length="0" type="image/jpeg"></enclosure>
+    </item>
+    <item>
+      <title>logo进化</title>
+      <link>https://blog.tdrme.cn/post/JLw2zE/</link>
+      <guid isPermaLink="true">https://blog.tdrme.cn/post/JLw2zE/</guid>
+      <pubDate>Wed, 17 Jun 2026 18:12:18 +0800</pubDate>
+      <description><![CDATA[<p><img src="https://2.tdrme.cn/tdrme/img/main/20260617181234151.jpg" alt="" /></p>
+<p>logo终于是改进到自己比较满意的状态。一开始这个形象只是初中的时候在课本上随便画的，貌似当时在讲甲骨文，画出来后发现这个还是挺有意思。简化的房子形象和两个人的形象结合就是这个抽象画的核心。后来高中接触智能机的时候，就把这个当做了头像。前三版本甚至都不对称，当然两个小人不对称是有意设计的，但是一想这么小也看不清啥，所以干脆做成全对称的，经过几次重画也算是有个正型了。</p>
+]]></description>
+      <category>日常</category>
+      <enclosure url="https://2.tdrme.cn/tdrme/img/main/20260617181234151.jpg" length="0" type="image/jpeg"></enclosure>
     </item>
   </channel>
 </rss>
