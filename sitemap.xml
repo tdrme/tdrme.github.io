@@ -2,9 +2,339 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://blog.tdrme.cn/</loc>
-    <lastmod>2026-06-17T00:42:40+08:00</lastmod>
+    <lastmod>2026-06-17T18:25:03+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/9fFrhf/</loc>
+    <lastmod>2026-06-17T16:03:25+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/W1fVSY/</loc>
+    <lastmod>2026-06-17T15:58:35+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260616014446505.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/COLuXr/</loc>
+    <lastmod>2026-06-17T15:49:36+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260616014446505.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/kYhqyp/</loc>
+    <lastmod>2026-06-17T15:24:00+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260616014446505.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/lzbYbB/</loc>
+    <lastmod>2026-06-17T18:23:05+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617182254991.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/FmRfWy/</loc>
+    <lastmod>2026-06-17T18:21:01+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617182009645.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/EhZo2M/</loc>
+    <lastmod>2026-06-17T18:18:48+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617182009645.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/IJeYU0/</loc>
+    <lastmod>2026-06-17T18:14:47+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617181729974.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/3cQ7HT/</loc>
+    <lastmod>2026-06-17T18:13:59+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617181415863.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/JLw2zE/</loc>
+    <lastmod>2026-06-17T18:12:18+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617181234151.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/v7htpb/</loc>
+    <lastmod>2026-06-17T16:38:05+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/iC3D2E/</loc>
+    <lastmod>2026-06-17T16:33:02+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617163249164.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/VzAoqn/</loc>
+    <lastmod>2026-06-17T16:14:02+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617163057736.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/EJGucu/</loc>
+    <lastmod>2026-06-17T16:10:08+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617161044800.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/c4mqKf/</loc>
+    <lastmod>2026-06-17T16:06:49+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/H2Vcof/</loc>
+    <lastmod>2026-06-17T16:04:58+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.tdrme.cn/api/bing/</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/3zPdyt/</loc>
+    <lastmod>2026-06-17T15:25:33+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/H4j2gL/</loc>
+    <lastmod>2026-06-17T15:20:53+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/DzFbPO/</loc>
+    <lastmod>2026-06-17T15:16:14+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617151845945.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/0SlMiH/</loc>
+    <lastmod>2026-06-17T15:11:12+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/wv0K28/</loc>
+    <lastmod>2026-06-17T15:00:36+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260616014446505.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/EhGaDn/</loc>
+    <lastmod>2026-06-17T14:53:01+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/3oUyzK/</loc>
+    <lastmod>2026-06-17T14:52:10+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260616014446505.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/9SQ1Ql/</loc>
+    <lastmod>2026-06-17T14:41:35+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260616014446505.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/deCd8o/</loc>
+    <lastmod>2026-06-17T14:37:50+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/Jtq04x/</loc>
+    <lastmod>2026-06-17T14:36:06+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260616014446505.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/jVj1by/</loc>
+    <lastmod>2026-06-17T14:34:35+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/V8Xg0f/</loc>
+    <lastmod>2026-06-17T14:32:27+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260616014446505.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/mZx0vd/</loc>
+    <lastmod>2026-06-17T14:30:27+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260616014446505.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/sh4gG2/</loc>
+    <lastmod>2026-06-17T14:28:01+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/Mu2Tpf/</loc>
+    <lastmod>2026-06-17T14:08:31+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260616014446505.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/QSVwfR/</loc>
+    <lastmod>2026-06-17T10:53:25+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/c6PJE1/</loc>
+    <lastmod>2026-06-17T10:50:28+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/jPvFmp/</loc>
+    <lastmod>2026-06-17T10:47:38+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/q47g9G/</loc>
+    <lastmod>2026-06-17T10:46:35+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/bzwKhK/</loc>
+    <lastmod>2026-06-17T10:42:35+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/bWQW5p/</loc>
+    <lastmod>2026-06-17T10:41:12+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/z23Ujo/</loc>
+    <lastmod>2026-06-17T10:37:01+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260617104038329.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://blog.tdrme.cn/post/CCZ4x4/</loc>
@@ -185,49 +515,55 @@
   </url>
   <url>
     <loc>https://blog.tdrme.cn/post/</loc>
-    <lastmod>2026-06-17T00:42:40+08:00</lastmod>
+    <lastmod>2026-06-17T18:25:03+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://blog.tdrme.cn/memos/</loc>
-    <lastmod>2026-06-17T00:42:40+08:00</lastmod>
+    <lastmod>2026-06-17T18:25:03+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://blog.tdrme.cn/tags/</loc>
-    <lastmod>2026-06-17T00:42:40+08:00</lastmod>
+    <lastmod>2026-06-17T18:25:03+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://blog.tdrme.cn/archives/</loc>
-    <lastmod>2026-06-17T00:42:40+08:00</lastmod>
+    <lastmod>2026-06-17T18:25:03+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://blog.tdrme.cn/tag/fen-xiang/</loc>
-    <lastmod>2026-06-17T00:42:40+08:00</lastmod>
+    <lastmod>2026-06-17T18:25:03+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://blog.tdrme.cn/tag/ka-pian/</loc>
-    <lastmod>2026-06-17T00:42:40+08:00</lastmod>
+    <lastmod>2026-06-17T18:25:03+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://blog.tdrme.cn/tag/ri-chang/</loc>
-    <lastmod>2026-06-17T00:42:40+08:00</lastmod>
+    <lastmod>2026-06-17T18:25:03+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/tag/ji-shu-jiao-cheng/</loc>
+    <lastmod>2026-06-17T18:25:03+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://blog.tdrme.cn/links/</loc>
-    <lastmod>2026-06-17T00:42:40+08:00</lastmod>
+    <lastmod>2026-06-17T18:25:03+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>

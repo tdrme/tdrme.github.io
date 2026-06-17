@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="/styles/main.min.css">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+
+
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+
+<style>:root { --heatmap-color: #39d353; }</style>
+
+
+
+<style>
+  .theme-toggle-sun  { display: flex; }
+  .theme-toggle-moon { display: none; }
+  :root.theme-light .theme-toggle-sun  { display: none; }
+  :root.theme-light .theme-toggle-moon { display: flex; }
+</style>
+
+
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('flavor-theme');
+      var theme = saved || 'dark';
+      if (theme === 'light') {
+        document.documentElement.classList.add('theme-light');
+      }
+    } catch (e) { }
+  })();
+</script>
+  <meta name="generator" content="Gridea Pro 1.2.2">
+  <title>光圈、感光度ISO、快门 | 听得入迷</title>
+  
+<meta property="og:title" content="光圈、感光度ISO、快门" />
+<meta property="og:type" content="article" />
+
+<meta property="og:image" content="https://2.tdrme.cn/tdrme/img/main/20260617182009645.jpeg" />
+
+
+<meta name="description" content="出处：摄影基础知识大全 一、摄影三大元素：光圈、感光度ISO、快门速度（一圈两度） 1.光圈 光圈就是镜头里调节进光孔大小的装置。（即一扇窗，窗越大，进入的光线越多，图片更亮） 常见的光圈值如下： F1， F1.4， F2， F2.8， F4， F5.6&amp;hellip;">
+<meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
+<link rel="canonical" href="https://blog.tdrme.cn/post/EhZo2M/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"光圈、感光度ISO、快门","url":"https://blog.tdrme.cn/post/EhZo2M/","description":"出处：摄影基础知识大全 一、摄影三大元素：光圈、感光度ISO、快门速度（一圈两度） 1.光圈 光圈就是镜头里调节进光孔大小的装置。（即一扇窗，窗越大，进入的光线越多，图片更亮） 常见的光圈值如下： F1， F1.4， F2， F2.8， F4， F5.6\u0026hellip;","image":"https://2.tdrme.cn/tdrme/img/main/20260617182009645.jpeg","datePublished":"2026-06-17T18:18:48+08:00","dateModified":"2026-06-17T18:18:48+08:00","author":{"@type":"Person","name":"听得入迷"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"听得入迷"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.tdrme.cn","name":"听得入迷","position":1},{"@type":"ListItem","item":"https://blog.tdrme.cn/post/EhZo2M/","name":"光圈、感光度ISO、快门","position":2}]}</script>
+<!--logo-->
+<!-- 浏览器标签页显示的图标 -->
+<link rel="icon" href="https://www.tdrme.cn/logoB.svg" type="image/svg+xml" sizes="200x200">
+<!-- 收藏夹使用的图标 -->
+<link rel="bookmark" href="https://www.tdrme.cn/logoW.svg" type="image/svg+xml" sizes="200x200">
+<!-- 旧版浏览器兼容性支持 -->
+<link rel="shortcut icon" href="https://www.tdrme.cn/logoB.svg" type="image/svg+xml">
+</head>
+<body class="flavor-theme">
+
+  <header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <div class="top-bar">
+
+      
+      <div class="top-bar__left">
+        
+        <a href="https://blog.tdrme.cn" class="site-avatar-link" aria-label="返回首页">
+          <img class="site-avatar" src="/images/theme/IMG_20250827_010418.png" alt="听得入迷" />
+        </a>
+        
+        <a href="https://blog.tdrme.cn" class="site-name-link">听得入迷</a>
+      </div>
+
+      
+      <nav class="top-bar__nav" id="sectionBar">
+        
+        
+        <a class="nav-item" href="/">首页</a>
+        
+        <a class="nav-item" href="/post">博客</a>
+        
+        <a class="nav-item" href="/memos">闪念</a>
+        
+        <a class="nav-item" href="/archives">归档</a>
+        
+        <a class="nav-item" href="/tags">标签</a>
+        
+        <a class="nav-item" href="/links">友链</a>
+        
+        <a class="nav-item" href="/post/about">关于</a>
+        
+        
+      </nav>
+
+      
+      <div class="top-bar__right">
+        <button class="btn-icon btn-search search-btn" id="btnSearch" type="button" aria-label="搜索">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+        <button class="btn-icon theme-toggle theme-toggle-sun" id="themeToggleSun" type="button"
+          aria-label="切换到浅色模式">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 1C12.5523 1 13 1.44772 13 2V4C13 4.55228 12.5523 5 12 5C11.4477 5 11 4.55228 11 4V2C11 1.44772 11.4477 1 12 1Z"></path>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12ZM12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9Z"></path>
+            <path d="M13 20C13 19.4477 12.5523 19 12 19C11.4477 19 11 19.4477 11 20V22C11 22.5523 11.4477 23 12 23C12.5523 23 13 22.5523 13 22V20Z"></path>
+            <path d="M4.22282 4.22289C4.61335 3.83236 5.24651 3.83236 5.63704 4.22289L7.04704 5.63289C7.43756 6.02341 7.43756 6.65658 7.04704 7.0471C6.65651 7.43762 6.02335 7.43762 5.63283 7.0471L4.22282 5.6371C3.8323 5.24658 3.8323 4.61341 4.22282 4.22289Z"></path>
+            <path d="M18.367 16.9529C17.9765 16.5623 17.3433 16.5623 16.9528 16.9529C16.5623 17.3434 16.5623 17.9766 16.9528 18.3671L18.3628 19.7771C18.7533 20.1676 19.3865 20.1676 19.777 19.7771C20.1675 19.3866 20.1675 18.7534 19.777 18.3629L18.367 16.9529Z"></path>
+            <path d="M1 12C1 11.4477 1.44772 11 2 11H4C4.55228 11 5 11.4477 5 12C5 12.5523 4.55228 13 4 13H2C1.44772 13 1 12.5523 1 12Z"></path>
+            <path d="M20 11C19.4477 11 19 11.4477 19 12C19 12.5523 19.4477 13 20 13H22C22.5523 13 23 12.5523 23 12C23 11.4477 22.5523 11 22 11H20Z"></path>
+            <path d="M7.04704 16.9529C7.43756 17.3434 7.43756 17.9766 7.04704 18.3671L5.63704 19.7771C5.24651 20.1676 4.61335 20.1676 4.22282 19.7771C3.8323 19.3866 3.8323 18.7534 4.22283 18.3629L5.63283 16.9529C6.02335 16.5623 6.65651 16.5623 7.04704 16.9529Z"></path>
+            <path d="M19.777 5.6371C20.1675 5.24657 20.1675 4.61341 19.777 4.22289C19.3865 3.83236 18.7533 3.83236 18.3628 4.22289L16.9528 5.63289C16.5623 6.02341 16.5623 6.65658 16.9528 7.0471C17.3433 7.43762 17.9765 7.43762 18.367 7.0471L19.777 5.6371Z"></path>
+          </svg>
+        </button>
+        <button class="btn-icon theme-toggle theme-toggle-moon" id="themeToggleMoon" type="button"
+          aria-label="切换到深色模式">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 11.5955 21.7564 11.2309 21.3827 11.0761C21.009 10.9213 20.5789 11.0069 20.2929 11.2929C19.287 12.2988 17.9226 12.864 16.5 12.864C15.0774 12.864 13.713 12.2988 12.7071 11.2929C11.7012 10.287 11.136 8.92261 11.136 7.5C11.136 6.07739 11.7012 4.71304 12.7071 3.70711C12.9931 3.42111 13.0787 2.99099 12.9239 2.61732C12.7691 2.24364 12.4045 2 12 2ZM7.55544 5.34824C8.27036 4.87055 9.05353 4.51389 9.87357 4.28778C9.39271 5.27979 9.13604 6.37666 9.13604 7.5C9.13604 9.45304 9.91189 11.3261 11.2929 12.7071C12.6739 14.0881 14.547 14.864 16.5 14.864C17.6233 14.864 18.7202 14.6073 19.7122 14.1264C19.4861 14.9465 19.1295 15.7296 18.6518 16.4446C17.7727 17.7602 16.5233 18.7855 15.0615 19.391C13.5997 19.9965 11.9911 20.155 10.4393 19.8463C8.88743 19.5376 7.46197 18.7757 6.34315 17.6569C5.21447 16.538 4.4624 15.1126 4.15372 13.5607C3.84504 12.0089 4.00347 10.4003 4.60897 8.93853C5.21447 7.47672 6.23985 6.22729 7.55544 5.34824Z"></path>
+            <path d="M19 2C19.5523 2 20 2.44772 20 3V4H21C21.5523 4 22 4.44772 22 5C22 5.55228 21.5523 6 21 6H20V7C20 7.55228 19.5523 8 19 8C18.4477 8 18 7.55228 18 7V6H17C16.4477 6 16 5.55228 16 5C16 4.44772 16.4477 4 17 4H18V3C18 2.44772 18.4477 2 19 2Z"></path>
+          </svg>
+        </button>
+        <button class="btn-icon btn-nav-toggle mobile-only" id="btnNavToggle" type="button" aria-label="切换导航">
+          <div class="hamburger" id="hamburger">
+            <span class="hamburger__line hamburger__line--top"></span>
+            <span class="hamburger__line hamburger__line--bottom"></span>
+          </div>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+<div class="header-spacer"></div>
+
+<script>
+(function(){
+  var btn = document.getElementById('btnNavToggle');
+  var nav = document.getElementById('sectionBar');
+  var hamburger = document.getElementById('hamburger');
+  if (btn && nav) {
+    btn.addEventListener('click', function(){
+      nav.classList.toggle('top-bar__nav--open');
+      if (hamburger) hamburger.classList.toggle('is-active');
+    });
+    nav.querySelectorAll('.nav-item').forEach(function(item){
+      item.addEventListener('click', function(){
+        nav.classList.remove('top-bar__nav--open');
+        if (hamburger) hamburger.classList.remove('is-active');
+      });
+    });
+  }
+
+  var root = document.documentElement;
+  var applyTheme = function(theme, persist){
+    if (theme === 'light') {
+      root.classList.add('theme-light');
+    } else {
+      root.classList.remove('theme-light');
+    }
+    if (persist) {
+      try { localStorage.setItem('flavor-theme', theme); } catch (e) {}
+    }
+  };
+  document.querySelectorAll('.theme-toggle').forEach(function(el){
+    el.addEventListener('click', function(){
+      applyTheme(root.classList.contains('theme-light') ? 'dark' : 'light', true);
+    });
+  });
+})();
+</script>
+
+  <main class="site-main" role="main">
+    
+<article class="article-container">
+  <header class="article-header">
+    <h1 class="article-title">光圈、感光度ISO、快门</h1>
+    <div class="article-meta">
+      
+      
+      <a href="/category/card/" class="article-meta__category">卡片</a>
+      
+      
+      <span class="article-meta__sep">·</span>
+      
+      <span class="article-meta__item">2026-06-17</span>
+      
+      <span class="article-meta__sep">·</span>
+      <span class="article-meta__item">7 分钟阅读</span>
+      
+    </div>
+    
+    <div class="article-header__tags">
+      
+      <a href="/tag/ka-pian/" class="tag-pill tag-pill--sm">卡片</a>
+      
+    </div>
+    
+  </header>
+
+  
+  <div class="article-feature">
+    <img src="https://2.tdrme.cn/tdrme/img/main/20260617182009645.jpeg" alt="光圈、感光度ISO、快门" />
+  </div>
+  
+
+  <div class="article-content">
+    <blockquote>
+<p>出处：<a href="https://zhuanlan.zhihu.com/p/93835471?utm_id=0">摄影基础知识大全</a></p>
+</blockquote>
+<h3 id="iso">一、摄影三大元素：光圈、感光度ISO、快门速度（一圈两度）</h3>
+<h4 id="1">1.光圈</h4>
+<p>光圈就是镜头里调节进光孔大小的装置。（即一扇窗，窗越大，进入的光线越多，图片更亮）<br />
+常见的光圈值如下： F1， F1.4， F2， F2.8， F4， F5.6， F8， F11， F16， F22， F32， F44， F64。</p>
+<p>每两挡相邻光圈值之间进光量相差一倍。例如光圈从F4调整到F2.8，进光量便多一倍；从F2.8到F2又多一倍。数字越大，光圈越小。</p>
+<ol>
+<li>
+<p>大光圈（f/1.4、f/1.8、f/2.8等）,适用于光线不足时。效果：景深变浅；增加曝光时间（快门速度慢），照片变亮；凝固时间（快速移动的物体）。</p>
+</li>
+<li>
+<p>小光圈（f/11、f/16、f/22等），适用于光线充足时。 效果：景深变深；捕捉时间（流水、车轨）；让光点变散射状，即光芒。<br />
+光圈大＝数字小＝背景模糊／景深浅＝拍人像（光圈数值越小，清晰的区域越小）<br />
+光圈小＝数字大＝背景清楚／景深深＝拍风景（光圈数值越大，清晰的区域越大）<br />
+镜头在中等光圈的时候成像最好（图片最清晰），成像最好的那档光圈就是最佳光圈。</p>
+</li>
+</ol>
+<p><strong>景深</strong>：能够清晰成像的距离。景深小，前景清晰，背景模糊；景深大，前景清晰，背景同样清晰。</p>
+<p>影响景深有三个因素：</p>
+<ol>
+<li>
+<p>拍摄时采用光圈越大景深就越浅；</p>
+</li>
+<li>
+<p>拍摄时采用镜头焦距越长景深就越浅；</p>
+</li>
+<li>
+<p>拍摄时相机与被摄对象距离越近景深就越浅。</p>
+</li>
+</ol>
+<p>光圈有三个作用：</p>
+<ol>
+<li>
+<p>控制进光量，这直接影响到图片是否能正确曝光，是拍摄成功与否的关键；</p>
+</li>
+<li>
+<p>控制景深，光圈越小，景深越大。虽然焦距和拍摄远近都影响景深，但焦距和被摄物远近的改变同时也会影响构图，如果构图确定，我们能控制景深的武器就只剩下光圈了；</p>
+</li>
+<li>
+<p>光圈影响图片的清晰度，任何一个镜头都是在中等光圈的时候成像最好（图片最清晰），在最大光圈和最小光圈的时候解像度差。</p>
+</li>
+</ol>
+<p>摄影最重要的一个概念：光圈优先。光圈优先就是手动定义光圈的大小，相机会根据这个光圈值确定能正确曝光的快门速度。</p>
+<h4 id="2iso">2.感光度ISO</h4>
+<p>即感光元件CMOS对光线的敏感程度。</p>
+<ol>
+<li>
+<p>ISO50以下为低感光度<br />
+在这一段可以获得极为平滑、细腻的照片。只要条件许可，只要能够把照片拍清楚，就尽量使用低感光度，比如，只要能够保证景深，宁可开大一级光圈，也不要把感光度提高一挡。</p>
+</li>
+<li>
+<p>ISO100—200属于中感光度<br />
+在这一段，需要认真考虑这张照片做什么用，要放大到什么程度，假如你能够接受噪点，中感光度设定降低了手持相机拍摄的难度，提高了在低照度条件下拍摄的安全系数，使成功率提高。</p>
+</li>
+<li>
+<p>ISO400以上是高感光度<br />
+感光度对摄影的影响表现在两方面。其一是速度，更高的感光度能获得更快的快门速度；其二是画质，越低的感光度带来更细腻的成像质量，而高感光度的画质则是噪点比较大。</p>
+</li>
+</ol>
+<p>当ISO值越高，则可在相同光源环境下提供更快的快门速度，能有效避免手抖拍虚的情况发生。</p>
+<p>低ISO可提供给影像拍摄三大好处，分别为高画质、低噪点与慢速快门。Eg.低感光所带来的效用，是可以让快门速度降低，拍出另一番的影像风味。举例来说，像是山中川流的细水、瀑布，可能就需要使用低于1/2 秒的快门，来换取动感的水流；若在晴朗的户外，也可将光圈开大（F2.8），降低ISO来确保快门速度在机身极限范围内（1/4000秒或1/8000秒），以减少过曝的机会，取得较为柔散迷人的景深效果。</p>
+<p>在夜景的部份，则主要是利用在需要凝结瞬间的情境，藉由高ISO大光圈的方式冻结眼前的美景，例如高山星空银河、夜间民俗庆典、手持城市夜景等等，都是高ISO可掌控的主题范围。</p>
+<p>建议值：晴朗的室外使用ISO100；阴郁的天气使用ISO200；室内使用ISO400或更高。<br />
+（ISO感光度越高，感光元件CMOS对光越敏感，满足曝光所需要的进光量越少。）</p>
+<h4 id="3">3.快门速度</h4>
+<ol>
+<li>
+<p>快门：快门就是相机里控制曝光时间的装置。速度与曝光时间成反比：速度快，曝光时间短。<br />
+快门速度快的时候，高速运动的瞬间被凝结了；快门速度慢的时候，一个运动的过程被凝结下来（比如车流、流水成了梦幻的带状，也即是“糊了”）。</p>
+</li>
+<li>
+<p>安全快门速度：想手持拍摄到一张不手震的照片，最简单便是快门要够快，但快门太快相对就可能会发生曝光不足的情况。 所以经过不断拍摄，摄影师就得出一个“最慢而又不手震的快门值”理论，那便是大家熟知的“安全快门”了。传统上，简单而笼统的安全快门定义是︰快门值不慢于1/镜头焦距。Eg.你使用的是50mm，快门值1/50便可以拍到一张不手震的照片了。</p>
+</li>
+<li>
+<p>手持摄影的基本规则：快门速度是用镜头焦距的倒数。一般情况下，拍行走或快速移动时，设在1/250秒左右；拍更快的自由落体或飞驰的物体，提高到1/400秒左右；拍快速飞行时，设在1/800秒以上。（仅为建议值）</p>
+</li>
+</ol>
+<h3 id="nikon">二、相机四大模式（以Nikon相机为例）：</h3>
+<ol>
+<li>
+<p>P(Program)程序自动<br />
+相机设定快门速度和光圈以获得最佳曝光。（与AUTO傻瓜挡的区别是仍然可以设置曝光补偿、感光度、测光模式、白平衡等）</p>
+</li>
+<li>
+<p>S(Shutter)快门优先<br />
+用户选择快门速度，相机选择光圈。主要应用场景就是那些对快门速度比较敏感的场景，用于锁定动作（快速的运动）或者模糊动作（长时间曝光）。</p>
+</li>
+<li>
+<p>A(Aperture)光圈优先——摄影最重要的一个概念<br />
+用户设置光圈，相机选择快门速度以达到最佳效果。画面的明暗，再通过曝光补偿来调节。（一般摄影师常驻档位）<br />
+M(Manual)手动。</p>
+</li>
+</ol>
+<p>相机的快门、光圈、感光度全部由人工设置完成。主要应用在一些对曝光要求很严格的状态下。<br />
+在M档时，一般情况下，测光标尺处于正值区域时（曝光过度），要将快门速度和/或光圈的数值增大（即使速度更慢，光圈更小）；测光标尺处于负值区域时（曝光不足），要将快门速度和/或光圈的数值减小。（即平衡到中点区域，获得最佳曝光）</p>
+<h3 id="tips">三、Tips</h3>
+<ol>
+<li>
+<p>曝光(Exposure) AE-自动曝光 AF-自动对焦<br />
+是指被摄影物体发出或反射的光线，通过照相机镜头投射到感光片(cmos)上，使之发生化学或物理变化，产生显影的过程。</p>
+<p>曝光就是光圈和快门的组合。光圈（值）大小其实就是那个小圆窗户开多大，快门（速度）就是窗户打开多久。假设窗户只打开1/4，时间为4秒钟可以正确曝光的话，很显然，窗户打开一半，时间2秒钟也能让底片正确曝光，因为1/4_4=1/2_2=1，进光量都是一样多。同样的，如果窗户全开，曝光时间就只需要1秒了。</p>
+<p>结论：一张正确曝光的图片可以有N种不同的光圈和快门速度组合。</p>
+<p>有三个因素能影响一张图片是否正确曝光：光圈，快门速度，ISO。其中光圈和速度联合决定进光量，ISO决定CCD/CMOS的感光速度。如果进光量不够，我们可以开大光圈或者降低快门速度，还是不够的话就提高ISO。大光圈的缺点是解像度不如中等光圈，快门速度降低则图片可能会糊，提高ISO后图片质量也会下降 。没有完美的方案，如何取舍要灵活决定。</p>
+</li>
+<li>
+<p>测光与测光模式<br />
+曝光和测光是一对双胞胎，如果不能准确测定光照强度，正确曝光就无从谈起。<br />
+<strong>测光模式主要有三种：</strong><br />
+点测光只测取景框内一个小点的光线强度（此小点大约为取景框面积的10%到1%，看不同机型）<br />
+中央重点测光是简化的区域（平均）测光，只把取景框分为中央圆圈和四周两块，分别测光，然后加权平均（中央圆圈的权重为70%左右）。<br />
+区域（平均）测光则把取景框分为5到63块（看机型不同），分别对每块测光然后再加权平均得到光照强度。<br />
+大多数情况下用区域测光即可。在光线明暗反差很大时应该采用点测光。用区域（平均）测光或中央重点也可以，你可根据自己的艺术创意进行曝光补偿。</p>
+</li>
+<li>
+<p>曝光补偿<br />
+正确曝光：照片要能真实反映拍摄时的环境亮度。如果一张正午户外的照片被拍得昏暗如夜，这张照片就曝光不足，反之则是曝光过度。曝光是否准确是根据日常生活经验判断的。</p>
+<p>我们之所以能看见东西，不外乎两种情况：一是物体本身可以发光，比如太阳或灯泡；大多数情况是物体能反射外来光线。反射的光线越多，物体就越亮，反之则越暗。假设两个极端，纯黑色物体不会反射光线，反射率为零，而纯白的物体反射率是100%。在这两个极端之间取中间值就是不黑也不白的灰色，称为柯达灰，也称为18%中间灰。<br />
+（在P、S、A、M、SCENE和夜视模式下，曝光补偿用于改变照相机建议的曝光值，从而使照片更亮或更暗。一般情况下，正值使拍摄对象更亮，负值则使其更暗。）</p>
+<p>曝光补偿的原则：白加黑减<br />
+如果构图中有大片白色物体或者有灯等特别明亮的物体，就要相应增加曝光量（增大光圈or/and减低快门速度）；如果取景框中有大片黑色的物体，则要减少曝光量。 一般来说，在光照比较平均的情况下相机的自动测光和曝光比较准确，但在明暗反差很大时自动曝光往往不准，需要手动曝光补偿。</p>
+</li>
+<li>
+<p>焦距<br />
+光线经过透镜就会聚成一点（焦点） ，镜头的焦距就是从镜片（或镜片组）的中心到焦点的距离，单位是毫米（mm）。</p>
+<p>标准镜头就是焦距等于底片（或CCD/CMOS）对角线长度的镜头。在实际应用中我们把焦距为40-60mm的都称为标头。</p>
+<p>广角镜头（焦距小于35mm）能够让照相机“看得更宽阔”，因为它视角大。</p>
+<p>长焦镜头（焦距大于70mm）能让照相机“看得更远”，但视角窄。长焦镜头也称远摄镜头或望远镜头。</p>
+<p>从焦距的定义就可以推断出，广角镜头都身材矮小，长焦镜头都高大威猛。</p>
+<p>焦距越长，与被拍物体距离越近，则景深越浅，背景越模糊。</p>
+<p>Eg. 当焦距为18-55mm时，f/3.5-5.6: 焦距最小时18mm,此时最大光圈为3.5；焦距最大时55mm，此时最大光圈为5.6。</p>
+</li>
+<li>
+<p>光学变焦<br />
+就是通过镜片移动来放大与缩小需要拍摄的景物，光学变焦倍数越大，能拍摄的景物就越远。</p>
+<blockquote>
+<p>变焦倍数＝最大焦距值/最小焦距值。</p>
+</blockquote>
+<p>一个28-280mm变焦镜头的光学变焦倍数就是280mm/28mm，即10倍。光学变焦倍数越大，里面的镜片就越多，镜头体积相应较大，画质相对较低，光圈相对较小。</p>
+</li>
+</ol>
+
+  </div>
+
+  
+  <nav class="post-nav">
+    
+    <a href="/post/FmRfWy/" class="post-nav-card post-nav-card--prev">
+      
+      <div class="post-nav-card__img">
+        <img src="https://2.tdrme.cn/tdrme/img/main/20260617182009645.jpeg" alt="阳光十六法则" loading="lazy" />
+      </div>
+      
+      <div class="post-nav-card__body">
+        <span class="post-nav-card__label meta-text">上一篇</span>
+        <span class="post-nav-card__title">阳光十六法则</span>
+      </div>
+      <span class="post-nav-card__arrow">&larr;</span>
+    </a>
+    
+    
+    <a href="/post/IJeYU0/" class="post-nav-card post-nav-card--next">
+      <div class="post-nav-card__body">
+        <span class="post-nav-card__label meta-text">下一篇</span>
+        <span class="post-nav-card__title">喜迎72周年国庆|国旗知识</span>
+      </div>
+      
+      <div class="post-nav-card__img">
+        <img src="https://2.tdrme.cn/tdrme/img/main/20260617181729974.jpg" alt="喜迎72周年国庆|国旗知识" loading="lazy" />
+      </div>
+      
+      <span class="post-nav-card__arrow">&rarr;</span>
+    </a>
+    
+  </nav>
+
+  
+  
+
+
+  
+    <section class="comment-section">
+  <h2 class="comment-section__title">评论</h2>
+  <div id="tcomment"></div>
+  <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
+  <script>
+    twikoo.init({
+      envId: 'https://talk.tdrme.cn',
+      el: '#tcomment'
+    });
+  </script>
+</section>
+
+  
+
+
+
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+
+    
+    
+    <nav class="footer-nav" aria-label="页脚导航">
+      
+      <a class="footer-nav__link" href="/">首页</a>
+      
+      <a class="footer-nav__link" href="/post">博客</a>
+      
+      <a class="footer-nav__link" href="/memos">闪念</a>
+      
+      <a class="footer-nav__link" href="/archives">归档</a>
+      
+      <a class="footer-nav__link" href="/tags">标签</a>
+      
+      <a class="footer-nav__link" href="/links">友链</a>
+      
+      <a class="footer-nav__link" href="/post/about">关于</a>
+      
+    </nav>
+    
+
+    
+    <div class="footer-social">
+      
+      
+      
+      <a class="footer-social__link" href="/feed.xml" aria-label="RSS">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6.18 15.64a2.18 2.18 0 110 4.36 2.18 2.18 0 010-4.36zM4 4.44A15.56 15.56 0 0119.56 20h-2.83A12.73 12.73 0 004 7.27V4.44zm0 5.66a9.9 9.9 0 019.9 9.9h-2.83A7.07 7.07 0 004 12.93V10.1z"/>
+        </svg>
+      </a>
+    </div>
+
+    
+    <div class="footer-copyright">
+      <p>&copy; 2026 听得入迷. All rights reserved.</p>
+    </div>
+
+    
+    
+    <div class="footer-custom">
+      Powered by <a href="https://www.gridea.pro/" target="_blank">Gridea Pro</a>
+<br>
+<a href="https://www.travellings.cn/go" target="_blank">🚇开往</a>-<a href="https://www.foreverblog.cn/go.html"" target="_blank">🌀虫洞</a>-<a href="https://travel.moe/go?travel=on" target="_blank">🪐异次元之旅</a>
+<br>
+<a href="https://icp.redcha.cn/beian/ICP-2025080059.html" title="茶ICP备2025080059号" target="_blank">茶ICP备2025080059号</a>-
+<a href="https://icp.gov.moe/?keyword=20241205" target="_blank">萌ICP备20241205号</a><br>
+    </div>
+    
+
+    
+    <div class="footer-powered">
+      <span>Powered by <a href="https://gridea.pro" target="_blank" rel="noopener noreferrer">Gridea Pro</a></span>
+    </div>
+
+  </div>
+</footer>
+
+  
+  <div class="search-overlay" id="searchOverlay" style="display:none;">
+  <div class="search-modal">
+    <div class="search-header">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" class="search-input" id="searchInput" placeholder="搜索文章..." autocomplete="off" />
+      <span class="search-kbd">&#8984;K</span>
+      <button class="search-close" id="searchClose" type="button" aria-label="关闭搜索">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<script src="/scripts/search.js"></script>
+  
+
+  
+
+  
+  <style>/*b站iframe优化*/
+.iframe_video{
+        position:relative;
+        height:0;
+        padding-bottom:56.25%;
+        overflow:hidden
+}
+
+.iframe_video embed,.iframe_video iframe,.iframe_video object{
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%
+}</style>
+  
+
+  
+
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: flavor-theme v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>
