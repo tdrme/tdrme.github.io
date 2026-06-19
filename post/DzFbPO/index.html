@@ -20,6 +20,9 @@ window.location.href = &#39;..." />
   <link rel="alternate" type="application/rss+xml" title="听得入迷空间" href="/atom.xml" />
   
   
+  <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
+  
+  
 <meta name="description" content="方法很简单，就是不让访客在qq微信中访问，这样就不能轻易被举报了。 以下代码放到网站里，最好是&amp;lt;head&amp;gt;标签里 &amp;lt;!--防qq微信屏蔽--&amp;gt; &amp;lt;script&amp;gt; // 跳转提示 if (is_weixn_qq()) {; window.location.href = 'https://c.pc.qq.com/middle.html?pfurl=...">
 <meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
 <link rel="canonical" href="https://blog.tdrme.cn/post/DzFbPO/">
@@ -146,12 +149,18 @@ return false;
     
       
 <div id="tcomment"></div>
-<script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
 <script>
-  twikoo.init({
-    envId: 'https://talk.tdrme.cn',
-    el: '#tcomment'
-  });
+  (function() {
+    if (typeof twikoo === 'undefined') return;
+    var el = document.getElementById('tcomment');
+    if (!el) return;
+    el.innerHTML = '';
+    el._twikooInited = true;
+    twikoo.init({
+      envId: 'https://talk.tdrme.cn',
+      el: '#tcomment'
+    });
+  })();
 </script>
 
     
@@ -261,6 +270,41 @@ return false;
     var main = document.querySelector('main');
     if (!main) return;
 
+    function reinitComments(container) {
+      var commentEl = container.querySelector('#tcomment');
+      if (!commentEl) return;
+
+      // Twikoo
+      if (typeof twikoo !== 'undefined') {
+        // 若已被内联脚本初始化，跳过（避免 double init）
+        if (commentEl._twikooInited) {
+          delete commentEl._twikooInited;
+          return;
+        }
+        commentEl.innerHTML = '';
+        var script = container.querySelector('#tcomment + script');
+        if (script && script.textContent) {
+          var match = script.textContent.match(/envId:\s*'([^']+)'/);
+          if (match) {
+            twikoo.init({ envId: match[1], el: '#tcomment' });
+          }
+        }
+        return;
+      }
+
+      // Waline
+      if (typeof Waline !== 'undefined') {
+        var walineEl = container.querySelector('#waline');
+        if (walineEl) {
+          while (walineEl.firstChild) walineEl.removeChild(walineEl.firstChild);
+          // Waline 需要 serverURL，由已执行的 inline script 处理
+        }
+        return;
+      }
+
+      // 其他评论平台的兜底逻辑可按需扩展
+    }
+
     function sameOrigin(href) {
       try { var u = new URL(href, location.origin); return u.origin === location.origin; }
       catch(e) { return false; }
@@ -288,6 +332,14 @@ return false;
             ns.textContent = s.textContent;
             s.parentNode.replaceChild(ns, s);
           });
+
+          // PJAX 后重新初始化评论区
+          reinitComments(main);
+
+          // 重新绑定 Fancybox（如果文章有图片）
+          if (typeof Fancybox !== 'undefined') {
+            Fancybox.bind('[data-fancybox]');
+          }
 
           if (newTitle) document.title = newTitle.textContent;
         })

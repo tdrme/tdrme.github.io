@@ -14,6 +14,9 @@
   <link rel="alternate" type="application/rss+xml" title="听得入迷空间" href="/atom.xml" />
   
   
+  <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
+  
+  
 <meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
 <link rel="canonical" href="https://blog.tdrme.cn/tag/fen-xiang/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"听得入迷空间","url":"https://blog.tdrme.cn","description":"","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://blog.tdrme.cn/search?q={search_term_string}"}}</script>
@@ -85,31 +88,6 @@
                     <p class="post-card-excerpt">做了一个只有两个文件的导航页，只包含两个文件php+md。md文件负责记录分类超链接，php引用md里的内容生成导航页。这个导航页简单无数据库使用也简单。
 使用方式
 只需要修改bookmarks.md中的内容即可添加链接，然后访问ph...</p>
-                  
-                  
-                    <div class="post-tags">
-                      
-                        <a href="/tag/fen-xiang/" class="post-tag active">分享</a>
-                      
-                    </div>
-                  
-                </div>
-              </article>
-            
-          
-            
-              <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260616011300625.jpg" alt="《星游记》全集新4K重置" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-10T01:10:56+08:00</time>
-                  <a href="/post/star-wars-new-4k-reset/"><h2 class="post-card-title">《星游记》全集新4K重置</h2></a>
-                  
-                    <p class="post-card-excerpt">这是B站UP分享的高清重制版
-原链接：https://www.bilibili.com/opus/677394768827777095?from=search&amp;amp;spm_id_from=333.337.0.0
-
-请您务必转存保存...</p>
                   
                   
                     <div class="post-tags">
@@ -236,6 +214,31 @@ https://1814498793.share.123pan.cn/123pan/NvPZVv-t1aaH?pwd=ai9A#</p>
                   
                     <p class="post-card-excerpt">因为疫情在家学习的缘故，网课学习需要一个合适的笔记软件。开始想到有道云笔记，但是使用过后觉得这根本不能做上课笔记，然后听说 ipad 上有 GoodNote 这样的应用，意识到这种才是最适合我的笔记软件。当然，安卓设备上没有这个软件
 ...</p>
+                  
+                  
+                    <div class="post-tags">
+                      
+                        <a href="/tag/fen-xiang/" class="post-tag active">分享</a>
+                      
+                    </div>
+                  
+                </div>
+              </article>
+            
+          
+            
+              <article class="post-card">
+                
+                  <img src="https://2.tdrme.cn/tdrme/img/main/20260616011300625.jpg" alt="《星游记》全集新4K重置" class="post-card-image" />
+                
+                <div class="post-card-meta">
+                  <time class="post-card-date">2026-06-10T01:10:56+08:00</time>
+                  <a href="/post/star-wars-new-4k-reset/"><h2 class="post-card-title">《星游记》全集新4K重置</h2></a>
+                  
+                    <p class="post-card-excerpt">这是B站UP分享的高清重制版
+原链接：https://www.bilibili.com/opus/677394768827777095?from=search&amp;amp;spm_id_from=333.337.0.0
+
+请您务必转存保存...</p>
                   
                   
                     <div class="post-tags">
@@ -426,6 +429,41 @@ ht...</p>
     var main = document.querySelector('main');
     if (!main) return;
 
+    function reinitComments(container) {
+      var commentEl = container.querySelector('#tcomment');
+      if (!commentEl) return;
+
+      // Twikoo
+      if (typeof twikoo !== 'undefined') {
+        // 若已被内联脚本初始化，跳过（避免 double init）
+        if (commentEl._twikooInited) {
+          delete commentEl._twikooInited;
+          return;
+        }
+        commentEl.innerHTML = '';
+        var script = container.querySelector('#tcomment + script');
+        if (script && script.textContent) {
+          var match = script.textContent.match(/envId:\s*'([^']+)'/);
+          if (match) {
+            twikoo.init({ envId: match[1], el: '#tcomment' });
+          }
+        }
+        return;
+      }
+
+      // Waline
+      if (typeof Waline !== 'undefined') {
+        var walineEl = container.querySelector('#waline');
+        if (walineEl) {
+          while (walineEl.firstChild) walineEl.removeChild(walineEl.firstChild);
+          // Waline 需要 serverURL，由已执行的 inline script 处理
+        }
+        return;
+      }
+
+      // 其他评论平台的兜底逻辑可按需扩展
+    }
+
     function sameOrigin(href) {
       try { var u = new URL(href, location.origin); return u.origin === location.origin; }
       catch(e) { return false; }
@@ -453,6 +491,14 @@ ht...</p>
             ns.textContent = s.textContent;
             s.parentNode.replaceChild(ns, s);
           });
+
+          // PJAX 后重新初始化评论区
+          reinitComments(main);
+
+          // 重新绑定 Fancybox（如果文章有图片）
+          if (typeof Fancybox !== 'undefined') {
+            Fancybox.bind('[data-fancybox]');
+          }
 
           if (newTitle) document.title = newTitle.textContent;
         })

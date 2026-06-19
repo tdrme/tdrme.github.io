@@ -14,6 +14,9 @@
   <link rel="alternate" type="application/rss+xml" title="听得入迷空间" href="/atom.xml" />
   
   
+  <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
+  
+  
 <meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
 <link rel="canonical" href="https://blog.tdrme.cn/tag/ji-shu-jiao-cheng/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"听得入迷空间","url":"https://blog.tdrme.cn","description":"","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://blog.tdrme.cn/search?q={search_term_string}"}}</script>
@@ -445,6 +448,41 @@ https://www.123684.com/s/NvPZVv-UHApH
     var main = document.querySelector('main');
     if (!main) return;
 
+    function reinitComments(container) {
+      var commentEl = container.querySelector('#tcomment');
+      if (!commentEl) return;
+
+      // Twikoo
+      if (typeof twikoo !== 'undefined') {
+        // 若已被内联脚本初始化，跳过（避免 double init）
+        if (commentEl._twikooInited) {
+          delete commentEl._twikooInited;
+          return;
+        }
+        commentEl.innerHTML = '';
+        var script = container.querySelector('#tcomment + script');
+        if (script && script.textContent) {
+          var match = script.textContent.match(/envId:\s*'([^']+)'/);
+          if (match) {
+            twikoo.init({ envId: match[1], el: '#tcomment' });
+          }
+        }
+        return;
+      }
+
+      // Waline
+      if (typeof Waline !== 'undefined') {
+        var walineEl = container.querySelector('#waline');
+        if (walineEl) {
+          while (walineEl.firstChild) walineEl.removeChild(walineEl.firstChild);
+          // Waline 需要 serverURL，由已执行的 inline script 处理
+        }
+        return;
+      }
+
+      // 其他评论平台的兜底逻辑可按需扩展
+    }
+
     function sameOrigin(href) {
       try { var u = new URL(href, location.origin); return u.origin === location.origin; }
       catch(e) { return false; }
@@ -472,6 +510,14 @@ https://www.123684.com/s/NvPZVv-UHApH
             ns.textContent = s.textContent;
             s.parentNode.replaceChild(ns, s);
           });
+
+          // PJAX 后重新初始化评论区
+          reinitComments(main);
+
+          // 重新绑定 Fancybox（如果文章有图片）
+          if (typeof Fancybox !== 'undefined') {
+            Fancybox.bind('[data-fancybox]');
+          }
 
           if (newTitle) document.title = newTitle.textContent;
         })

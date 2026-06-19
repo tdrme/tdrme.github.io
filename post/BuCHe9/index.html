@@ -17,6 +17,9 @@
   <link rel="alternate" type="application/rss+xml" title="听得入迷空间" href="/atom.xml" />
   
   
+  <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
+  
+  
 <meta name="description" content="这是一篇关于河南话的学术研究问题的文章，qq 收藏里偶然找到的，不知道作者是谁。因为作为河南人的自豪感和责任感，这篇文章先记这里吧。 1.河南方言(话)的界定。无论从历史、地理，还是语言的角度，河南方言(话)这概念都是成立的，但什么是河南话?它的特征是什么?还没有人予以确定，当然也没有得到语言学界的承认。 2.方言语音调查,主要是方言的语音系统。这种调查必须深入而全面,不是那种“记&amp;hellip;">
 <meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
 <link rel="canonical" href="https://blog.tdrme.cn/post/BuCHe9/">
@@ -123,12 +126,18 @@
     
       
 <div id="tcomment"></div>
-<script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
 <script>
-  twikoo.init({
-    envId: 'https://talk.tdrme.cn',
-    el: '#tcomment'
-  });
+  (function() {
+    if (typeof twikoo === 'undefined') return;
+    var el = document.getElementById('tcomment');
+    if (!el) return;
+    el.innerHTML = '';
+    el._twikooInited = true;
+    twikoo.init({
+      envId: 'https://talk.tdrme.cn',
+      el: '#tcomment'
+    });
+  })();
 </script>
 
     
@@ -238,6 +247,41 @@
     var main = document.querySelector('main');
     if (!main) return;
 
+    function reinitComments(container) {
+      var commentEl = container.querySelector('#tcomment');
+      if (!commentEl) return;
+
+      // Twikoo
+      if (typeof twikoo !== 'undefined') {
+        // 若已被内联脚本初始化，跳过（避免 double init）
+        if (commentEl._twikooInited) {
+          delete commentEl._twikooInited;
+          return;
+        }
+        commentEl.innerHTML = '';
+        var script = container.querySelector('#tcomment + script');
+        if (script && script.textContent) {
+          var match = script.textContent.match(/envId:\s*'([^']+)'/);
+          if (match) {
+            twikoo.init({ envId: match[1], el: '#tcomment' });
+          }
+        }
+        return;
+      }
+
+      // Waline
+      if (typeof Waline !== 'undefined') {
+        var walineEl = container.querySelector('#waline');
+        if (walineEl) {
+          while (walineEl.firstChild) walineEl.removeChild(walineEl.firstChild);
+          // Waline 需要 serverURL，由已执行的 inline script 处理
+        }
+        return;
+      }
+
+      // 其他评论平台的兜底逻辑可按需扩展
+    }
+
     function sameOrigin(href) {
       try { var u = new URL(href, location.origin); return u.origin === location.origin; }
       catch(e) { return false; }
@@ -265,6 +309,14 @@
             ns.textContent = s.textContent;
             s.parentNode.replaceChild(ns, s);
           });
+
+          // PJAX 后重新初始化评论区
+          reinitComments(main);
+
+          // 重新绑定 Fancybox（如果文章有图片）
+          if (typeof Fancybox !== 'undefined') {
+            Fancybox.bind('[data-fancybox]');
+          }
 
           if (newTitle) document.title = newTitle.textContent;
         })

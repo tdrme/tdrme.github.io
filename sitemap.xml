@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://blog.tdrme.cn/</loc>
-    <lastmod>2026-06-19T23:37:20+08:00</lastmod>
+    <lastmod>2026-06-20T00:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -16,30 +16,12 @@
     </image:image>
   </url>
   <url>
-    <loc>https://blog.tdrme.cn/post/with-mark-twain/</loc>
-    <lastmod>2026-06-19T15:29:38+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260615220004291.jpeg</image:loc>
-    </image:image>
-  </url>
-  <url>
     <loc>https://blog.tdrme.cn/post/simple-bookmark-navigation-page/</loc>
     <lastmod>2026-06-19T15:29:44+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
       <image:loc>https://2.tdrme.cn/tdrme/img/main/20260615220929421.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://blog.tdrme.cn/post/star-wars-new-4k-reset/</loc>
-    <lastmod>2026-06-19T15:30:01+08:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260616011300625.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -385,6 +367,15 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://blog.tdrme.cn/post/with-mark-twain/</loc>
+    <lastmod>2026-06-19T23:40:38+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260615220004291.jpeg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://blog.tdrme.cn/post/share-spongebob-seasons-1-13/</loc>
     <lastmod>2026-06-16T00:55:08+08:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -424,6 +415,15 @@
     <priority>0.9</priority>
     <image:image>
       <image:loc>https://2.tdrme.cn/tdrme/img/main/20260616010623554.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.tdrme.cn/post/star-wars-new-4k-reset/</loc>
+    <lastmod>2026-06-20T00:06:33+08:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://2.tdrme.cn/tdrme/img/main/20260616011300625.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -521,55 +521,55 @@
   </url>
   <url>
     <loc>https://blog.tdrme.cn/post/</loc>
-    <lastmod>2026-06-19T23:37:20+08:00</lastmod>
+    <lastmod>2026-06-20T00:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://blog.tdrme.cn/memos/</loc>
-    <lastmod>2026-06-19T23:37:20+08:00</lastmod>
+    <lastmod>2026-06-20T00:06:44+08:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://blog.tdrme.cn/tags/</loc>
-    <lastmod>2026-06-19T23:37:20+08:00</lastmod>
+    <lastmod>2026-06-20T00:06:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://blog.tdrme.cn/archives/</loc>
-    <lastmod>2026-06-19T23:37:20+08:00</lastmod>
+    <lastmod>2026-06-20T00:06:44+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://blog.tdrme.cn/tag/fen-xiang/</loc>
-    <lastmod>2026-06-19T23:37:20+08:00</lastmod>
+    <lastmod>2026-06-20T00:06:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://blog.tdrme.cn/tag/ka-pian/</loc>
-    <lastmod>2026-06-19T23:37:20+08:00</lastmod>
+    <lastmod>2026-06-20T00:06:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://blog.tdrme.cn/tag/ri-chang/</loc>
-    <lastmod>2026-06-19T23:37:20+08:00</lastmod>
+    <lastmod>2026-06-20T00:06:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://blog.tdrme.cn/tag/ji-shu-jiao-cheng/</loc>
-    <lastmod>2026-06-19T23:37:20+08:00</lastmod>
+    <lastmod>2026-06-20T00:06:44+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://blog.tdrme.cn/links/</loc>
-    <lastmod>2026-06-19T23:37:20+08:00</lastmod>
+    <lastmod>2026-06-20T00:06:44+08:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>

@@ -14,6 +14,9 @@
   <link rel="alternate" type="application/rss+xml" title="听得入迷空间" href="/atom.xml" />
   
   
+  <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
+  
+  
 <meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
 <link rel="canonical" href="https://blog.tdrme.cn/post/page/3/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"听得入迷空间","url":"https://blog.tdrme.cn","description":"","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://blog.tdrme.cn/search?q={search_term_string}"}}</script>
@@ -72,61 +75,6 @@
     <div class="blog-post-list">
       <div class="post-list">
         
-          
-            
-              <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp" alt="typecho博客handsome主题博客信息添加全站字数、在线人数、访客总数和网站加载耗时" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T15:25:33+08:00</time>
-                  <a href="/post/3zPdyt/"><h2 class="post-card-title">typecho博客handsome主题博客信息添加全站字数、在线人数、访客总数和网站加载耗时</h2></a>
-                  
-                    <p class="post-card-excerpt">typecho博客handsome主题博客信息添加全站字数、在线人数、访客总数和网站加载耗时
-一
-首先以下代码放在/handsome/libs/Content.php class Content之前
-    /**
-     * 全...</p>
-                  
-                  
-                    <div class="post-tags">
-                      
-                        <a href="/tag/ji-shu-jiao-cheng/" class="post-tag">技术教程</a>
-                      
-                    </div>
-                  
-                </div>
-              </article>
-            
-          
-            
-              <article class="post-card">
-                
-                  <div class="post-card-image-placeholder"></div>
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T15:20:53+08:00</time>
-                  <a href="/post/H4j2gL/"><h2 class="post-card-title">李跳跳使用方法</h2></a>
-                  
-                    <p class="post-card-excerpt">下载APP：
-123云盘
-https://www.123912.com/s/NvPZVv-UHApH
-https://www.123684.com/s/NvPZVv-UHApH
-
-一、全局参数设置
-设置入口：长按首页🥝更多按钮。
-修改...</p>
-                  
-                  
-                    <div class="post-tags">
-                      
-                        <a href="/tag/ji-shu-jiao-cheng/" class="post-tag">技术教程</a>
-                      
-                    </div>
-                  
-                </div>
-              </article>
-            
           
             
               <article class="post-card">
@@ -348,6 +296,56 @@ body{
               </article>
             
           
+            
+              <article class="post-card">
+                
+                  <img src="https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp" alt="换主题VOLD笔记" class="post-card-image" />
+                
+                <div class="post-card-meta">
+                  <time class="post-card-date">2026-06-17T14:34:35+08:00</time>
+                  <a href="/post/jVj1by/"><h2 class="post-card-title">换主题VOLD笔记</h2></a>
+                  
+                    <p class="post-card-excerpt">很喜欢新主题方便阅读的特性，所以换了之前的 cuteen，但是 VOLD 主题没有设置站点 title 栏 logo 的选项，于是手动编辑，把代码记在这里。
+以下代码分别放在了主题的 head 设置选项和 admin 的 head.p...</p>
+                  
+                  
+                    <div class="post-tags">
+                      
+                        <a href="/tag/ji-shu-jiao-cheng/" class="post-tag">技术教程</a>
+                      
+                    </div>
+                  
+                </div>
+              </article>
+            
+          
+            
+              <article class="post-card">
+                
+                  <img src="https://2.tdrme.cn/tdrme/img/main/20260616014446505.webp" alt="QQ相关链接大全" class="post-card-image" />
+                
+                <div class="post-card-meta">
+                  <time class="post-card-date">2026-06-17T14:32:27+08:00</time>
+                  <a href="/post/V8Xg0f/"><h2 class="post-card-title">QQ相关链接大全</h2></a>
+                  
+                    <p class="post-card-excerpt">方便日常和谷歌版 QQ 及 tim 用户
+一、QQ 扩展网站
+QQ 服务查询 PC 版： https://kf.qq.com/pay_qq
+QQ 我的服务：
+https://pay.qq.com/h5/myservice.shtml
+...</p>
+                  
+                  
+                    <div class="post-tags">
+                      
+                        <a href="/tag/ji-shu-jiao-cheng/" class="post-tag">技术教程</a>
+                      
+                    </div>
+                  
+                </div>
+              </article>
+            
+          
         
       </div>
 
@@ -470,6 +468,41 @@ body{
     var main = document.querySelector('main');
     if (!main) return;
 
+    function reinitComments(container) {
+      var commentEl = container.querySelector('#tcomment');
+      if (!commentEl) return;
+
+      // Twikoo
+      if (typeof twikoo !== 'undefined') {
+        // 若已被内联脚本初始化，跳过（避免 double init）
+        if (commentEl._twikooInited) {
+          delete commentEl._twikooInited;
+          return;
+        }
+        commentEl.innerHTML = '';
+        var script = container.querySelector('#tcomment + script');
+        if (script && script.textContent) {
+          var match = script.textContent.match(/envId:\s*'([^']+)'/);
+          if (match) {
+            twikoo.init({ envId: match[1], el: '#tcomment' });
+          }
+        }
+        return;
+      }
+
+      // Waline
+      if (typeof Waline !== 'undefined') {
+        var walineEl = container.querySelector('#waline');
+        if (walineEl) {
+          while (walineEl.firstChild) walineEl.removeChild(walineEl.firstChild);
+          // Waline 需要 serverURL，由已执行的 inline script 处理
+        }
+        return;
+      }
+
+      // 其他评论平台的兜底逻辑可按需扩展
+    }
+
     function sameOrigin(href) {
       try { var u = new URL(href, location.origin); return u.origin === location.origin; }
       catch(e) { return false; }
@@ -497,6 +530,14 @@ body{
             ns.textContent = s.textContent;
             s.parentNode.replaceChild(ns, s);
           });
+
+          // PJAX 后重新初始化评论区
+          reinitComments(main);
+
+          // 重新绑定 Fancybox（如果文章有图片）
+          if (typeof Fancybox !== 'undefined') {
+            Fancybox.bind('[data-fancybox]');
+          }
 
           if (newTitle) document.title = newTitle.textContent;
         })

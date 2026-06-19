@@ -251,7 +251,8 @@ img {
 
 .hero-memo-label {
   font-family: var(--font-ui);
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 500;
   color: var(--color-accent);
   letter-spacing: 0.16em;
   margin-bottom: var(--spacing-sm);

@@ -14,6 +14,9 @@
   <link rel="alternate" type="application/rss+xml" title="听得入迷空间" href="/atom.xml" />
   
   
+  <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
+  
+  
 <meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
 <link rel="canonical" href="https://blog.tdrme.cn/tag/ka-pian/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"听得入迷空间","url":"https://blog.tdrme.cn","description":"","potentialAction":{"@type":"SearchAction","query-input":"required name=search_term_string","target":"https://blog.tdrme.cn/search?q={search_term_string}"}}</script>
@@ -72,29 +75,6 @@
     <div class="blog-post-list">
       <div class="post-list">
         
-          
-            
-              <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260615220004291.jpeg" alt="竞选州长 - 马克 · 吐温" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-11T19:39:12+08:00</time>
-                  <a href="/post/with-mark-twain/"><h2 class="post-card-title">竞选州长 - 马克 · 吐温</h2></a>
-                  
-                    <p class="post-card-excerpt">董衡巽译
-几个月以前，我被提名为纽约州州长候选人，代表独立党参加竞选，对方是斯坦华特·L·伍福特先生和约翰·T·霍夫曼先生。我总觉得自己名声不错，同这两位先生相比，这是我显著的长处。从报上很容易看出：如果说这两位先生也曾知道爱护名声的...</p>
-                  
-                  
-                    <div class="post-tags">
-                      
-                        <a href="/tag/ka-pian/" class="post-tag active">卡片</a>
-                      
-                    </div>
-                  
-                </div>
-              </article>
-            
           
             
               <article class="post-card">
@@ -281,6 +261,29 @@ F（光圈）
               </article>
             
           
+            
+              <article class="post-card">
+                
+                  <img src="https://2.tdrme.cn/tdrme/img/main/20260615220004291.jpeg" alt="竞选州长 - 马克 · 吐温" class="post-card-image" />
+                
+                <div class="post-card-meta">
+                  <time class="post-card-date">2026-06-11T19:39:12+08:00</time>
+                  <a href="/post/with-mark-twain/"><h2 class="post-card-title">竞选州长 - 马克 · 吐温</h2></a>
+                  
+                    <p class="post-card-excerpt">董衡巽译
+几个月以前，我被提名为纽约州州长候选人，代表独立党参加竞选，对方是斯坦华特·L·伍福特先生和约翰·T·霍夫曼先生。我总觉得自己名声不错，同这两位先生相比，这是我显著的长处。从报上很容易看出：如果说这两位先生也曾知道爱护名声的...</p>
+                  
+                  
+                    <div class="post-tags">
+                      
+                        <a href="/tag/ka-pian/" class="post-tag active">卡片</a>
+                      
+                    </div>
+                  
+                </div>
+              </article>
+            
+          
         
       </div>
     </div>
@@ -377,6 +380,41 @@ F（光圈）
     var main = document.querySelector('main');
     if (!main) return;
 
+    function reinitComments(container) {
+      var commentEl = container.querySelector('#tcomment');
+      if (!commentEl) return;
+
+      // Twikoo
+      if (typeof twikoo !== 'undefined') {
+        // 若已被内联脚本初始化，跳过（避免 double init）
+        if (commentEl._twikooInited) {
+          delete commentEl._twikooInited;
+          return;
+        }
+        commentEl.innerHTML = '';
+        var script = container.querySelector('#tcomment + script');
+        if (script && script.textContent) {
+          var match = script.textContent.match(/envId:\s*'([^']+)'/);
+          if (match) {
+            twikoo.init({ envId: match[1], el: '#tcomment' });
+          }
+        }
+        return;
+      }
+
+      // Waline
+      if (typeof Waline !== 'undefined') {
+        var walineEl = container.querySelector('#waline');
+        if (walineEl) {
+          while (walineEl.firstChild) walineEl.removeChild(walineEl.firstChild);
+          // Waline 需要 serverURL，由已执行的 inline script 处理
+        }
+        return;
+      }
+
+      // 其他评论平台的兜底逻辑可按需扩展
+    }
+
     function sameOrigin(href) {
       try { var u = new URL(href, location.origin); return u.origin === location.origin; }
       catch(e) { return false; }
@@ -404,6 +442,14 @@ F（光圈）
             ns.textContent = s.textContent;
             s.parentNode.replaceChild(ns, s);
           });
+
+          // PJAX 后重新初始化评论区
+          reinitComments(main);
+
+          // 重新绑定 Fancybox（如果文章有图片）
+          if (typeof Fancybox !== 'undefined') {
+            Fancybox.bind('[data-fancybox]');
+          }
 
           if (newTitle) document.title = newTitle.textContent;
         })
