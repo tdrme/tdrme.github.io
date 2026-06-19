@@ -762,6 +762,8 @@ img {
   line-height: 2.3;
   letter-spacing: var(--letter-spacing-body);
   color: var(--color-text);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .post-content p {
@@ -822,6 +824,8 @@ img {
   text-decoration: underline;
   text-decoration-color: rgba(236, 72, 153, 0.3);
   transition: text-decoration-color 0.2s;
+  overflow-wrap: anywhere;
+  word-break: break-all;
 }
 
 .post-content a:hover {
@@ -1604,6 +1608,11 @@ img {
 
   .post-main-title {
     font-size: 28px;
+  }
+
+  .post-meta-line {
+    flex-wrap: wrap;
+    font-size: 12px;
   }
 
   .post-content {
