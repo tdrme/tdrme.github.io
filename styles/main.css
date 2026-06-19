@@ -763,7 +763,7 @@ img {
   letter-spacing: var(--letter-spacing-body);
   color: var(--color-text);
   overflow-wrap: break-word;
-  word-break: break-word;
+  word-break: break-all;
 }
 
 .post-content p {
@@ -808,6 +808,8 @@ img {
   padding: var(--spacing-md) var(--spacing-lg);
   margin: 2.5em 0;
   background-color: transparent;
+  overflow-wrap: break-word;
+  word-break: break-all;
 }
 
 .post-content blockquote p {
@@ -817,6 +819,7 @@ img {
   font-style: normal;
   line-height: 1.9;
   margin: 0;
+  overflow-wrap: break-word;
 }
 
 .post-content a {
@@ -847,6 +850,8 @@ img {
   border-radius: var(--radius-md);
   overflow-x: auto;
   margin: 2.5em 0;
+  word-break: break-all;
+  overflow-wrap: break-word;
 }
 
 .post-content pre code {
@@ -1696,6 +1701,7 @@ img {
 
   .search-bar {
     padding: var(--spacing-sm) var(--spacing-md);
+    gap: var(--spacing-xs);
   }
 
   .search-bar-input {
@@ -1704,6 +1710,18 @@ img {
 
   .sr-item {
     padding: var(--spacing-md);
+  }
+
+  .sr-item-meta {
+    flex-wrap: wrap;
+  }
+
+  .sr-tags {
+    flex-wrap: wrap;
+  }
+
+  .sr-item-date {
+    margin-left: 0;
   }
 }
 
@@ -1751,6 +1769,32 @@ img {
   .pagination-page,
   .pagination-disabled {
     padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  /* ---- 搜索弹窗（小屏） ---- */
+  .search-modal {
+    margin: 0 var(--spacing-sm);
+  }
+
+  .search-bar {
+    padding: var(--spacing-sm);
+  }
+
+  .search-bar-input {
+    font-size: 15px;
+  }
+
+  .sr-item {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-left-width: 2px;
+  }
+
+  .sr-item-title {
+    font-size: 14px;
+  }
+
+  .sr-item-excerpt {
     font-size: 13px;
   }
 }
@@ -1833,6 +1877,7 @@ main.is-loading {
 
 .search-bar-input {
   flex: 1;
+  min-width: 0;
   border: none;
   outline: none;
   background: transparent;
@@ -1908,6 +1953,8 @@ main.is-loading {
   color: var(--color-text);
   line-height: 1.5;
   letter-spacing: var(--letter-spacing-heading);
+  overflow-wrap: break-word;
+  word-break: break-all;
 }
 
 .sr-item-title mark {
@@ -1936,6 +1983,8 @@ main.is-loading {
   line-height: 1.8;
   margin-top: var(--spacing-xs);
   letter-spacing: var(--letter-spacing-body);
+  overflow-wrap: break-word;
+  word-break: break-all;
 }
 
 .sr-item-excerpt mark {
@@ -1948,12 +1997,15 @@ main.is-loading {
 .sr-item-meta {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: var(--spacing-sm);
   margin-top: var(--spacing-xs);
+  min-width: 0;
 }
 
 .sr-tags {
   display: flex;
+  flex-wrap: wrap;
   gap: var(--spacing-xs);
 }
 
