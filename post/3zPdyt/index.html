@@ -1,51 +1,25 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="/styles/main.min.css">
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
-
-
-<link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-
-
-<style>:root { --heatmap-color: #39d353; }</style>
-
-
-
-<style>
-  .theme-toggle-sun  { display: flex; }
-  .theme-toggle-moon { display: none; }
-  :root.theme-light .theme-toggle-sun  { display: none; }
-  :root.theme-light .theme-toggle-moon { display: flex; }
-</style>
-
-
-<script>
-  (function () {
-    try {
-      var saved = localStorage.getItem('flavor-theme');
-      var theme = saved || 'light';
-      if (theme === 'light') {
-        document.documentElement.classList.add('theme-light');
-      }
-    } catch (e) { }
-  })();
-</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="generator" content="Gridea Pro 1.2.2">
   <title>typecho博客handsome主题博客信息添加全站字数、在线人数、访客总数和网站加载耗时 | 听得入迷空间</title>
+  <meta name="description" content="typecho博客handsome主题博客信息添加全站字数、在线人数、访客总数和网站加载耗时
+一
+首先以下代码放在/handsome/libs/Content.php class Content之前
+    /**
+     * 全站字数
+     */
+    function allOfCharacte..." />
+  <!-- 霞鹜文楷 Web 字体 -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/fancybox.css" />
+  <link rel="alternate" type="application/rss+xml" title="听得入迷空间" href="/atom.xml" />
   
-<meta property="og:title" content="typecho博客handsome主题博客信息添加全站字数、在线人数、访客总数和网站加载耗时" />
-<meta property="og:type" content="article" />
-
-<meta property="og:image" content="https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp" />
-
-
+  
 <meta name="description" content="typecho博客handsome主题博客信息添加全站字数、在线人数、访客总数和网站加载耗时 一 首先以下代码放在/handsome/libs/Content.php class Content之前 &amp;hellip;">
 <meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
 <link rel="canonical" href="https://blog.tdrme.cn/post/3zPdyt/">
@@ -59,161 +33,64 @@
 <!-- 旧版浏览器兼容性支持 -->
 <link rel="shortcut icon" href="https://www.tdrme.cn/logoB.svg" type="image/svg+xml">
 </head>
-<body class="flavor-theme">
+<body>
 
-  <header class="site-header" id="siteHeader">
-  <div class="header-inner">
-    <div class="top-bar">
-
+  <header class="site-header">
+  <div class="container">
+    <a href="https://blog.tdrme.cn" class="site-logo">听得入迷空间</a>
+    <nav class="site-nav">
       
-      <div class="top-bar__left">
-        
-        <a href="https://blog.tdrme.cn" class="site-avatar-link" aria-label="返回首页">
-          <img class="site-avatar" src="/images/theme/IMG_20250827_010418.png" alt="听得入迷空间" />
-        </a>
-        
-        <a href="https://blog.tdrme.cn" class="site-name-link">听得入迷空间</a>
-      </div>
-
+      <a href="/" class="nav-link">首页</a>
       
-      <nav class="top-bar__nav" id="sectionBar">
-        
-        
-        <a class="nav-item" href="/">首页</a>
-        
-        <a class="nav-item" href="/post">博客</a>
-        
-        <a class="nav-item" href="/memos">闪念</a>
-        
-        <a class="nav-item" href="/archives">归档</a>
-        
-        <a class="nav-item" href="/tags">标签</a>
-        
-        <a class="nav-item" href="/links/">友链</a>
-        
-        <a class="nav-item" href="/post/about">关于</a>
-        
-        
-      </nav>
-
+      <a href="/post" class="nav-link">博客</a>
       
-      <div class="top-bar__right">
-        <button class="btn-icon btn-search search-btn" id="btnSearch" type="button" aria-label="搜索">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </button>
-        <button class="btn-icon theme-toggle theme-toggle-sun" id="themeToggleSun" type="button"
-          aria-label="切换到浅色模式">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 1C12.5523 1 13 1.44772 13 2V4C13 4.55228 12.5523 5 12 5C11.4477 5 11 4.55228 11 4V2C11 1.44772 11.4477 1 12 1Z"></path>
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12ZM12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9Z"></path>
-            <path d="M13 20C13 19.4477 12.5523 19 12 19C11.4477 19 11 19.4477 11 20V22C11 22.5523 11.4477 23 12 23C12.5523 23 13 22.5523 13 22V20Z"></path>
-            <path d="M4.22282 4.22289C4.61335 3.83236 5.24651 3.83236 5.63704 4.22289L7.04704 5.63289C7.43756 6.02341 7.43756 6.65658 7.04704 7.0471C6.65651 7.43762 6.02335 7.43762 5.63283 7.0471L4.22282 5.6371C3.8323 5.24658 3.8323 4.61341 4.22282 4.22289Z"></path>
-            <path d="M18.367 16.9529C17.9765 16.5623 17.3433 16.5623 16.9528 16.9529C16.5623 17.3434 16.5623 17.9766 16.9528 18.3671L18.3628 19.7771C18.7533 20.1676 19.3865 20.1676 19.777 19.7771C20.1675 19.3866 20.1675 18.7534 19.777 18.3629L18.367 16.9529Z"></path>
-            <path d="M1 12C1 11.4477 1.44772 11 2 11H4C4.55228 11 5 11.4477 5 12C5 12.5523 4.55228 13 4 13H2C1.44772 13 1 12.5523 1 12Z"></path>
-            <path d="M20 11C19.4477 11 19 11.4477 19 12C19 12.5523 19.4477 13 20 13H22C22.5523 13 23 12.5523 23 12C23 11.4477 22.5523 11 22 11H20Z"></path>
-            <path d="M7.04704 16.9529C7.43756 17.3434 7.43756 17.9766 7.04704 18.3671L5.63704 19.7771C5.24651 20.1676 4.61335 20.1676 4.22282 19.7771C3.8323 19.3866 3.8323 18.7534 4.22283 18.3629L5.63283 16.9529C6.02335 16.5623 6.65651 16.5623 7.04704 16.9529Z"></path>
-            <path d="M19.777 5.6371C20.1675 5.24657 20.1675 4.61341 19.777 4.22289C19.3865 3.83236 18.7533 3.83236 18.3628 4.22289L16.9528 5.63289C16.5623 6.02341 16.5623 6.65658 16.9528 7.0471C17.3433 7.43762 17.9765 7.43762 18.367 7.0471L19.777 5.6371Z"></path>
-          </svg>
-        </button>
-        <button class="btn-icon theme-toggle theme-toggle-moon" id="themeToggleMoon" type="button"
-          aria-label="切换到深色模式">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 11.5955 21.7564 11.2309 21.3827 11.0761C21.009 10.9213 20.5789 11.0069 20.2929 11.2929C19.287 12.2988 17.9226 12.864 16.5 12.864C15.0774 12.864 13.713 12.2988 12.7071 11.2929C11.7012 10.287 11.136 8.92261 11.136 7.5C11.136 6.07739 11.7012 4.71304 12.7071 3.70711C12.9931 3.42111 13.0787 2.99099 12.9239 2.61732C12.7691 2.24364 12.4045 2 12 2ZM7.55544 5.34824C8.27036 4.87055 9.05353 4.51389 9.87357 4.28778C9.39271 5.27979 9.13604 6.37666 9.13604 7.5C9.13604 9.45304 9.91189 11.3261 11.2929 12.7071C12.6739 14.0881 14.547 14.864 16.5 14.864C17.6233 14.864 18.7202 14.6073 19.7122 14.1264C19.4861 14.9465 19.1295 15.7296 18.6518 16.4446C17.7727 17.7602 16.5233 18.7855 15.0615 19.391C13.5997 19.9965 11.9911 20.155 10.4393 19.8463C8.88743 19.5376 7.46197 18.7757 6.34315 17.6569C5.21447 16.538 4.4624 15.1126 4.15372 13.5607C3.84504 12.0089 4.00347 10.4003 4.60897 8.93853C5.21447 7.47672 6.23985 6.22729 7.55544 5.34824Z"></path>
-            <path d="M19 2C19.5523 2 20 2.44772 20 3V4H21C21.5523 4 22 4.44772 22 5C22 5.55228 21.5523 6 21 6H20V7C20 7.55228 19.5523 8 19 8C18.4477 8 18 7.55228 18 7V6H17C16.4477 6 16 5.55228 16 5C16 4.44772 16.4477 4 17 4H18V3C18 2.44772 18.4477 2 19 2Z"></path>
-          </svg>
-        </button>
-        <button class="btn-icon btn-nav-toggle mobile-only" id="btnNavToggle" type="button" aria-label="切换导航">
-          <div class="hamburger" id="hamburger">
-            <span class="hamburger__line hamburger__line--top"></span>
-            <span class="hamburger__line hamburger__line--bottom"></span>
-          </div>
-        </button>
-      </div>
-
-    </div>
+      <a href="/memos" class="nav-link">闪念</a>
+      
+      <a href="/archives" class="nav-link">归档</a>
+      
+      <a href="/links/" class="nav-link">友链</a>
+      
+      <a href="/post/about" class="nav-link">关于</a>
+      
+    </nav>
+    <button class="search-btn" aria-label="搜索" title="搜索 (⌘K)">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="12.5" y1="12.5" x2="17" y2="17"/></svg>
+    </button>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </label>
   </div>
 </header>
 
 
-<div class="header-spacer"></div>
-
-<script>
-(function(){
-  var btn = document.getElementById('btnNavToggle');
-  var nav = document.getElementById('sectionBar');
-  var hamburger = document.getElementById('hamburger');
-  if (btn && nav) {
-    btn.addEventListener('click', function(){
-      nav.classList.toggle('top-bar__nav--open');
-      if (hamburger) hamburger.classList.toggle('is-active');
-    });
-    nav.querySelectorAll('.nav-item').forEach(function(item){
-      item.addEventListener('click', function(){
-        nav.classList.remove('top-bar__nav--open');
-        if (hamburger) hamburger.classList.remove('is-active');
-      });
-    });
-  }
-
-  var root = document.documentElement;
-  var applyTheme = function(theme, persist){
-    if (theme === 'light') {
-      root.classList.add('theme-light');
-    } else {
-      root.classList.remove('theme-light');
-    }
-    if (persist) {
-      try { localStorage.setItem('flavor-theme', theme); } catch (e) {}
-    }
-  };
-  document.querySelectorAll('.theme-toggle').forEach(function(el){
-    el.addEventListener('click', function(){
-      applyTheme(root.classList.contains('theme-light') ? 'dark' : 'light', true);
-    });
-  });
-})();
-</script>
-
-  <main class="site-main" role="main">
+  <main>
     
-<article class="article-container">
-  <header class="article-header">
-    <h1 class="article-title">typecho博客handsome主题博客信息添加全站字数、在线人数、访客总数和网站加载耗时</h1>
-    <div class="article-meta">
-      
-      
-      <a href="/category/tech/" class="article-meta__category">技术教程</a>
-      
-      
-      <span class="article-meta__sep">·</span>
-      
-      <span class="article-meta__item">2026-06-17</span>
-      
-      <span class="article-meta__sep">·</span>
-      <span class="article-meta__item">7 分钟阅读</span>
-      
-    </div>
-    
-    <div class="article-header__tags">
-      
-      <a href="/tag/ji-shu-jiao-cheng/" class="tag-pill tag-pill--sm">技术教程</a>
-      
-    </div>
-    
-  </header>
 
-  
-  <div class="article-feature">
-    <img src="https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp" alt="typecho博客handsome主题博客信息添加全站字数、在线人数、访客总数和网站加载耗时" />
-  </div>
-  
+  <article class="post-page">
+    <div class="container">
 
-  <div class="article-content">
-    <p><img src="https://2.tdrme.cn/tdrme/img/main/20260617152651203.jpg" alt="62911a5edeeb7-VqUP.jpg" /></p>
+      
+      <header class="post-header">
+        <h1 class="post-main-title">typecho博客handsome主题博客信息添加全站字数、在线人数、访客总数和网站加载耗时</h1>
+        <div class="post-meta-line">
+          <time>2026-06-17T15:25:33+08:00</time>
+          <span class="dot">·</span>
+          <span>听得入迷空间</span>
+          
+            
+              <span class="dot">·</span>
+              <a href="/tag/ji-shu-jiao-cheng/" class="post-meta-tag">技术教程</a>
+            
+          
+        </div>
+      </header>
+
+      <div class="post-divider"></div>
+
+      
+      <div class="post-content">
+        <p><img src="https://2.tdrme.cn/tdrme/img/main/20260617152651203.jpg" alt="62911a5edeeb7-VqUP.jpg" /></p>
 <p>typecho博客handsome主题博客信息添加全站字数、在线人数、访客总数和网站加载耗时</p>
 <h2 id="heading">一</h2>
 <p>首先以下代码放在/handsome/libs/Content.php <code>class Content</code>之前</p>
@@ -323,170 +200,140 @@
 <p>内容转载自<a href="https://www.cloudsd.com/archives/25.html">https://www.cloudsd.com/archives/25.html</a></p>
 </blockquote>
 
+      </div>
+
+    </div>
+  </article>
+
+  
+
+<section class="comments-section">
+  <div class="container">
+    <h2 class="comments-title">评论</h2>
+
+    
+    <div id="twikoo"></div>
+    <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
+    <script>
+      twikoo.init({
+        envId: '',
+        el: '#twikoo',
+        lang: 'zh-CN'
+      });
+    </script>
+
+    
+
   </div>
-
-  
-  <nav class="post-nav">
-    
-    <a href="/post/H2Vcof/" class="post-nav-card post-nav-card--prev">
-      
-      <div class="post-nav-card__img">
-        <img src="https://www.tdrme.cn/api/bing/" alt="获取每日bing必应壁纸图片" loading="lazy" />
-      </div>
-      
-      <div class="post-nav-card__body">
-        <span class="post-nav-card__label meta-text">上一篇</span>
-        <span class="post-nav-card__title">获取每日bing必应壁纸图片</span>
-      </div>
-      <span class="post-nav-card__arrow">&larr;</span>
-    </a>
-    
-    
-    <a href="/post/H4j2gL/" class="post-nav-card post-nav-card--next">
-      <div class="post-nav-card__body">
-        <span class="post-nav-card__label meta-text">下一篇</span>
-        <span class="post-nav-card__title">李跳跳使用方法</span>
-      </div>
-      
-      <span class="post-nav-card__arrow">&rarr;</span>
-    </a>
-    
-  </nav>
-
-  
-  
-
-
-  
-    <section class="comment-section">
-  <h2 class="comment-section__title">评论</h2>
-  <div id="tcomment"></div>
-  <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
-  <script>
-    twikoo.init({
-      envId: 'https://talk.tdrme.cn',
-      el: '#tcomment'
-    });
-  </script>
 </section>
 
-  
 
 
 
-</article>
+  <script>
+  (function() {
+    var imgs = document.querySelectorAll('.post-content img');
+    if (!imgs.length) return;
+    try { Fancybox.unbind('.post-content img'); } catch(e) {}
+    Fancybox.bind('.post-content img', { groupAll: true });
+  })();
+  </script>
+
 
   </main>
 
   <footer class="site-footer">
-  <div class="footer-inner">
-
+  <div class="container">
     
-    
-    <nav class="footer-nav" aria-label="页脚导航">
-      
-      <a class="footer-nav__link" href="/">首页</a>
-      
-      <a class="footer-nav__link" href="/post">博客</a>
-      
-      <a class="footer-nav__link" href="/memos">闪念</a>
-      
-      <a class="footer-nav__link" href="/archives">归档</a>
-      
-      <a class="footer-nav__link" href="/tags">标签</a>
-      
-      <a class="footer-nav__link" href="/links/">友链</a>
-      
-      <a class="footer-nav__link" href="/post/about">关于</a>
-      
-    </nav>
-    
-
-    
-    <div class="footer-social">
-      
-      
-      
-      <a class="footer-social__link" href="/feed.xml" aria-label="RSS">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M6.18 15.64a2.18 2.18 0 110 4.36 2.18 2.18 0 010-4.36zM4 4.44A15.56 15.56 0 0119.56 20h-2.83A12.73 12.73 0 004 7.27V4.44zm0 5.66a9.9 9.9 0 019.9 9.9h-2.83A7.07 7.07 0 004 12.93V10.1z"/>
-        </svg>
-      </a>
-    </div>
-
-    
-    <div class="footer-copyright">
-      <p>&copy; 2026 听得入迷空间. All rights reserved.</p>
-    </div>
-
-    
-    
-    <div class="footer-custom">
-      Powered by <a href="https://www.gridea.pro/" target="_blank">Gridea Pro</a>
+      <div class="footer-info">Powered by <a href="https://www.gridea.pro/" target="_blank">Gridea Pro</a>
 <br>
 <a href="https://www.travellings.cn/go" target="_blank">🚇开往</a>-<a href="https://www.foreverblog.cn/go.html"" target="_blank">🌀虫洞</a>-<a href="https://travel.moe/go?travel=on" target="_blank">🪐异次元之旅</a>
 <br>
 <a href="https://icp.redcha.cn/beian/ICP-2025080059.html" title="茶ICP备2025080059号" target="_blank">茶ICP备2025080059号</a>-
-<a href="https://icp.gov.moe/?keyword=20241205" target="_blank">萌ICP备20241205号</a><br>
-    </div>
+<a href="https://icp.gov.moe/?keyword=20241205" target="_blank">萌ICP备20241205号</a><br></div>
     
-
-    
-    <div class="footer-powered">
-      <span>Powered by <a href="https://gridea.pro" target="_blank" rel="noopener noreferrer">Gridea Pro</a></span>
-    </div>
-
   </div>
 </footer>
 
+
   
-  <div class="search-overlay" id="searchOverlay" style="display:none;">
-  <div class="search-modal">
-    <div class="search-header">
-      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-      <input type="text" class="search-input" id="searchInput" placeholder="搜索文章..." autocomplete="off" />
-      <span class="search-kbd">&#8984;K</span>
-      <button class="search-close" id="searchClose" type="button" aria-label="关闭搜索">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
+  <div id="searchOverlay" class="search-overlay" aria-hidden="true" style="display:none">
+    <div class="search-modal">
+      <div class="search-bar">
+        <svg class="search-bar-icon" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="12.5" y1="12.5" x2="17" y2="17"/></svg>
+        <input id="searchInput" class="search-bar-input" type="text" placeholder="搜索文章…" autocomplete="off" />
+        <button id="searchClose" class="search-bar-close" aria-label="关闭">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="4" y1="4" x2="14" y2="14"/><line x1="14" y1="4" x2="4" y2="14"/></svg>
+        </button>
+      </div>
+      <div id="searchResults" class="search-results"></div>
+      <div class="search-hint">
+        <kbd>↑</kbd> <kbd>↓</kbd> 导航　<kbd>Enter</kbd> 打开　<kbd>Esc</kbd> 关闭
+      </div>
     </div>
-    <div class="search-results" id="searchResults"></div>
   </div>
-</div>
 
-<script src="/scripts/search.js"></script>
-  
+  <script src="/scripts/fancybox.umd.js"></script>
+  <script src="/scripts/search.js"></script>
+  <script>
+  (function() {
+    var main = document.querySelector('main');
+    if (!main) return;
 
-  
+    function sameOrigin(href) {
+      try { var u = new URL(href, location.origin); return u.origin === location.origin; }
+      catch(e) { return false; }
+    }
 
-  
-  <style>/*b站iframe优化*/
-.iframe_video{
-        position:relative;
-        height:0;
-        padding-bottom:56.25%;
-        overflow:hidden
-}
+    function load(url, push) {
+      main.classList.add('is-loading');
+      fetch(url)
+        .then(function(r) { return r.text(); })
+        .then(function(html) {
+          var doc = new DOMParser().parseFromString(html, 'text/html');
+          var newMain = doc.querySelector('main');
+          var newTitle = doc.querySelector('title');
+          if (!newMain) return;
 
-.iframe_video embed,.iframe_video iframe,.iframe_video object{
-        position:absolute;
-        top:0;
-        left:0;
-        width:100%;
-        height:100%
-}</style>
-  
+          main.innerHTML = newMain.innerHTML;
+          main.classList.remove('is-loading');
 
-  
+          if (push) history.pushState({url: url}, '', url);
 
-<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: flavor-theme v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+          // 重新执行内联脚本（innerHTML 不会自动执行 <script>）
+          var scripts = main.querySelectorAll('script');
+          scripts.forEach(function(s) {
+            var ns = document.createElement('script');
+            ns.textContent = s.textContent;
+            s.parentNode.replaceChild(ns, s);
+          });
+
+          if (newTitle) document.title = newTitle.textContent;
+        })
+        .catch(function() {
+          main.classList.remove('is-loading');
+          location.href = url;
+        });
+    }
+
+    document.addEventListener('click', function(e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      var href = a.getAttribute('href');
+      if (!href || href[0] === '#' || a.getAttribute('download') !== null) return;
+      if (a.getAttribute('target') === '_blank') return;
+      if (!sameOrigin(href)) return;
+      if (a.getAttribute('rel') === 'alternate') return;
+
+      e.preventDefault();
+      load(href, true);
+    });
+
+    window.addEventListener('popstate', function(e) {
+      if (e.state && e.state.url) load(e.state.url, false);
+    });
+  })();
+  </script>
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: ink v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
 </body>
 </html>
