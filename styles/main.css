@@ -5,16 +5,17 @@
 
 /* 字体通过 base.html 中的 <link> 标签加载 MiSans */
 :root {
-  /* 颜色 */
-  --color-bg: #FAFAFA;
-  --color-text: #09090B;
-  --color-text-secondary: #64748B;
-  --color-accent: #EC4899;
-  --color-divider: #E4E4E7;
-  --color-tag-bg: #E8ECF0;
+  /* 颜色 — 暖纸色调 (参照 oxxx.cn / SEN 主题) */
+  --color-bg: #fcfaf5;
+  --color-text: #3a3330;
+  --color-text-secondary: #3a3330;
+  --color-accent: #3a3330;
+  --color-divider: #e4dfd2;
+  --color-tag-bg: #f6f1e7;
   --color-footer-bg: #c7c7cb00;
-  --color-footer-text: #64748B;
-  --color-footer-muted: #94A3B8;
+  --color-footer-text: #6f7f96;
+  --color-footer-muted: #9eabc1;
+  --grid-line-opacity: 0.24;
 
   /* 字体 */
   --font-heading: 'MiSans', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
@@ -64,6 +65,10 @@ html {
 
 body {
   background-color: var(--color-bg);
+  background-image:
+    linear-gradient(to right, rgb(228 223 210 / var(--grid-line-opacity, 0.24)) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(228 223 210 / var(--grid-line-opacity, 0.24)) 1px, transparent 1px);
+  background-size: 20px 20px;
   color: var(--color-text);
   font-family: var(--font-body);
   line-height: 2.1;
@@ -110,6 +115,10 @@ img {
   width: var(--sidebar-width);
   z-index: 100;
   background-color: var(--color-bg);
+  background-image:
+    linear-gradient(to right, rgb(228 223 210 / var(--grid-line-opacity, 0.24)) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(228 223 210 / var(--grid-line-opacity, 0.24)) 1px, transparent 1px);
+  background-size: 20px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -146,6 +155,7 @@ img {
 .sidebar-nav {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 2px;
   flex: 1;
   margin-top: 56px;
@@ -156,23 +166,25 @@ img {
   font-size: 15px;
   font-weight: 500;
   color: var(--color-text-secondary);
-  padding: 10px 14px;
+  padding: 8px 20px;
   border-radius: var(--radius-sm);
   letter-spacing: var(--letter-spacing-ui);
   transition: all 0.18s;
-  display: block;
+  display: inline-block;
   text-align: center;
 }
 
 .sidebar-link:hover {
-  color: var(--color-text);
-  background-color: var(--color-tag-bg);
+  color: var(--color-bg);
+  background-color: var(--color-accent);
 }
 
 .sidebar-link.active {
-  color: var(--color-text);
-  background-color: var(--color-tag-bg);
+  color: var(--color-accent);
+  background-color: transparent;
   font-weight: 600;
+  border-bottom: 2px solid var(--color-accent);
+  border-radius: 0;
 }
 
 /* ── 侧边栏底部操作区 ── */
@@ -294,7 +306,7 @@ img {
   color: var(--color-text-secondary);
   letter-spacing: var(--letter-spacing-body);
   padding-left: var(--spacing-lg);
-  border-left: 2px solid rgba(236, 72, 153, 0.22);
+  border-left: 2px solid rgba(58, 51, 48, 0.22);
   margin-bottom: var(--spacing-lg);
   max-width: 560px;
 }
@@ -447,11 +459,12 @@ img {
   line-height: 1.5;
   letter-spacing: var(--letter-spacing-heading);
   margin-bottom: 10px;
-  transition: color 0.2s;
+  transition: color 0.2s, background-color 0.2s;
 }
 
 .post-card-title:hover {
-  color: var(--color-accent);
+  color: var(--color-bg);
+  background-color: var(--color-accent);
 }
 
 /* ── 摘要 ── */
@@ -588,9 +601,9 @@ img {
   font-size: 16px;
   color: var(--color-text-secondary);
   padding: 10px 16px;
-  border: 1px solid #D9D9E0;
+  border: 1px solid #d8d3c6;
   border-radius: 6px;
-  background-color: #F2F2F5;
+  background-color: #f0ece3;
   transition: all 0.2s;
   text-decoration: none;
   line-height: 1;
@@ -614,9 +627,9 @@ img {
   font-size: 16px;
   color: var(--color-text-secondary);
   padding: 10px 14px;
-  border: 1px solid #D9D9E0;
+  border: 1px solid #d8d3c6;
   border-radius: 6px;
-  background-color: #F2F2F5;
+  background-color: #f0ece3;
   transition: all 0.2s;
   text-decoration: none;
   line-height: 1;
@@ -637,9 +650,9 @@ img {
 }
 
 .pagination-disabled {
-  color: #C4C4CA;
-  border-color: #E8E8ED;
-  background-color: #F7F7FA;
+  color: #c4bfb5;
+  border-color: #e3dfd4;
+  background-color: #f3efe6;
   cursor: default;
 }
 
@@ -758,7 +771,7 @@ img {
 .post-content a {
   color: var(--color-accent);
   text-decoration: underline;
-  text-decoration-color: rgba(236, 72, 153, 0.35);
+  text-decoration-color: rgba(58, 51, 48, 0.35);
   text-decoration-thickness: 6px;
   text-decoration-skip-ink: none;
   text-underline-offset: -3px;
@@ -783,7 +796,7 @@ img {
 
 /* ── 代码块 ── */
 .post-content pre {
-  background-color: #F5F5F7;
+  background-color: #f0ece3;
   border: 1px solid var(--color-divider);
   padding: var(--spacing-lg);
   border-radius: var(--radius-md);
@@ -833,7 +846,7 @@ img {
 .post-content .chroma .c,
 .post-content .chroma .c1,
 .post-content .chroma .cm,
-.post-content .chroma .cs { color: #94A3B8; font-style: italic; }
+.post-content .chroma .cs { color: #9eabc1; font-style: italic; }
 
 .post-content .chroma .nf,
 .post-content .chroma .fm { color: #6f42c1; }
@@ -951,7 +964,7 @@ img {
 
 .category-card:hover {
   border-color: var(--color-accent);
-  background-color: rgba(236, 72, 153, 0.03);
+  background-color: rgba(58, 51, 48, 0.03);
 }
 
 .category-card .cat-name {
@@ -1392,7 +1405,7 @@ img {
     cursor: pointer;
     padding: 11px;
     border-radius: var(--radius-sm);
-    background-color: rgba(250, 250, 250, 0.92);
+    background-color: rgba(252, 250, 245, 0.92);
     backdrop-filter: blur(6px);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10), 0 0 0 1px rgba(0, 0, 0, 0.04);
   }
@@ -1887,7 +1900,7 @@ main.is-loading {
 }
 
 .sr-item-title mark {
-  background-color: rgba(236, 72, 153, 0.15);
+  background-color: rgba(58, 51, 48, 0.15);
   color: var(--color-accent);
   border-radius: 2px;
   padding: 0 1px;
@@ -1917,7 +1930,7 @@ main.is-loading {
 }
 
 .sr-item-excerpt mark {
-  background-color: rgba(236, 72, 153, 0.15);
+  background-color: rgba(58, 51, 48, 0.15);
   color: var(--color-accent);
   border-radius: 2px;
   padding: 0 1px;
@@ -1949,7 +1962,7 @@ main.is-loading {
 }
 
 .sr-tag--hit {
-  background-color: rgba(236, 72, 153, 0.12);
+  background-color: rgba(58, 51, 48, 0.12);
   color: var(--color-accent);
 }
 
