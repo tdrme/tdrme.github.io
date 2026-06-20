@@ -1216,8 +1216,12 @@ img {
   font-family: var(--font-ui);
   font-size: 13px;
   color: var(--color-text-secondary);
-  line-height: 1.9;
+  line-height: 1.55;
   margin-top: var(--spacing-xs);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 /* 空状态 */
@@ -1311,10 +1315,6 @@ img {
 
   .hero-title {
     font-size: 64px;
-  }
-
-  .links-grid {
-    grid-template-columns: repeat(3, 1fr);
   }
 
   .top-posts-grid {
