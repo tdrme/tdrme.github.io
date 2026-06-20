@@ -3,7 +3,7 @@
    设计系统变量
    =================================================== */
 
-/* 字体通过 base.html 中的 <link> 标签加载霞鹜文楷 */
+/* 字体通过 base.html 中的 <link> 标签加载 MiSans */
 :root {
   /* 颜色 */
   --color-bg: #FAFAFA;
@@ -17,9 +17,9 @@
   --color-footer-muted: #52525B;
 
   /* 字体 */
-  --font-heading: 'LXGW WenKai', '霞鹜文楷', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  --font-body: 'LXGW WenKai', '霞鹜文楷', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  --font-ui: 'LXGW WenKai', '霞鹜文楷', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-heading: 'MiSans', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-body: 'MiSans', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-ui: 'MiSans', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
 
   /* 间距 */
   --container-max: 900px;
