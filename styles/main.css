@@ -117,7 +117,6 @@ img {
   width: var(--sidebar-width);
   z-index: 100;
   background-color: var(--color-bg);
-  border-right: 1px solid var(--color-divider);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -308,12 +307,6 @@ img {
   line-height: 1.95;
 }
 
-.hero-divider {
-  width: 60px;
-  height: 2px;
-  background-color: var(--color-accent);
-}
-
 .hero-memo-label {
   font-family: var(--font-ui);
   font-size: 14px;
@@ -426,18 +419,6 @@ img {
   justify-content: flex-end;
 }
 
-.top-post-card .top-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: var(--color-accent);
-  color: white;
-  font-family: var(--font-ui);
-  font-size: 11px;
-  padding: 2px 8px;
-  border-radius: var(--radius-sm);
-}
-
 .top-post-card .card-title {
   font-family: var(--font-heading);
   font-size: 14px;
@@ -477,21 +458,10 @@ img {
   padding-top: 0;
 }
 
-/* ── 日期 ── */
-.post-card-date {
-  display: block;
-  font-family: var(--font-ui);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--color-text-secondary);
-  letter-spacing: 0.08em;
-  margin-bottom: 10px;
-}
-
 /* ── 标题 ── */
 .post-card-title {
   font-family: var(--font-heading);
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--color-text);
   line-height: 1.5;
@@ -518,43 +488,57 @@ img {
   overflow: hidden;
 }
 
-/* ── 底部元信息：标签 + 阅读时长 ── */
-.post-card-footer {
+/* ── 底部元信息：日期 + 标签 + 阅读时长 同一行 ── */
+.post-card-meta {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 12px;
   flex-wrap: wrap;
-  gap: var(--spacing-sm);
+}
+
+.post-card-date {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 
 .post-card-reading-time {
   font-family: var(--font-ui);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--color-text-secondary);
-  opacity: 0.55;
+  opacity: 0.6;
   letter-spacing: 0.04em;
   white-space: nowrap;
+  margin-left: auto;
 }
 
 .post-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-xs);
+  gap: 0;
+  align-items: center;
 }
 
 .post-tag {
-  display: inline-block;
-  background-color: var(--color-tag-bg);
-  color: #3F3F46;
   font-family: var(--font-ui);
-  font-size: 12px;
-  padding: 4px 12px;
-  border-radius: var(--radius-sm);
-  transition: background-color 0.2s;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  transition: color 0.2s;
+  white-space: nowrap;
 }
 
 .post-tag:hover {
-  background-color: var(--color-divider);
+  color: var(--color-accent);
+}
+
+/* 标签之间的分隔符 */
+.post-tag:not(:last-child)::after {
+  content: '·';
+  margin: 0 6px;
+  color: var(--color-divider);
 }
 
 /* 查看更多按钮 */
@@ -587,7 +571,7 @@ img {
 
 .page-title {
   font-family: var(--font-heading);
-  font-size: 48px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--color-text);
   line-height: 1.55;
@@ -601,12 +585,6 @@ img {
   color: var(--color-text-secondary);
   line-height: 1.9;
   margin-bottom: 12px;
-}
-
-.page-subtitle-divider {
-  width: 60px;
-  height: 2px;
-  background-color: var(--color-accent);
 }
 
 .blog-post-list {
@@ -739,7 +717,7 @@ img {
 
 .post-main-title {
   font-family: var(--font-heading);
-  font-size: 40px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 1.6;
   letter-spacing: var(--letter-spacing-heading);
@@ -789,7 +767,7 @@ img {
 /* 文章内容排版 */
 .post-content {
   font-family: var(--font-body);
-  font-size: 17px;
+  font-size: 16px;
   line-height: 2.3;
   letter-spacing: var(--letter-spacing-body);
   color: var(--color-text);
@@ -855,7 +833,10 @@ img {
 .post-content a {
   color: var(--color-accent);
   text-decoration: underline;
-  text-decoration-color: rgba(236, 72, 153, 0.3);
+  text-decoration-color: rgba(236, 72, 153, 0.35);
+  text-decoration-thickness: 6px;
+  text-decoration-skip-ink: none;
+  text-underline-offset: -3px;
   transition: text-decoration-color 0.2s;
   overflow-wrap: anywhere;
   word-break: break-word;
@@ -865,31 +846,87 @@ img {
   text-decoration-color: var(--color-accent);
 }
 
+/* ── 行内代码 ── */
 .post-content code {
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
-  font-size: 0.875em;
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 0.85em;
   background-color: var(--color-tag-bg);
+  color: var(--color-text);
   padding: 2px 6px;
   border-radius: 3px;
 }
 
+/* ── 代码块 ── */
 .post-content pre {
-  background-color: #1e1e1e;
-  color: #d4d4d4;
+  background-color: #F5F5F7;
+  border: 1px solid var(--color-divider);
   padding: var(--spacing-lg);
   border-radius: var(--radius-md);
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin: 2.5em 0;
-  overflow-wrap: break-word;
-  white-space: pre-wrap;
-  word-break: break-word;
+  line-height: 1.6;
 }
 
 .post-content pre code {
+  font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 13.5px;
   background: none;
   padding: 0;
-  font-size: 14px;
+  border-radius: 0;
+  color: #1e1e1e;
+  white-space: pre;
+  display: block;
 }
+
+/* ── Chroma 语法高亮（浅色，GitHub Light 风格） ── */
+/* 当 Gridea 后端输出 chroma 高亮 HTML 时自动着色；无高亮则为单色 */
+.post-content .chroma { color: #1e1e1e; }
+.post-content .chroma .k,
+.post-content .chroma .kc,
+.post-content .chroma .kd,
+.post-content .chroma .kn,
+.post-content .chroma .kp,
+.post-content .chroma .kr,
+.post-content .chroma .kt { color: #d73a49; font-weight: 600; }
+
+.post-content .chroma .s,
+.post-content .chroma .sa,
+.post-content .chroma .sb,
+.post-content .chroma .sc,
+.post-content .chroma .s1,
+.post-content .chroma .s2,
+.post-content .chroma .si,
+.post-content .chroma .sx { color: #032f62; }
+
+.post-content .chroma .m,
+.post-content .chroma .mi,
+.post-content .chroma .mf,
+.post-content .chroma .mh,
+.post-content .chroma .il { color: #005cc5; }
+
+.post-content .chroma .c,
+.post-content .chroma .c1,
+.post-content .chroma .cm,
+.post-content .chroma .cs { color: #94A3B8; font-style: italic; }
+
+.post-content .chroma .nf,
+.post-content .chroma .fm { color: #6f42c1; }
+
+.post-content .chroma .nc,
+.post-content .chroma .nn,
+.post-content .chroma .nt { color: #22863a; }
+
+.post-content .chroma .na,
+.post-content .chroma .nb,
+.post-content .chroma .bp { color: #005cc5; }
+
+.post-content .chroma .o,
+.post-content .chroma .ow { color: #d73a49; }
+
+.post-content .chroma .gi { color: #22863a; }
+.post-content .chroma .gd { color: #d73a49; }
+.post-content .chroma .err { color: #d73a49; font-weight: 600; }
 
 .post-content ul,
 .post-content ol {
@@ -1239,7 +1276,7 @@ img {
 
 .link-card__name {
   font-family: var(--font-heading);
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--color-text);
   display: block;
@@ -1593,18 +1630,22 @@ img {
   }
 
   .post-card-title {
-    font-size: 21px;
+    font-size: 20px;
     line-height: 1.45;
   }
 
   .post-card-excerpt {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.8;
     -webkit-line-clamp: 3;
   }
 
   .post-card-date {
     font-size: 12px;
+  }
+
+  .post-card-meta {
+    gap: 8px;
   }
 
   .view-more-btn {
@@ -1637,11 +1678,11 @@ img {
   /* ---- 文章页 ---- */
 
   .page-title {
-    font-size: 28px;
+    font-size: 20px;
   }
 
   .post-main-title {
-    font-size: 28px;
+    font-size: 20px;
   }
 
   .post-meta-line {
@@ -1673,7 +1714,7 @@ img {
   }
 
   .memo-text {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.95;
   }
 
@@ -1801,7 +1842,7 @@ img {
 
   .page-title,
   .post-main-title {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .memo-item {
