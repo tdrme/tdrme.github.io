@@ -23,11 +23,10 @@
 
   /* 布局尺寸 */
   --sidebar-width: 260px;
-  --content-max: 720px;
   --layout-total: calc(var(--sidebar-width) + var(--container-max)); /* sidebar + content */
 
   /* 间距（保留变量供向后兼容） */
-  --container-max: 900px;
+  --container-max: 640px;
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
@@ -89,12 +88,6 @@ img {
 
 .container {
   max-width: var(--container-max);
-  margin: 0 auto;
-  padding: 0 var(--spacing-xl);
-}
-
-.content-container {
-  max-width: var(--content-max);
   margin: 0 auto;
   padding: 0 var(--spacing-xl);
 }
@@ -256,29 +249,6 @@ img {
   color: var(--color-footer-text);
 }
 
-.site-footer .footer-links {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-md);
-  margin-top: var(--spacing-sm);
-}
-
-.site-footer .footer-links a {
-  font-family: var(--font-ui);
-  font-size: 14px;
-  color: var(--color-accent);
-  transition: opacity 0.2s;
-}
-
-.site-footer .footer-links a:hover {
-  opacity: 0.7;
-}
-
-.site-footer .footer-links .sep {
-  color: var(--color-footer-muted);
-}
-
 /* ===================================================
    首页 - Hero 区域
    =================================================== */
@@ -352,6 +322,11 @@ img {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--spacing-md);
+}
+
+/* 超过 4 篇置顶时隐藏多余卡片 */
+.top-posts-grid > .top-post-card:nth-child(n+5) {
+  display: none;
 }
 
 .top-post-card {
@@ -456,6 +431,10 @@ img {
 
 .post-card:first-child {
   padding-top: 0;
+}
+
+.recent-posts-section .post-list > article:nth-of-type(n+5) {
+  display: none;
 }
 
 /* ── 标题 ── */
@@ -671,48 +650,9 @@ img {
   padding: 0 0 var(--spacing-3xl);
 }
 
-.post-breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-xl);
-}
-
-.post-breadcrumb a {
-  font-family: var(--font-ui);
-  font-size: 13px;
-  color: var(--color-accent);
-  transition: opacity 0.2s;
-}
-
-.post-breadcrumb a:hover {
-  opacity: 0.8;
-}
-
-.post-breadcrumb .sep {
-  font-size: 13px;
-  color: var(--color-text-secondary);
-}
-
-.post-breadcrumb .current {
-  font-family: var(--font-ui);
-  font-size: 13px;
-  color: var(--color-text-secondary);
-}
-
 .post-header {
   margin-bottom: var(--spacing-2xl);
   padding-top: 80px;
-}
-
-.post-header-tags {
-  display: flex;
-  gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-lg);
-}
-
-.post-header-tags .post-tag {
-  font-size: 13px;
 }
 
 .post-main-title {
@@ -746,22 +686,6 @@ img {
 
 .post-meta-tag:hover {
   color: var(--color-accent);
-}
-
-.post-divider {
-  width: 60px;
-  height: 2px;
-  background-color: var(--color-accent);
-  margin-bottom: var(--spacing-2xl);
-}
-
-.post-footer-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--spacing-sm);
-  margin-top: var(--spacing-2xl);
-  padding-top: var(--spacing-xl);
-  border-top: 1px solid var(--color-divider);
 }
 
 /* 文章内容排版 */
@@ -971,6 +895,11 @@ img {
 
 .archives-page {
   padding-bottom: var(--spacing-3xl);
+}
+
+/* 归档页 - 隐藏平铺列表（JS 分组） */
+#archives-flat-list {
+  display: none;
 }
 
 /* 分类部分 */
@@ -1310,69 +1239,6 @@ img {
 }
 
 /* ===================================================
-   关于页 (about page)
-   =================================================== */
-
-.about-page {
-  padding-bottom: var(--spacing-3xl);
-}
-
-.about-content {
-  max-width: var(--content-max);
-}
-
-.about-content p {
-  font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 2.3;
-  letter-spacing: var(--letter-spacing-body);
-  color: var(--color-text);
-  margin-bottom: 2.2em;
-}
-
-.about-divider {
-  width: 40px;
-  height: 2px;
-  background-color: var(--color-accent);
-  margin: var(--spacing-2xl) 0;
-}
-
-.about-contact-title {
-  font-family: var(--font-heading);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: var(--spacing-lg);
-  line-height: 1.6;
-  letter-spacing: var(--letter-spacing-heading);
-}
-
-.contact-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-}
-
-.contact-item {
-  display: flex;
-  align-items: baseline;
-  gap: var(--spacing-lg);
-  font-family: var(--font-ui);
-  font-size: 15px;
-}
-
-.contact-item .contact-label {
-  color: var(--color-text-secondary);
-  width: 60px;
-  flex-shrink: 0;
-}
-
-.contact-item a {
-  color: var(--color-accent);
-}
-
-/* ===================================================
    404 页
    =================================================== */
 
@@ -1424,7 +1290,7 @@ img {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
 }
@@ -1435,8 +1301,7 @@ img {
 
 @media (min-width: 1280px) {
   :root {
-    --container-max: 900px;
-    --content-max: 720px;
+    --container-max: 640px;
   }
 
   .hero {
@@ -1483,8 +1348,7 @@ img {
     --spacing-3xl: 60px;
   }
 
-  .container,
-  .content-container {
+  .container {
     padding: 0 var(--spacing-lg);
   }
 
@@ -1725,13 +1589,6 @@ img {
     gap: var(--spacing-lg);
   }
 
-  /* ---- 关于 ---- */
-
-  .about-content p {
-    font-size: 15px;
-    line-height: 2.1;
-  }
-
   /* ---- 分页 ---- */
 
   .pagination {
@@ -1846,8 +1703,7 @@ img {
   }
 
   .memo-item {
-    grid-template-columns: 48px 1fr;
-    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
   }
 
   .pagination-btn,
@@ -1882,19 +1738,6 @@ img {
   .sr-item-excerpt {
     font-size: 13px;
   }
-}
-
-/* ===================================================
-   归档页 - 隐藏平铺列表（JS 分组）
-   =================================================== */
-
-#archives-flat-list {
-  display: none;
-}
-
-/* 超过 4 篇置顶时隐藏多余卡片 */
-.top-posts-grid > .top-post-card:nth-child(n+5) {
-  display: none;
 }
 
 /* ===================================================
