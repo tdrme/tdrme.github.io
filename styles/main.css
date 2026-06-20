@@ -69,6 +69,7 @@ body {
     linear-gradient(to right, rgb(228 223 210 / var(--grid-line-opacity, 0.24)) 1px, transparent 1px),
     linear-gradient(to bottom, rgb(228 223 210 / var(--grid-line-opacity, 0.24)) 1px, transparent 1px);
   background-size: 10px 10px;
+  background-attachment: fixed;
   color: var(--color-text);
   font-family: var(--font-body);
   line-height: 2.1;
@@ -114,11 +115,7 @@ img {
   bottom: 0;
   width: var(--sidebar-width);
   z-index: 100;
-  background-color: var(--color-bg);
-  background-image:
-    linear-gradient(to right, rgb(228 223 210 / var(--grid-line-opacity, 0.24)) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(228 223 210 / var(--grid-line-opacity, 0.24)) 1px, transparent 1px);
-  background-size: 10px 10px;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1383,6 +1380,7 @@ img {
     z-index: 200;
     box-shadow: none;
     padding: 56px 28px 36px;
+    background-color: var(--color-bg);
   }
 
   .nav-toggle:checked ~ .sidebar {
