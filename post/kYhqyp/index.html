@@ -13,11 +13,11 @@
 &amp;lt;div class=&amp;quot;scroll-line&amp;quot; style=&amp;quot;z-index: 999;posi..." />
   <!-- MiSans Web 字体 -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Medium.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Bold.min.css" />
+  <link rel="stylesheet" href="/styles/MiSans-Medium.min.css" />
+  <link rel="stylesheet" href="/styles/MiSans-Bold.min.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/fancybox.css" />
-  <link rel="alternate" type="application/rss+xml" title="听得入迷空间" href="/atom.xml" />
+  <link rel="alternate" type="application/rss+xml" title="听得入迷空间" href="/feed.xml" />
   
   
   <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
@@ -26,7 +26,7 @@
 <meta name="description" content="看到别人的博客网页顶部有一个页面翻动的进度条，页面滚动到哪里进度条也相应变动长短。自己也加了一个。 以下代码最好放到主head里 &amp;lt;!--动态滚动进度条--&amp;gt; &amp;lt;div class=&amp;quot;scroll-line&amp;quot; style=&amp;quot;z-in...">
 <meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
 <link rel="canonical" href="https://blog.tdrme.cn/post/kYhqyp/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"添加网页动态滚动进度条|滚动指示器","url":"https://blog.tdrme.cn/post/kYhqyp/","description":"看到别人的博客网页顶部有一个页面翻动的进度条，页面滚动到哪里进度条也相应变动长短。自己也加了一个。 以下代码最好放到主head里 \u0026lt;!--动态滚动进度条--\u0026gt; \u0026lt;div class=\u0026quot;scroll-line\u0026quot; style=\u0026quot;z-in...","image":"https://2.tdrme.cn/tdrme/img/main/20260616014446505.webp","datePublished":"2026-06-17T23:22:18+08:00","dateModified":"2026-06-17T15:24:00+08:00","author":{"@type":"Person","name":"听得入迷空间"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"听得入迷空间"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"添加网页动态滚动进度条|滚动指示器","url":"https://blog.tdrme.cn/post/kYhqyp/","description":"看到别人的博客网页顶部有一个页面翻动的进度条，页面滚动到哪里进度条也相应变动长短。自己也加了一个。 以下代码最好放到主head里 \u0026lt;!--动态滚动进度条--\u0026gt; \u0026lt;div class=\u0026quot;scroll-line\u0026quot; style=\u0026quot;z-in...","image":"https://2.tdrme.cn/tdrme/img/main/20260616014446505.webp","datePublished":"2026-06-17T23:22:18+08:00","dateModified":"2026-06-20T09:09:38+08:00","author":{"@type":"Person","name":"听得入迷空间"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"听得入迷空间"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.tdrme.cn","name":"听得入迷空间","position":1},{"@type":"ListItem","item":"https://blog.tdrme.cn/post/kYhqyp/","name":"添加网页动态滚动进度条|滚动指示器","position":2}]}</script>
 <!--logo-->
 <!-- 浏览器标签页显示的图标 -->
@@ -38,35 +38,61 @@
 </head>
 <body>
 
-  <header class="site-header">
-  <div class="container">
-    <a href="https://blog.tdrme.cn" class="site-logo">听得入迷空间</a>
-    <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <label for="nav-toggle" class="nav-toggle-label" aria-label="菜单">
-      <span></span><span></span><span></span>
-    </label>
-    <nav class="site-nav">
+  <div class="app-layout">
+    
+<input type="checkbox" id="nav-toggle" class="nav-toggle">
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-inner">
+    <a href="https://blog.tdrme.cn" class="sidebar-brand">听得入迷空间</a>
+    
+
+    <nav class="sidebar-nav">
       
-      <a href="/" class="nav-link">首页</a>
+      <a href="/" class="sidebar-link">首页</a>
       
-      <a href="/memos" class="nav-link">闪念</a>
+      <a href="/memos" class="sidebar-link">闪念</a>
       
-      <a href="/archives" class="nav-link">归档</a>
+      <a href="/archives" class="sidebar-link">归档</a>
       
-      <a href="/links/" class="nav-link">友链</a>
+      <a href="/links/" class="sidebar-link">友链</a>
       
-      <a href="/post/about" class="nav-link">关于</a>
+      <a href="/post/about" class="sidebar-link">关于</a>
       
     </nav>
-    <button class="search-btn" aria-label="搜索" title="搜索 (⌘K)">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="12.5" y1="12.5" x2="17" y2="17"/></svg>
-    </button>
+
+    <div class="sidebar-actions">
+      <button class="sidebar-search-btn search-btn" aria-label="搜索" title="搜索 (⌘K)">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="12.5" y1="12.5" x2="17" y2="17"/></svg>
+        <span>搜索</span>
+      </button>
+    </div>
   </div>
-</header>
+</aside>
+
+<label for="nav-toggle" class="sidebar-mobile-toggle" aria-label="菜单">
+  <span></span><span></span><span></span>
+</label>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<script>
+(function() {
+  var links = document.querySelectorAll('.sidebar-link');
+  var path = window.location.pathname.replace(/\/+$/, '') || '/';
+  links.forEach(function(a) {
+    var href = a.getAttribute('href').replace(/\/+$/, '') || '/';
+    if (href === path || (path !== '/' && href !== '/' && path.indexOf(href) === 0)) {
+      a.classList.add('active');
+    }
+  });
+})();
+</script>
 
 
-  <main>
-    
+    <div class="main-area">
+      <main>
+        
 
   <article class="post-page">
     <div class="container">
@@ -97,27 +123,14 @@
 <pre><code class="language-html">&lt;!--动态滚动进度条--&gt;
 
 &lt;div class=&quot;scroll-line&quot; style=&quot;z-index: 999;position: fixed;height: 3px;top: 0px;background-color: #6B999B;width: 0%;&quot;&gt;&lt;/div&gt;
-
 &lt;script type=&quot;text/javascript&quot;&gt;
-
     $(window).scroll(function() {
-
         var winTop = $(window).scrollTop(), //滚动条的位置
-
                 docHeight = $(document).height(),   //文档高度
-
                 winHeight = $(window).height(); //窗口高度
-
- 
-
         var scrolled = (winTop / (docHeight - winHeight))*100;
-
- 
-
         $('.scroll-line').css('width', (scrolled + '%'));
-
     });
-
 &lt;/script&gt;
 </code></pre>
 <blockquote>
@@ -171,9 +184,9 @@
   </script>
 
 
-  </main>
+      </main>
 
-  <footer class="site-footer">
+      <footer class="site-footer">
   <div class="container">
     
       <div class="footer-info">Powered by <a href="https://www.gridea.pro/" target="_blank">Gridea Pro</a>
@@ -186,6 +199,8 @@
   </div>
 </footer>
 
+    </div>
+  </div>
 
   
   <div id="searchOverlay" class="search-overlay" aria-hidden="true" style="display:none">
@@ -205,33 +220,20 @@
   </div>
 
   <script>
-  /* 移动端导航：class 驱动展开/收回 */
+  /* 移动端侧边栏：checkbox 驱动展开/收回 */
   (function() {
     var toggle = document.getElementById('nav-toggle');
     if (!toggle) return;
-    var header = toggle.closest('.site-header');
-    var nav = header && header.querySelector('.site-nav');
-    var label = document.querySelector('label[for="nav-toggle"]');
-    if (!nav || !label) return;
-
-    function syncNav() {
-      if (toggle.checked) {
-        nav.classList.add('nav-open');
-        header.classList.add('nav-open-state');
-      } else {
-        nav.classList.remove('nav-open');
-        header.classList.remove('nav-open-state');
-      }
-    }
+    var sidebar = document.getElementById('sidebar');
+    var label = document.querySelector('.sidebar-mobile-toggle');
+    var overlay = document.getElementById('sidebarOverlay');
+    if (!sidebar || !label || !overlay) return;
 
     function closeNav() {
       toggle.checked = false;
-      syncNav();
     }
-
     function openNav() {
       toggle.checked = true;
-      syncNav();
     }
 
     /* 点击汉堡 → 手动切换（阻止原生 label-for 行为，避免重复触发） */
@@ -240,16 +242,16 @@
       toggle.checked ? closeNav() : openNav();
     });
 
-    /* 点击导航链接 → 收回 */
-    nav.addEventListener('click', function(e) {
-      if (e.target.closest('a')) closeNav();
+    /* 点击导航链接或搜索按钮 → 收回 */
+    sidebar.addEventListener('click', function(e) {
+      if (e.target.closest('a') || e.target.closest('button')) {
+        closeNav();
+      }
     });
 
-    /* 点击导航以外区域 → 收回 */
-    document.addEventListener('click', function(e) {
-      if (!toggle.checked) return;
-      if (label.contains(e.target)) return;
-      if (!nav.contains(e.target)) closeNav();
+    /* 点击遮罩 → 收回 */
+    overlay.addEventListener('click', function() {
+      closeNav();
     });
   })();
   </script>
@@ -332,6 +334,20 @@
           }
 
           if (newTitle) document.title = newTitle.textContent;
+
+          // 切换页面后自动回到顶部
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+
+          // 重新标记当前页面对应的侧边栏链接
+          var links = document.querySelectorAll('.sidebar-link');
+          var path = window.location.pathname.replace(/\/+$/, '') || '/';
+          links.forEach(function(a) {
+            a.classList.remove('active');
+            var href = a.getAttribute('href').replace(/\/+$/, '') || '/';
+            if (href === path || (path !== '/' && href !== '/' && path.indexOf(href) === 0)) {
+              a.classList.add('active');
+            }
+          });
         })
         .catch(function() {
           main.classList.remove('is-loading');

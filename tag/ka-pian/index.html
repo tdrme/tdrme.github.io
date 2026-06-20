@@ -8,11 +8,11 @@
   <meta name="description" content="" />
   <!-- MiSans Web 字体 -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Medium.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Bold.min.css" />
+  <link rel="stylesheet" href="/styles/MiSans-Medium.min.css" />
+  <link rel="stylesheet" href="/styles/MiSans-Bold.min.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/fancybox.css" />
-  <link rel="alternate" type="application/rss+xml" title="听得入迷空间" href="/atom.xml" />
+  <link rel="alternate" type="application/rss+xml" title="听得入迷空间" href="/feed.xml" />
   
   
   <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
@@ -31,35 +31,61 @@
 </head>
 <body>
 
-  <header class="site-header">
-  <div class="container">
-    <a href="https://blog.tdrme.cn" class="site-logo">听得入迷空间</a>
-    <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <label for="nav-toggle" class="nav-toggle-label" aria-label="菜单">
-      <span></span><span></span><span></span>
-    </label>
-    <nav class="site-nav">
+  <div class="app-layout">
+    
+<input type="checkbox" id="nav-toggle" class="nav-toggle">
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-inner">
+    <a href="https://blog.tdrme.cn" class="sidebar-brand">听得入迷空间</a>
+    
+
+    <nav class="sidebar-nav">
       
-      <a href="/" class="nav-link">首页</a>
+      <a href="/" class="sidebar-link">首页</a>
       
-      <a href="/memos" class="nav-link">闪念</a>
+      <a href="/memos" class="sidebar-link">闪念</a>
       
-      <a href="/archives" class="nav-link">归档</a>
+      <a href="/archives" class="sidebar-link">归档</a>
       
-      <a href="/links/" class="nav-link">友链</a>
+      <a href="/links/" class="sidebar-link">友链</a>
       
-      <a href="/post/about" class="nav-link">关于</a>
+      <a href="/post/about" class="sidebar-link">关于</a>
       
     </nav>
-    <button class="search-btn" aria-label="搜索" title="搜索 (⌘K)">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="12.5" y1="12.5" x2="17" y2="17"/></svg>
-    </button>
+
+    <div class="sidebar-actions">
+      <button class="sidebar-search-btn search-btn" aria-label="搜索" title="搜索 (⌘K)">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="12.5" y1="12.5" x2="17" y2="17"/></svg>
+        <span>搜索</span>
+      </button>
+    </div>
   </div>
-</header>
+</aside>
+
+<label for="nav-toggle" class="sidebar-mobile-toggle" aria-label="菜单">
+  <span></span><span></span><span></span>
+</label>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<script>
+(function() {
+  var links = document.querySelectorAll('.sidebar-link');
+  var path = window.location.pathname.replace(/\/+$/, '') || '/';
+  links.forEach(function(a) {
+    var href = a.getAttribute('href').replace(/\/+$/, '') || '/';
+    if (href === path || (path !== '/' && href !== '/' && path.indexOf(href) === 0)) {
+      a.classList.add('active');
+    }
+  });
+})();
+</script>
 
 
-  <main>
-    
+    <div class="main-area">
+      <main>
+        
 
   <div class="container">
 
@@ -77,17 +103,13 @@
           
             
               <article class="post-card">
-                
-                  <div class="post-card-image-placeholder"></div>
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T18:25:51+08:00</time>
-                  <a href="/post/BuCHe9/"><h2 class="post-card-title">关于河南话学术研究待解决的问题|搬运笔记</h2></a>
-                  
-                    <p class="post-card-excerpt">这是一篇关于河南话的学术研究问题的文章，qq 收藏里偶然找到的，不知道作者是谁。因为作为河南人的自豪感和责任感，这篇文章先记这里吧。
+                <time class="post-card-date">2026-06-17T18:25:51+08:00</time>
+                <a href="/post/BuCHe9/"><h2 class="post-card-title">关于河南话学术研究待解决的问题|搬运笔记</h2></a>
+                <p class="post-card-excerpt">这是一篇关于河南话的学术研究问题的文章，qq 收藏里偶然找到的，不知道作者是谁。因为作为河南人的自豪感和责任感，这篇文章先记这里吧。
 
-1.河南方言(话)的界定。无论从历史、地理，还是语言的角度，河南方言(话)这概念都是成立的，但什么...</p>
-                  
+1.河南方言(话)的界定。无论从历史、地理，还是语言的角度，河南方言(话)这概念都是成立的，但什么是河南话?它的特征是什么?还没有人予以确定，当然也没有得到语言学界的承认。
+2.方言语音调查,主要是方言的语音系统。这种...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -95,27 +117,26 @@
                       
                     </div>
                   
+                  <span class="post-card-reading-time">1 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260617182254991.webp" alt="静心诀、清心诀、冰心诀" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T18:23:05+08:00</time>
-                  <a href="/post/lzbYbB/"><h2 class="post-card-title">静心诀、清心诀、冰心诀</h2></a>
-                  
-                    <p class="post-card-excerpt">冰心诀
+                <time class="post-card-date">2026-06-17T18:23:05+08:00</time>
+                <a href="/post/lzbYbB/"><h2 class="post-card-title">静心诀、清心诀、冰心诀</h2></a>
+                <p class="post-card-excerpt">冰心诀
 心若冰清，天塌不惊。万变犹定，神怡气静。
 忘我守一，六根大定。戒点养气，无私无为。
 上下相顾，神色相依。蓄意玄关，降伏思虑。
 内外无物，若浊冰清。尘垢不沾，俗相不染。
 虚空宁宓，浑然无物。无有相生，难易相成。
-份与物忘，同乎浑...</p>
-                  
+份与物忘，同乎浑涅。天地无涯，万物齐一。
+飞花落叶，虚怀若谷。千般烦忧，才下心头。
+即展眉头，灵台清幽。心无罣碍，意无所执。
+解心释神，...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -123,20 +144,16 @@
                       
                     </div>
                   
+                  <span class="post-card-reading-time">1 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260617182009645.jpeg" alt="阳光十六法则" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T18:21:01+08:00</time>
-                  <a href="/post/FmRfWy/"><h2 class="post-card-title">阳光十六法则</h2></a>
-                  
-                    <p class="post-card-excerpt">以下都是以前抄的，忘记是哪位博友的了，咱也学学摄影
+                <time class="post-card-date">2026-06-17T18:21:01+08:00</time>
+                <a href="/post/FmRfWy/"><h2 class="post-card-title">阳光十六法则</h2></a>
+                <p class="post-card-excerpt">以下都是以前抄的，忘记是哪位博友的了，咱也学学摄影
 阳光十六阴天八
 多云十一日幕四
 乌云压顶五点六
@@ -160,8 +177,28 @@ F（光圈）
 
 
 100
+1/100
+16
+
+
+100
+1/200
+11
+
+
+100
+1/400
+8
+
+
+100
+1/800
+5.6
+
+
+100
 1...</p>
-                  
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -169,26 +206,23 @@ F（光圈）
                       
                     </div>
                   
+                  <span class="post-card-reading-time">5 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260617182009645.jpeg" alt="光圈、感光度ISO、快门" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T18:18:48+08:00</time>
-                  <a href="/post/EhZo2M/"><h2 class="post-card-title">光圈、感光度ISO、快门</h2></a>
-                  
-                    <p class="post-card-excerpt">出处：摄影基础知识大全
+                <time class="post-card-date">2026-06-17T18:18:48+08:00</time>
+                <a href="/post/EhZo2M/"><h2 class="post-card-title">光圈、感光度ISO、快门</h2></a>
+                <p class="post-card-excerpt">出处：摄影基础知识大全
 
 一、摄影三大元素：光圈、感光度ISO、快门速度（一圈两度）
 1.光圈
 光圈就是镜头里调节进光孔大小的装置。（即一扇窗，窗越大，进入的光线越多，图片更亮）
-常见的光圈值如下： F1， F1.4， F2， F2....</p>
-                  
+常见的光圈值如下： F1， F1.4， F2， F2.8， F4， F5.6， F8， F11， F16， F22， F32， F44， F64。
+每两挡相邻光圈值之间进光量...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -196,24 +230,23 @@ F（光圈）
                       
                     </div>
                   
+                  <span class="post-card-reading-time">7 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260617181729974.jpg" alt="喜迎72周年国庆|国旗知识" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T18:14:47+08:00</time>
-                  <a href="/post/IJeYU0/"><h2 class="post-card-title">喜迎72周年国庆|国旗知识</h2></a>
-                  
-                    <p class="post-card-excerpt">转眼已经72年了，时间过得真快，中国变化得也很大。来一点国旗知识吧，生活中人们对国旗的使用还不够规范。
+                <time class="post-card-date">2026-06-17T18:14:47+08:00</time>
+                <a href="/post/IJeYU0/"><h2 class="post-card-title">喜迎72周年国庆|国旗知识</h2></a>
+                <p class="post-card-excerpt">转眼已经72年了，时间过得真快，中国变化得也很大。来一点国旗知识吧，生活中人们对国旗的使用还不够规范。
 首先，网络使用的国旗图案标准版本在中国人大网和中国政府网上发布&amp;raquo;链接&amp;gt;&amp;gt;中华人民共和国国旗法
 国旗设计图
-...</p>
-                  
+
+使用规范
+  国家倡导公民和组织在适宜的场合使用国旗及其图案，表达爱国情感。
+  公民和组织在网络中使用国旗图案，应当...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -221,20 +254,16 @@ F（光圈）
                       
                     </div>
                   
+                  <span class="post-card-reading-time">5 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260617181415863.jpeg" alt="朝代歌" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T18:13:59+08:00</time>
-                  <a href="/post/3cQ7HT/"><h2 class="post-card-title">朝代歌</h2></a>
-                  
-                    <p class="post-card-excerpt">让我来水一下
+                <time class="post-card-date">2026-06-17T18:13:59+08:00</time>
+                <a href="/post/3cQ7HT/"><h2 class="post-card-title">朝代歌</h2></a>
+                <p class="post-card-excerpt">让我来水一下
 
 【朝代歌一】
 三皇五帝夏商周，
@@ -247,8 +276,13 @@ F（光圈）
 三皇五帝始，尧舜禹相传。
 夏商与西周，东周分两段。
 春秋和战国，一统秦两汉。
-三分...</p>
-                  
+三分魏蜀吴，二晋前后延。
+南北朝并立，隋唐五代传。
+宋元明清后，皇朝自此完。
+【朝代歌三】
+三皇五帝夏商周，
+春秋战国乱悠悠...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -256,22 +290,18 @@ F（光圈）
                       
                     </div>
                   
+                  <span class="post-card-reading-time">1 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260615220004291.jpeg" alt="竞选州长 - 马克 · 吐温" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-11T19:39:12+08:00</time>
-                  <a href="/post/with-mark-twain/"><h2 class="post-card-title">竞选州长 - 马克 · 吐温</h2></a>
-                  
-                    <p class="post-card-excerpt">董衡巽译
-几个月以前，我被提名为纽约州州长候选人，代表独立党参加竞选，对方是斯坦华特·L·伍福特先生和约翰·T·霍夫曼先生。我总觉得自己名声不错，同这两位先生相比，这是我显著的长处。从报上很容易看出：如果说这两位先生也曾知道爱护名声的...</p>
-                  
+                <time class="post-card-date">2026-06-11T19:39:12+08:00</time>
+                <a href="/post/with-mark-twain/"><h2 class="post-card-title">竞选州长 - 马克 · 吐温</h2></a>
+                <p class="post-card-excerpt">董衡巽译
+几个月以前，我被提名为纽约州州长候选人，代表独立党参加竞选，对方是斯坦华特·L·伍福特先生和约翰·T·霍夫曼先生。我总觉得自己名声不错，同这两位先生相比，这是我显著的长处。从报上很容易看出：如果说这两位先生也曾知道爱护名声的好处，那是过去的事情了，近年来他们显然已经把各种各样的无耻勾当看作家常便饭。当时，我虽然醉心于自己的长处，暗自得意，但是...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -279,6 +309,7 @@ F（光圈）
                       
                     </div>
                   
+                  <span class="post-card-reading-time">5 分钟阅读</span>
                 </div>
               </article>
             
@@ -290,9 +321,9 @@ F（光圈）
   </div>
 
 
-  </main>
+      </main>
 
-  <footer class="site-footer">
+      <footer class="site-footer">
   <div class="container">
     
       <div class="footer-info">Powered by <a href="https://www.gridea.pro/" target="_blank">Gridea Pro</a>
@@ -305,6 +336,8 @@ F（光圈）
   </div>
 </footer>
 
+    </div>
+  </div>
 
   
   <div id="searchOverlay" class="search-overlay" aria-hidden="true" style="display:none">
@@ -324,33 +357,20 @@ F（光圈）
   </div>
 
   <script>
-  /* 移动端导航：class 驱动展开/收回 */
+  /* 移动端侧边栏：checkbox 驱动展开/收回 */
   (function() {
     var toggle = document.getElementById('nav-toggle');
     if (!toggle) return;
-    var header = toggle.closest('.site-header');
-    var nav = header && header.querySelector('.site-nav');
-    var label = document.querySelector('label[for="nav-toggle"]');
-    if (!nav || !label) return;
-
-    function syncNav() {
-      if (toggle.checked) {
-        nav.classList.add('nav-open');
-        header.classList.add('nav-open-state');
-      } else {
-        nav.classList.remove('nav-open');
-        header.classList.remove('nav-open-state');
-      }
-    }
+    var sidebar = document.getElementById('sidebar');
+    var label = document.querySelector('.sidebar-mobile-toggle');
+    var overlay = document.getElementById('sidebarOverlay');
+    if (!sidebar || !label || !overlay) return;
 
     function closeNav() {
       toggle.checked = false;
-      syncNav();
     }
-
     function openNav() {
       toggle.checked = true;
-      syncNav();
     }
 
     /* 点击汉堡 → 手动切换（阻止原生 label-for 行为，避免重复触发） */
@@ -359,16 +379,16 @@ F（光圈）
       toggle.checked ? closeNav() : openNav();
     });
 
-    /* 点击导航链接 → 收回 */
-    nav.addEventListener('click', function(e) {
-      if (e.target.closest('a')) closeNav();
+    /* 点击导航链接或搜索按钮 → 收回 */
+    sidebar.addEventListener('click', function(e) {
+      if (e.target.closest('a') || e.target.closest('button')) {
+        closeNav();
+      }
     });
 
-    /* 点击导航以外区域 → 收回 */
-    document.addEventListener('click', function(e) {
-      if (!toggle.checked) return;
-      if (label.contains(e.target)) return;
-      if (!nav.contains(e.target)) closeNav();
+    /* 点击遮罩 → 收回 */
+    overlay.addEventListener('click', function() {
+      closeNav();
     });
   })();
   </script>
@@ -451,6 +471,20 @@ F（光圈）
           }
 
           if (newTitle) document.title = newTitle.textContent;
+
+          // 切换页面后自动回到顶部
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+
+          // 重新标记当前页面对应的侧边栏链接
+          var links = document.querySelectorAll('.sidebar-link');
+          var path = window.location.pathname.replace(/\/+$/, '') || '/';
+          links.forEach(function(a) {
+            a.classList.remove('active');
+            var href = a.getAttribute('href').replace(/\/+$/, '') || '/';
+            if (href === path || (path !== '/' && href !== '/' && path.indexOf(href) === 0)) {
+              a.classList.add('active');
+            }
+          });
         })
         .catch(function() {
           main.classList.remove('is-loading');

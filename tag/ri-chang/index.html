@@ -8,11 +8,11 @@
   <meta name="description" content="" />
   <!-- MiSans Web 字体 -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Medium.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Bold.min.css" />
+  <link rel="stylesheet" href="/styles/MiSans-Medium.min.css" />
+  <link rel="stylesheet" href="/styles/MiSans-Bold.min.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/fancybox.css" />
-  <link rel="alternate" type="application/rss+xml" title="听得入迷空间" href="/atom.xml" />
+  <link rel="alternate" type="application/rss+xml" title="听得入迷空间" href="/feed.xml" />
   
   
   <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
@@ -31,35 +31,61 @@
 </head>
 <body>
 
-  <header class="site-header">
-  <div class="container">
-    <a href="https://blog.tdrme.cn" class="site-logo">听得入迷空间</a>
-    <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <label for="nav-toggle" class="nav-toggle-label" aria-label="菜单">
-      <span></span><span></span><span></span>
-    </label>
-    <nav class="site-nav">
+  <div class="app-layout">
+    
+<input type="checkbox" id="nav-toggle" class="nav-toggle">
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-inner">
+    <a href="https://blog.tdrme.cn" class="sidebar-brand">听得入迷空间</a>
+    
+
+    <nav class="sidebar-nav">
       
-      <a href="/" class="nav-link">首页</a>
+      <a href="/" class="sidebar-link">首页</a>
       
-      <a href="/memos" class="nav-link">闪念</a>
+      <a href="/memos" class="sidebar-link">闪念</a>
       
-      <a href="/archives" class="nav-link">归档</a>
+      <a href="/archives" class="sidebar-link">归档</a>
       
-      <a href="/links/" class="nav-link">友链</a>
+      <a href="/links/" class="sidebar-link">友链</a>
       
-      <a href="/post/about" class="nav-link">关于</a>
+      <a href="/post/about" class="sidebar-link">关于</a>
       
     </nav>
-    <button class="search-btn" aria-label="搜索" title="搜索 (⌘K)">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="12.5" y1="12.5" x2="17" y2="17"/></svg>
-    </button>
+
+    <div class="sidebar-actions">
+      <button class="sidebar-search-btn search-btn" aria-label="搜索" title="搜索 (⌘K)">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="12.5" y1="12.5" x2="17" y2="17"/></svg>
+        <span>搜索</span>
+      </button>
+    </div>
   </div>
-</header>
+</aside>
+
+<label for="nav-toggle" class="sidebar-mobile-toggle" aria-label="菜单">
+  <span></span><span></span><span></span>
+</label>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<script>
+(function() {
+  var links = document.querySelectorAll('.sidebar-link');
+  var path = window.location.pathname.replace(/\/+$/, '') || '/';
+  links.forEach(function(a) {
+    var href = a.getAttribute('href').replace(/\/+$/, '') || '/';
+    if (href === path || (path !== '/' && href !== '/' && path.indexOf(href) === 0)) {
+      a.classList.add('active');
+    }
+  });
+})();
+</script>
 
 
-  <main>
-    
+    <div class="main-area">
+      <main>
+        
 
   <div class="container">
 
@@ -79,15 +105,10 @@
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260617181234151.jpg" alt="logo进化" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T18:12:18+08:00</time>
-                  <a href="/post/JLw2zE/"><h2 class="post-card-title">logo进化</h2></a>
-                  
-                    <p class="post-card-excerpt">logo终于是改进到自己比较满意的状态。一开始这个形象只是初中的时候在课本上随便画的，貌似当时在讲甲骨文，画出来后发现这个还是挺有意思。简化的房子形象和两个人的形象结合就是这个抽象画的核心。后来高中接触智能机的时候，就把这个当做了头像...</p>
-                  
+                <time class="post-card-date">2026-06-17T18:12:18+08:00</time>
+                <a href="/post/JLw2zE/"><h2 class="post-card-title">logo进化</h2></a>
+                <p class="post-card-excerpt">logo终于是改进到自己比较满意的状态。一开始这个形象只是初中的时候在课本上随便画的，貌似当时在讲甲骨文，画出来后发现这个还是挺有意思。简化的房子形象和两个人的形象结合就是这个抽象画的核心。后来高中接触智能机的时候，就把这个当做了头像。前三版本甚至都不对称，当然两个小人不对称是有意设计的，但是一想这么小也看不清啥，所以干脆做成全对称的，经过几次重画也算...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -95,46 +116,20 @@
                       
                     </div>
                   
+                  <span class="post-card-reading-time">1 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <div class="post-card-image-placeholder"></div>
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T16:38:05+08:00</time>
-                  <a href="/post/v7htpb/"><h2 class="post-card-title">我在郑州中牟县的这两天</h2></a>
-                  
-                    <p class="post-card-excerpt">7/20 - 7/23
+                <time class="post-card-date">2026-06-17T16:38:05+08:00</time>
+                <a href="/post/v7htpb/"><h2 class="post-card-title">我在郑州中牟县的这两天</h2></a>
+                <p class="post-card-excerpt">7/20 - 7/23
 
 说起来，在郑州洪涝这两天，我算是幸运又不幸。本着学习的目的来到这，结果困在了这。说幸运呢，是因为在中牟县这里，我们断水断电没信号，但是没怎么饿着。
-接下来说说这两天的经历。7/21晚，上完课去吃饭，这个时候雨...</p>
-                  
-                  
-                    <div class="post-tags">
-                      
-                        <a href="/tag/ri-chang/" class="post-tag active">日常</a>
-                      
-                    </div>
-                  
-                </div>
-              </article>
-            
-          
-            
-              <article class="post-card">
-                
-                  <div class="post-card-image-placeholder"></div>
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-15T17:18:03+08:00</time>
-                  <a href="/post/CCZ4x4/"><h2 class="post-card-title">印度公益广告：是时候开门了</h2></a>
-                  
-                    <p class="post-card-excerpt">从开眼看到的推荐，觉得很有创意。其素材来自于广告素材依旧来源于由网友在 Twitter 上发布的话题照片，经过了 68 天的隔离抗疫之后，人们终于解除隔离迎接新生活，除了开门的动作之外，续集中还出现了人们走出家门的所见所闻，可爱的小动...</p>
-                  
+接下来说说这两天的经历。7/21晚，上完课去吃饭，这个时候雨很大，水也到了脚踝，于是想着吃完饭不去晚自习了。虽然有伞仍然是湿了全身，那个时候看到别人准备吃的，真的是没有在意（哈哈，...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -142,27 +137,17 @@
                       
                     </div>
                   
+                  <span class="post-card-reading-time">3 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260616014606730.jpg" alt="建设中的人民公园" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2024-05-13T01:24:33+08:00</time>
-                  <a href="/post/BqICd2/"><h2 class="post-card-title">建设中的人民公园</h2></a>
-                  
-                    <p class="post-card-excerpt">这里还在建设中，大概会是这座城市最大的公园吧，以人工湖为主体，岸边建设休闲场所，在湖的西边是待建的人工湖和大片的草地，土丘。看起来很空旷舒心，跟森林公园完全不同的风格，当然，森林公园树荫多啊，那多舒服。
-
-
-
-
-
-现在人还不多，因为基...</p>
-                  
+                <time class="post-card-date">2026-06-15T17:18:03+08:00</time>
+                <a href="/post/CCZ4x4/"><h2 class="post-card-title">印度公益广告：是时候开门了</h2></a>
+                <p class="post-card-excerpt">从开眼看到的推荐，觉得很有创意。其素材来自于广告素材依旧来源于由网友在 Twitter 上发布的话题照片，经过了 68 天的隔离抗疫之后，人们终于解除隔离迎接新生活，除了开门的动作之外，续集中还出现了人们走出家门的所见所闻，可爱的小动物、风筝、日落、各种各样的交通工具依次出镜，最后以打开的门做为结束，象征着印度正在从疫情的阴霾下逐渐苏醒，为人们送上信心...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -170,22 +155,43 @@
                       
                     </div>
                   
+                  <span class="post-card-reading-time">1 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260616014707924.webp" alt="《等风雨经过》张学友、周杰伦、方文山、黄雨勋" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2024-05-10T09:10:39+08:00</time>
-                  <a href="/post/wait-for-storms-xiaozhongyou-jaychou-fangwenshan-huangyuxun/"><h2 class="post-card-title">《等风雨经过》张学友、周杰伦、方文山、黄雨勋</h2></a>
+                <time class="post-card-date">2024-05-13T01:24:33+08:00</time>
+                <a href="/post/BqICd2/"><h2 class="post-card-title">建设中的人民公园</h2></a>
+                <p class="post-card-excerpt">这里还在建设中，大概会是这座城市最大的公园吧，以人工湖为主体，岸边建设休闲场所，在湖的西边是待建的人工湖和大片的草地，土丘。看起来很空旷舒心，跟森林公园完全不同的风格，当然，森林公园树荫多啊，那多舒服。
+
+
+
+
+
+现在人还不多，因为基础设施还没建成，更没有开放，但是仍然有人来放松
+这只是湖的一部分，整个公园还是挺大的，应该会有大型游乐设施，大概再等一年...</p>
+                <div class="post-card-footer">
                   
-                    <p class="post-card-excerpt">周杰伦作曲、方文山填词、黄雨勋编曲、张学友演唱。
+                    <div class="post-tags">
+                      
+                        <a href="/tag/ri-chang/" class="post-tag active">日常</a>
+                      
+                    </div>
+                  
+                  <span class="post-card-reading-time">1282 分钟阅读</span>
+                </div>
+              </article>
+            
+          
+            
+              <article class="post-card">
+                <time class="post-card-date">2024-05-10T09:10:39+08:00</time>
+                <a href="/post/wait-for-storms-xiaozhongyou-jaychou-fangwenshan-huangyuxun/"><h2 class="post-card-title">《等风雨经过》张学友、周杰伦、方文山、黄雨勋</h2></a>
+                <p class="post-card-excerpt">周杰伦作曲、方文山填词、黄雨勋编曲、张学友演唱。
 这一首歌发布于 2/23 日周杰伦微博。也是新型冠状病毒爆发的高潮时期，病毒有了明显的减弱趋势（不过还没疫苗哈）。这样的王炸组合很让人惊喜。</p>
-                  
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -193,22 +199,19 @@
                       
                     </div>
                   
+                  <span class="post-card-reading-time">1 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260616010623554.jpg" alt="2020疫情在家学习电子化体验" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2021-03-13T08:59:44+08:00</time>
-                  <a href="/post/home-learning-digital-experience-2020/"><h2 class="post-card-title">2020疫情在家学习电子化体验</h2></a>
-                  
-                    <p class="post-card-excerpt">由于疫情关系，我放寒假后就没有再出去玩过（我为什么没有珍惜自由的时光），然后就是漫长的家里蹲时光。
-在家里娱乐就离不开电子设备了，看电影打游戏，天天看着屏幕，而上课的时候呢（也就是天天上网课了），也要一直看着屏幕，看老师直播上课，看电...</p>
-                  
+                <time class="post-card-date">2021-03-13T08:59:44+08:00</time>
+                <a href="/post/home-learning-digital-experience-2020/"><h2 class="post-card-title">2020疫情在家学习电子化体验</h2></a>
+                <p class="post-card-excerpt">由于疫情关系，我放寒假后就没有再出去玩过（我为什么没有珍惜自由的时光），然后就是漫长的家里蹲时光。
+在家里娱乐就离不开电子设备了，看电影打游戏，天天看着屏幕，而上课的时候呢（也就是天天上网课了），也要一直看着屏幕，看老师直播上课，看电子文档，做笔记又是电子文档。
+要说到上网课，不得不说，前几年网络授课是个挺新奇挺热门的话题，也有很多学校组织了一些无纸化...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -216,6 +219,7 @@
                       
                     </div>
                   
+                  <span class="post-card-reading-time">1 分钟阅读</span>
                 </div>
               </article>
             
@@ -227,9 +231,9 @@
   </div>
 
 
-  </main>
+      </main>
 
-  <footer class="site-footer">
+      <footer class="site-footer">
   <div class="container">
     
       <div class="footer-info">Powered by <a href="https://www.gridea.pro/" target="_blank">Gridea Pro</a>
@@ -242,6 +246,8 @@
   </div>
 </footer>
 
+    </div>
+  </div>
 
   
   <div id="searchOverlay" class="search-overlay" aria-hidden="true" style="display:none">
@@ -261,33 +267,20 @@
   </div>
 
   <script>
-  /* 移动端导航：class 驱动展开/收回 */
+  /* 移动端侧边栏：checkbox 驱动展开/收回 */
   (function() {
     var toggle = document.getElementById('nav-toggle');
     if (!toggle) return;
-    var header = toggle.closest('.site-header');
-    var nav = header && header.querySelector('.site-nav');
-    var label = document.querySelector('label[for="nav-toggle"]');
-    if (!nav || !label) return;
-
-    function syncNav() {
-      if (toggle.checked) {
-        nav.classList.add('nav-open');
-        header.classList.add('nav-open-state');
-      } else {
-        nav.classList.remove('nav-open');
-        header.classList.remove('nav-open-state');
-      }
-    }
+    var sidebar = document.getElementById('sidebar');
+    var label = document.querySelector('.sidebar-mobile-toggle');
+    var overlay = document.getElementById('sidebarOverlay');
+    if (!sidebar || !label || !overlay) return;
 
     function closeNav() {
       toggle.checked = false;
-      syncNav();
     }
-
     function openNav() {
       toggle.checked = true;
-      syncNav();
     }
 
     /* 点击汉堡 → 手动切换（阻止原生 label-for 行为，避免重复触发） */
@@ -296,16 +289,16 @@
       toggle.checked ? closeNav() : openNav();
     });
 
-    /* 点击导航链接 → 收回 */
-    nav.addEventListener('click', function(e) {
-      if (e.target.closest('a')) closeNav();
+    /* 点击导航链接或搜索按钮 → 收回 */
+    sidebar.addEventListener('click', function(e) {
+      if (e.target.closest('a') || e.target.closest('button')) {
+        closeNav();
+      }
     });
 
-    /* 点击导航以外区域 → 收回 */
-    document.addEventListener('click', function(e) {
-      if (!toggle.checked) return;
-      if (label.contains(e.target)) return;
-      if (!nav.contains(e.target)) closeNav();
+    /* 点击遮罩 → 收回 */
+    overlay.addEventListener('click', function() {
+      closeNav();
     });
   })();
   </script>
@@ -388,6 +381,20 @@
           }
 
           if (newTitle) document.title = newTitle.textContent;
+
+          // 切换页面后自动回到顶部
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+
+          // 重新标记当前页面对应的侧边栏链接
+          var links = document.querySelectorAll('.sidebar-link');
+          var path = window.location.pathname.replace(/\/+$/, '') || '/';
+          links.forEach(function(a) {
+            a.classList.remove('active');
+            var href = a.getAttribute('href').replace(/\/+$/, '') || '/';
+            if (href === path || (path !== '/' && href !== '/' && path.indexOf(href) === 0)) {
+              a.classList.add('active');
+            }
+          });
         })
         .catch(function() {
           main.classList.remove('is-loading');

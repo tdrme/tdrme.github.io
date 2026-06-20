@@ -8,11 +8,11 @@
   <meta name="description" content="" />
   <!-- MiSans Web 字体 -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Medium.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Bold.min.css" />
+  <link rel="stylesheet" href="/styles/MiSans-Medium.min.css" />
+  <link rel="stylesheet" href="/styles/MiSans-Bold.min.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/fancybox.css" />
-  <link rel="alternate" type="application/rss+xml" title="听得入迷空间" href="/atom.xml" />
+  <link rel="alternate" type="application/rss+xml" title="听得入迷空间" href="/feed.xml" />
   
   
   <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
@@ -31,35 +31,61 @@
 </head>
 <body>
 
-  <header class="site-header">
-  <div class="container">
-    <a href="https://blog.tdrme.cn" class="site-logo">听得入迷空间</a>
-    <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <label for="nav-toggle" class="nav-toggle-label" aria-label="菜单">
-      <span></span><span></span><span></span>
-    </label>
-    <nav class="site-nav">
+  <div class="app-layout">
+    
+<input type="checkbox" id="nav-toggle" class="nav-toggle">
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-inner">
+    <a href="https://blog.tdrme.cn" class="sidebar-brand">听得入迷空间</a>
+    
+
+    <nav class="sidebar-nav">
       
-      <a href="/" class="nav-link">首页</a>
+      <a href="/" class="sidebar-link">首页</a>
       
-      <a href="/memos" class="nav-link">闪念</a>
+      <a href="/memos" class="sidebar-link">闪念</a>
       
-      <a href="/archives" class="nav-link">归档</a>
+      <a href="/archives" class="sidebar-link">归档</a>
       
-      <a href="/links/" class="nav-link">友链</a>
+      <a href="/links/" class="sidebar-link">友链</a>
       
-      <a href="/post/about" class="nav-link">关于</a>
+      <a href="/post/about" class="sidebar-link">关于</a>
       
     </nav>
-    <button class="search-btn" aria-label="搜索" title="搜索 (⌘K)">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="12.5" y1="12.5" x2="17" y2="17"/></svg>
-    </button>
+
+    <div class="sidebar-actions">
+      <button class="sidebar-search-btn search-btn" aria-label="搜索" title="搜索 (⌘K)">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="12.5" y1="12.5" x2="17" y2="17"/></svg>
+        <span>搜索</span>
+      </button>
+    </div>
   </div>
-</header>
+</aside>
+
+<label for="nav-toggle" class="sidebar-mobile-toggle" aria-label="菜单">
+  <span></span><span></span><span></span>
+</label>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<script>
+(function() {
+  var links = document.querySelectorAll('.sidebar-link');
+  var path = window.location.pathname.replace(/\/+$/, '') || '/';
+  links.forEach(function(a) {
+    var href = a.getAttribute('href').replace(/\/+$/, '') || '/';
+    if (href === path || (path !== '/' && href !== '/' && path.indexOf(href) === 0)) {
+      a.classList.add('active');
+    }
+  });
+})();
+</script>
 
 
-  <main>
-    
+    <div class="main-area">
+      <main>
+        
 
   <div class="container">
 
@@ -77,21 +103,19 @@
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260616014446505.webp" alt="翻译链接" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T14:30:27+08:00</time>
-                  <a href="/post/mZx0vd/"><h2 class="post-card-title">翻译链接</h2></a>
-                  
-                    <p class="post-card-excerpt">用小米传送能翻译单词偶然发现这么个翻译链接，可能是我火星了，记下来，没准有用
+                <time class="post-card-date">2026-06-17T14:30:27+08:00</time>
+                <a href="/post/mZx0vd/"><h2 class="post-card-title">翻译链接</h2></a>
+                <p class="post-card-excerpt">用小米传送能翻译单词偶然发现这么个翻译链接，可能是我火星了，记下来，没准有用
 金山词霸搜单词链接
 http://m.iciba.com/单词Copy
 
 如此就能出结果，例如：
 搜索hello
-http://m.iciba.com/h...</p>
-                  
+http://m.iciba.com/hello
+如果是短句，则以%20为空位符号，例如：
+搜索hello world
+[http://m.iciba.com/...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -99,27 +123,24 @@ http://m.iciba.com/h...</p>
                       
                     </div>
                   
+                  <span class="post-card-reading-time">1 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp" alt="Typecho添加网站访问量统计和运行时间计时" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T14:28:01+08:00</time>
-                  <a href="/post/sh4gG2/"><h2 class="post-card-title">Typecho添加网站访问量统计和运行时间计时</h2></a>
-                  
-                    <p class="post-card-excerpt">网站访问量统计
+                <time class="post-card-date">2026-06-17T14:28:01+08:00</time>
+                <a href="/post/sh4gG2/"><h2 class="post-card-title">Typecho添加网站访问量统计和运行时间计时</h2></a>
+                <p class="post-card-excerpt">网站访问量统计
 使用插件PageViews-1.0.1
 然后在 footer.php 插入以下内容。
 &amp;lt;?php PageViews_Plugin::showPageViews();?&amp;gt;Copy
 
 运行时间展示
-这个使用...</p>
-                  
+这个使用的是以下代码，在想要显示的地方插入即可
+&amp;lt;span id=&amp;quot;runtime_span&amp;quot;&amp;gt;...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -127,24 +148,23 @@ http://m.iciba.com/h...</p>
                       
                     </div>
                   
+                  <span class="post-card-reading-time">1 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260616014446505.webp" alt="qq头像官方调用接口api" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T14:08:31+08:00</time>
-                  <a href="/post/Mu2Tpf/"><h2 class="post-card-title">qq头像官方调用接口api</h2></a>
-                  
-                    <p class="post-card-excerpt">记录一下腾讯官方的 QQ 头像调用接口
+                <time class="post-card-date">2026-06-17T14:08:31+08:00</time>
+                <a href="/post/Mu2Tpf/"><h2 class="post-card-title">qq头像官方调用接口api</h2></a>
+                <p class="post-card-excerpt">记录一下腾讯官方的 QQ 头像调用接口
 http://q1.qlogo.cn/g?b=qq&amp;amp;nk=QQ号&amp;amp;s=100
  
-http://q1.qlogo.cn/g?b=qq&amp;amp;nk=QQ号&amp;amp;s=640...</p>
-                  
+http://q1.qlogo.cn/g?b=qq&amp;amp;nk=QQ号&amp;amp;s=640
+ 
+http://q2.qlogo.cn/headimg_dl?dst_uin=QQ号&amp;amp;spec=1
+ ...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -152,24 +172,22 @@ http://q1.qlogo.cn/g?b=qq&amp;amp;nk=QQ号&amp;amp;s=640...</p>
                       
                     </div>
                   
+                  <span class="post-card-reading-time">1 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp" alt="无插件|prismjs|实现typecho代码高亮" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T10:53:25+08:00</time>
-                  <a href="/post/QSVwfR/"><h2 class="post-card-title">无插件|prismjs|实现typecho代码高亮</h2></a>
-                  
-                    <p class="post-card-excerpt">插件使用起来很麻烦，所以直接修改主题好了，也是百度的结果，但是不好找，于是在这里记下来。
+                <time class="post-card-date">2026-06-17T10:53:25+08:00</time>
+                <a href="/post/QSVwfR/"><h2 class="post-card-title">无插件|prismjs|实现typecho代码高亮</h2></a>
+                <p class="post-card-excerpt">插件使用起来很麻烦，所以直接修改主题好了，也是百度的结果，但是不好找，于是在这里记下来。
 下载 js 和 css 文件
 首先在prismjs选择你需要的语言及插件(不可贪多，选的语言过多，js 文件会很大，严重影响网站加载速度)。
-p...</p>
-                  
+prismjs 很强大，支持全部语言。还有很多功能插件，比如 copy、显示语言、预览等等。
+上传文件
+把 js 和 cs...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -177,24 +195,23 @@ p...</p>
                       
                     </div>
                   
+                  <span class="post-card-reading-time">1 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp" alt="typecho博客全站开启https" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T10:50:28+08:00</time>
-                  <a href="/post/c6PJE1/"><h2 class="post-card-title">typecho博客全站开启https</h2></a>
-                  
-                    <p class="post-card-excerpt">Nginx服务器，宝塔面板
+                <time class="post-card-date">2026-06-17T10:50:28+08:00</time>
+                <a href="/post/c6PJE1/"><h2 class="post-card-title">typecho博客全站开启https</h2></a>
+                <p class="post-card-excerpt">Nginx服务器，宝塔面板
 1、宝塔开启强制https，很容易。
 2、修改根目录下 config.inc.php 文件，在文件最后加入以下内容
-/** 开启HTTPS **/ define(&#39;__TYPECHO_SECURE__&#39;,t...</p>
-                  
+/** 开启HTTPS **/ define(&#39;__TYPECHO_SECURE__&#39;,true);Copy
+
+另外设置伪静态的方法
+以下两种伪静态设置方法，第一个是官方给的try_files伪静态方法推荐使...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -202,26 +219,26 @@ p...</p>
                       
                     </div>
                   
+                  <span class="post-card-reading-time">4 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp" alt="修改typecho的markdow的语法支持视频" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T10:47:38+08:00</time>
-                  <a href="/post/jPvFmp/"><h2 class="post-card-title">修改typecho的markdow的语法支持视频</h2></a>
-                  
-                    <p class="post-card-excerpt">修改 markdown.php 文件，这样可以支持 video 标签，也可添加其他标签，这样可以支持更多 html 标签
+                <time class="post-card-date">2026-06-17T10:47:38+08:00</time>
+                <a href="/post/jPvFmp/"><h2 class="post-card-title">修改typecho的markdow的语法支持视频</h2></a>
+                <p class="post-card-excerpt">修改 markdown.php 文件，这样可以支持 video 标签，也可添加其他标签，这样可以支持更多 html 标签
 查看Typecho程序目录/var/Markdown.php的代码
  
 第37行
  
-$parser-&amp;...</p>
-                  
+$parser-&amp;gt;_commonWhiteList .= &#39;|img|cite|embed|iframe&#39;;
+ 
+改成
+ 
+...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -229,24 +246,21 @@ $parser-&amp;...</p>
                       
                     </div>
                   
+                  <span class="post-card-reading-time">1 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp" alt="typecho出现503错误" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T10:46:35+08:00</time>
-                  <a href="/post/q47g9G/"><h2 class="post-card-title">typecho出现503错误</h2></a>
-                  
-                    <p class="post-card-excerpt">数据库连接错误
+                <time class="post-card-date">2026-06-17T10:46:35+08:00</time>
+                <a href="/post/q47g9G/"><h2 class="post-card-title">typecho出现503错误</h2></a>
+                <p class="post-card-excerpt">数据库连接错误
 503 Error establishing a database connection
 我的修复方法：将 php 版本设为 PHP7.0，当然 typecho 不支持 7.0，于是还要把数据库设置部分修改
-$db =...</p>
-                  
+$db = new Typecho_Db(&#39;Mysql&#39;, &#39;typecho_&#39;);
+$db-&amp;gt;addServer(arr...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -254,26 +268,25 @@ $db =...</p>
                       
                     </div>
                   
+                  <span class="post-card-reading-time">1 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp" alt="让typecho支持email表情" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T10:42:35+08:00</time>
-                  <a href="/post/bzwKhK/"><h2 class="post-card-title">让typecho支持email表情</h2></a>
-                  
-                    <p class="post-card-excerpt">typecho1.2版本已经支持了，无需多余操作，初始安装时数据库选择utf8mb格式
+                <time class="post-card-date">2026-06-17T10:42:35+08:00</time>
+                <a href="/post/bzwKhK/"><h2 class="post-card-title">让typecho支持email表情</h2></a>
+                <p class="post-card-excerpt">typecho1.2版本已经支持了，无需多余操作，初始安装时数据库选择utf8mb格式
 
 之前发文章和评论时，发现自己的博客不支持 email 表情，还会出现混乱。😁
 处理方式：
 
-把数据库字符修改为 utf8mb_unicode_c...</p>
-                  
+把数据库字符修改为 utf8mb_unicode_ci
+
+在 phpmyadmin 面板直接执行命令
+alter table typecho_comments conver...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -281,24 +294,20 @@ $db =...</p>
                       
                     </div>
                   
+                  <span class="post-card-reading-time">1 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <div class="post-card-image-placeholder"></div>
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T10:41:12+08:00</time>
-                  <a href="/post/bWQW5p/"><h2 class="post-card-title">easy connect 之安阳师范，校园vpn</h2></a>
-                  
-                    <p class="post-card-excerpt">重要链接 ☞https://vpn.aynu.edu.cn/
+                <time class="post-card-date">2026-06-17T10:41:12+08:00</time>
+                <a href="/post/bWQW5p/"><h2 class="post-card-title">easy connect 之安阳师范，校园vpn</h2></a>
+                <p class="post-card-excerpt">重要链接 ☞https://vpn.aynu.edu.cn/
 下载软件，进去这个页面，把文首链接粘贴输入
 
 然后就是熟悉的学号登陆了</p>
-                  
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -306,20 +315,16 @@ $db =...</p>
                       
                     </div>
                   
+                  <span class="post-card-reading-time">1 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260617104038329.webp" alt="Markdown语法" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T10:37:01+08:00</time>
-                  <a href="/post/z23Ujo/"><h2 class="post-card-title">Markdown语法</h2></a>
-                  
-                    <p class="post-card-excerpt">标题
+                <time class="post-card-date">2026-06-17T10:37:01+08:00</time>
+                <a href="/post/z23Ujo/"><h2 class="post-card-title">Markdown语法</h2></a>
+                <p class="post-card-excerpt">标题
 标题1
 标题2
 标题3
@@ -335,8 +340,13 @@ $db =...</p>
 
 链接
 bilibili
-[bilibili](https://w...</p>
-                  
+[bilibili](https://www.bilibili.com/)Copy
+
+文字
+删除线 下划线 斜体 粗体 *粗斜体*
+~~删除线~~
+&amp;lt;...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -344,6 +354,7 @@ bilibili
                       
                     </div>
                   
+                  <span class="post-card-reading-time">3 分钟阅读</span>
                 </div>
               </article>
             
@@ -381,9 +392,9 @@ bilibili
   </div>
 
 
-  </main>
+      </main>
 
-  <footer class="site-footer">
+      <footer class="site-footer">
   <div class="container">
     
       <div class="footer-info">Powered by <a href="https://www.gridea.pro/" target="_blank">Gridea Pro</a>
@@ -396,6 +407,8 @@ bilibili
   </div>
 </footer>
 
+    </div>
+  </div>
 
   
   <div id="searchOverlay" class="search-overlay" aria-hidden="true" style="display:none">
@@ -415,33 +428,20 @@ bilibili
   </div>
 
   <script>
-  /* 移动端导航：class 驱动展开/收回 */
+  /* 移动端侧边栏：checkbox 驱动展开/收回 */
   (function() {
     var toggle = document.getElementById('nav-toggle');
     if (!toggle) return;
-    var header = toggle.closest('.site-header');
-    var nav = header && header.querySelector('.site-nav');
-    var label = document.querySelector('label[for="nav-toggle"]');
-    if (!nav || !label) return;
-
-    function syncNav() {
-      if (toggle.checked) {
-        nav.classList.add('nav-open');
-        header.classList.add('nav-open-state');
-      } else {
-        nav.classList.remove('nav-open');
-        header.classList.remove('nav-open-state');
-      }
-    }
+    var sidebar = document.getElementById('sidebar');
+    var label = document.querySelector('.sidebar-mobile-toggle');
+    var overlay = document.getElementById('sidebarOverlay');
+    if (!sidebar || !label || !overlay) return;
 
     function closeNav() {
       toggle.checked = false;
-      syncNav();
     }
-
     function openNav() {
       toggle.checked = true;
-      syncNav();
     }
 
     /* 点击汉堡 → 手动切换（阻止原生 label-for 行为，避免重复触发） */
@@ -450,16 +450,16 @@ bilibili
       toggle.checked ? closeNav() : openNav();
     });
 
-    /* 点击导航链接 → 收回 */
-    nav.addEventListener('click', function(e) {
-      if (e.target.closest('a')) closeNav();
+    /* 点击导航链接或搜索按钮 → 收回 */
+    sidebar.addEventListener('click', function(e) {
+      if (e.target.closest('a') || e.target.closest('button')) {
+        closeNav();
+      }
     });
 
-    /* 点击导航以外区域 → 收回 */
-    document.addEventListener('click', function(e) {
-      if (!toggle.checked) return;
-      if (label.contains(e.target)) return;
-      if (!nav.contains(e.target)) closeNav();
+    /* 点击遮罩 → 收回 */
+    overlay.addEventListener('click', function() {
+      closeNav();
     });
   })();
   </script>
@@ -542,6 +542,20 @@ bilibili
           }
 
           if (newTitle) document.title = newTitle.textContent;
+
+          // 切换页面后自动回到顶部
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+
+          // 重新标记当前页面对应的侧边栏链接
+          var links = document.querySelectorAll('.sidebar-link');
+          var path = window.location.pathname.replace(/\/+$/, '') || '/';
+          links.forEach(function(a) {
+            a.classList.remove('active');
+            var href = a.getAttribute('href').replace(/\/+$/, '') || '/';
+            if (href === path || (path !== '/' && href !== '/' && path.indexOf(href) === 0)) {
+              a.classList.add('active');
+            }
+          });
         })
         .catch(function() {
           main.classList.remove('is-loading');

@@ -148,27 +148,14 @@
 <pre><code class="language-html">&lt;!--动态滚动进度条--&gt;
 
 &lt;div class=&quot;scroll-line&quot; style=&quot;z-index: 999;position: fixed;height: 3px;top: 0px;background-color: #6B999B;width: 0%;&quot;&gt;&lt;/div&gt;
-
 &lt;script type=&quot;text/javascript&quot;&gt;
-
     $(window).scroll(function() {
-
         var winTop = $(window).scrollTop(), //滚动条的位置
-
                 docHeight = $(document).height(),   //文档高度
-
                 winHeight = $(window).height(); //窗口高度
-
- 
-
         var scrolled = (winTop / (docHeight - winHeight))*100;
-
- 
-
         $('.scroll-line').css('width', (scrolled + '%'));
-
     });
-
 &lt;/script&gt;
 </code></pre>
 <blockquote>

@@ -8,11 +8,11 @@
   <meta name="description" content="" />
   <!-- MiSans Web 字体 -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Medium.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@4.1.0/lib/Normal/MiSans-Bold.min.css" />
+  <link rel="stylesheet" href="/styles/MiSans-Medium.min.css" />
+  <link rel="stylesheet" href="/styles/MiSans-Bold.min.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/fancybox.css" />
-  <link rel="alternate" type="application/rss+xml" title="听得入迷空间" href="/atom.xml" />
+  <link rel="alternate" type="application/rss+xml" title="听得入迷空间" href="/feed.xml" />
   
   
   <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
@@ -31,35 +31,61 @@
 </head>
 <body>
 
-  <header class="site-header">
-  <div class="container">
-    <a href="https://blog.tdrme.cn" class="site-logo">听得入迷空间</a>
-    <input type="checkbox" id="nav-toggle" class="nav-toggle">
-    <label for="nav-toggle" class="nav-toggle-label" aria-label="菜单">
-      <span></span><span></span><span></span>
-    </label>
-    <nav class="site-nav">
+  <div class="app-layout">
+    
+<input type="checkbox" id="nav-toggle" class="nav-toggle">
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-inner">
+    <a href="https://blog.tdrme.cn" class="sidebar-brand">听得入迷空间</a>
+    
+
+    <nav class="sidebar-nav">
       
-      <a href="/" class="nav-link">首页</a>
+      <a href="/" class="sidebar-link">首页</a>
       
-      <a href="/memos" class="nav-link">闪念</a>
+      <a href="/memos" class="sidebar-link">闪念</a>
       
-      <a href="/archives" class="nav-link">归档</a>
+      <a href="/archives" class="sidebar-link">归档</a>
       
-      <a href="/links/" class="nav-link">友链</a>
+      <a href="/links/" class="sidebar-link">友链</a>
       
-      <a href="/post/about" class="nav-link">关于</a>
+      <a href="/post/about" class="sidebar-link">关于</a>
       
     </nav>
-    <button class="search-btn" aria-label="搜索" title="搜索 (⌘K)">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="12.5" y1="12.5" x2="17" y2="17"/></svg>
-    </button>
+
+    <div class="sidebar-actions">
+      <button class="sidebar-search-btn search-btn" aria-label="搜索" title="搜索 (⌘K)">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.5"/><line x1="12.5" y1="12.5" x2="17" y2="17"/></svg>
+        <span>搜索</span>
+      </button>
+    </div>
   </div>
-</header>
+</aside>
+
+<label for="nav-toggle" class="sidebar-mobile-toggle" aria-label="菜单">
+  <span></span><span></span><span></span>
+</label>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<script>
+(function() {
+  var links = document.querySelectorAll('.sidebar-link');
+  var path = window.location.pathname.replace(/\/+$/, '') || '/';
+  links.forEach(function(a) {
+    var href = a.getAttribute('href').replace(/\/+$/, '') || '/';
+    if (href === path || (path !== '/' && href !== '/' && path.indexOf(href) === 0)) {
+      a.classList.add('active');
+    }
+  });
+})();
+</script>
 
 
-  <main>
-    
+    <div class="main-area">
+      <main>
+        
 
   <div class="container">
 
@@ -77,17 +103,12 @@
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260617104408836.webp" alt="typecho面包屑导航" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-17T00:02:49+08:00</time>
-                  <a href="/post/9fFrhf/"><h2 class="post-card-title">typecho面包屑导航</h2></a>
-                  
-                    <p class="post-card-excerpt">这是typecho社区文档给的官方方案
+                <time class="post-card-date">2026-06-17T00:02:49+08:00</time>
+                <a href="/post/9fFrhf/"><h2 class="post-card-title">typecho面包屑导航</h2></a>
+                <p class="post-card-excerpt">这是typecho社区文档给的官方方案
 &amp;lt;!--面包屑导航--&amp;gt;
-&amp;lt;div class=&amp;quot;crumbs_patch&amp;quot; style=&amp;quot;padding:10px 20px 10px 20p...</p>
-                  
+&amp;lt;div class=&amp;quot;crumbs_patch&amp;quot; style=&amp;quot;padding:10px 20px 10px 20px; border-bottom:1px solid var(--border-dark);font-size:1em;...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -95,21 +116,17 @@
                       
                     </div>
                   
+                  <span class="post-card-reading-time">1 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <div class="post-card-image-placeholder"></div>
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-15T17:18:03+08:00</time>
-                  <a href="/post/CCZ4x4/"><h2 class="post-card-title">印度公益广告：是时候开门了</h2></a>
-                  
-                    <p class="post-card-excerpt">从开眼看到的推荐，觉得很有创意。其素材来自于广告素材依旧来源于由网友在 Twitter 上发布的话题照片，经过了 68 天的隔离抗疫之后，人们终于解除隔离迎接新生活，除了开门的动作之外，续集中还出现了人们走出家门的所见所闻，可爱的小动...</p>
-                  
+                <time class="post-card-date">2026-06-15T17:18:03+08:00</time>
+                <a href="/post/CCZ4x4/"><h2 class="post-card-title">印度公益广告：是时候开门了</h2></a>
+                <p class="post-card-excerpt">从开眼看到的推荐，觉得很有创意。其素材来自于广告素材依旧来源于由网友在 Twitter 上发布的话题照片，经过了 68 天的隔离抗疫之后，人们终于解除隔离迎接新生活，除了开门的动作之外，续集中还出现了人们走出家门的所见所闻，可爱的小动物、风筝、日落、各种各样的交通工具依次出镜，最后以打开的门做为结束，象征着印度正在从疫情的阴霾下逐渐苏醒，为人们送上信心...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -117,22 +134,18 @@
                       
                     </div>
                   
+                  <span class="post-card-reading-time">1 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260615220004291.jpeg" alt="竞选州长 - 马克 · 吐温" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-11T19:39:12+08:00</time>
-                  <a href="/post/with-mark-twain/"><h2 class="post-card-title">竞选州长 - 马克 · 吐温</h2></a>
-                  
-                    <p class="post-card-excerpt">董衡巽译
-几个月以前，我被提名为纽约州州长候选人，代表独立党参加竞选，对方是斯坦华特·L·伍福特先生和约翰·T·霍夫曼先生。我总觉得自己名声不错，同这两位先生相比，这是我显著的长处。从报上很容易看出：如果说这两位先生也曾知道爱护名声的...</p>
-                  
+                <time class="post-card-date">2026-06-11T19:39:12+08:00</time>
+                <a href="/post/with-mark-twain/"><h2 class="post-card-title">竞选州长 - 马克 · 吐温</h2></a>
+                <p class="post-card-excerpt">董衡巽译
+几个月以前，我被提名为纽约州州长候选人，代表独立党参加竞选，对方是斯坦华特·L·伍福特先生和约翰·T·霍夫曼先生。我总觉得自己名声不错，同这两位先生相比，这是我显著的长处。从报上很容易看出：如果说这两位先生也曾知道爱护名声的好处，那是过去的事情了，近年来他们显然已经把各种各样的无耻勾当看作家常便饭。当时，我虽然醉心于自己的长处，暗自得意，但是...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -140,26 +153,24 @@
                       
                     </div>
                   
+                  <span class="post-card-reading-time">5 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260615220305304.jpg" alt="海绵宝宝1-13季分享" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-10T09:12:24+08:00</time>
-                  <a href="/post/share-spongebob-seasons-1-13/"><h2 class="post-card-title">海绵宝宝1-13季分享</h2></a>
-                  
-                    <p class="post-card-excerpt">下载
+                <time class="post-card-date">2026-06-10T09:12:24+08:00</time>
+                <a href="/post/share-spongebob-seasons-1-13/"><h2 class="post-card-title">海绵宝宝1-13季分享</h2></a>
+                <p class="post-card-excerpt">下载
 不会付费放心点击，123云盘分享，共计108.42GB。二十周年海报原图也在123云盘里
 以前只看央配的前7季，现在补补后面的内容。不得不说后面的剧集真他妈猎奇！
 
 123云盘：
-https://www.123pan.com/s...</p>
-                  
+https://www.123pan.com/s/NvPZVv-R3ApH
+https://www.123684.com/s/NvPZVv-R3ApH
+https://...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -167,23 +178,21 @@ https://www.123pan.com/s...</p>
                       
                     </div>
                   
+                  <span class="post-card-reading-time">1 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260615220640601.jpg" alt="Wub禁止Windows更新" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-10T09:06:15+08:00</time>
-                  <a href="/post/wub-prohibiting-windows-updates/"><h2 class="post-card-title">Wub禁止Windows更新</h2></a>
-                  
-                    <p class="post-card-excerpt">windows update blocker　简称　Wub，一个禁用windows更新的软件，操作简单。要注意的是禁用windows更新会导致微软应用商店无法使用。下载地址放在最后。
+                <time class="post-card-date">2026-06-10T09:06:15+08:00</time>
+                <a href="/post/wub-prohibiting-windows-updates/"><h2 class="post-card-title">Wub禁止Windows更新</h2></a>
+                <p class="post-card-excerpt">windows update blocker　简称　Wub，一个禁用windows更新的软件，操作简单。要注意的是禁用windows更新会导致微软应用商店无法使用。下载地址放在最后。
 使用方法：
-1、应用界面默认英文，可以在menu👉...</p>
-                  
+1、应用界面默认英文，可以在menu👉🏻language👉🏻简体中文设置语言。
+
+2、界面很简单，只有两个选项：启用更新&amp;amp;禁用更新，选择一个然后点击应...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -191,25 +200,21 @@ https://www.123pan.com/s...</p>
                       
                     </div>
                   
+                  <span class="post-card-reading-time">158 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260615220905402.jpg" alt="WPS2019_政府采购版" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-10T09:02:09+08:00</time>
-                  <a href="/post/wps2019-government-version/"><h2 class="post-card-title">WPS2019_政府采购版</h2></a>
-                  
-                    <p class="post-card-excerpt">珠海政府版
+                <time class="post-card-date">2026-06-10T09:02:09+08:00</time>
+                <a href="/post/wps2019-government-version/"><h2 class="post-card-title">WPS2019_政府采购版</h2></a>
+                <p class="post-card-excerpt">珠海政府版
 自用，无广告，高级功能，还行。
 
 123云盘
 https://1814498793.share.123pan.cn/123pan/NvPZVv-t1aaH?pwd=ai9A#</p>
-                  
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -217,48 +222,23 @@ https://1814498793.share.123pan.cn/123pan/NvPZVv-t1aaH?pwd=ai9A#</p>
                       
                     </div>
                   
+                  <span class="post-card-reading-time">1 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <div class="post-card-image-placeholder"></div>
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-10T08:59:47+08:00</time>
-                  <a href="/post/fa-lu-gong-ju-xiang/"><h2 class="post-card-title">法律工具箱</h2></a>
-                  
-                    <p class="post-card-excerpt">国家政务服务平台 (www.gov.cn)
+                <time class="post-card-date">2026-06-10T08:59:47+08:00</time>
+                <a href="/post/fa-lu-gong-ju-xiang/"><h2 class="post-card-title">法律工具箱</h2></a>
+                <p class="post-card-excerpt">国家政务服务平台 (www.gov.cn)
 法律法规与国家标准
 法律检索|案例检索|类案检索|法律法规数据库|律师智能检索工具——律呗 (farbun.com)
 国家法律法规数据库 (npc.gov.cn)
-中华人民共和国司法部 (m...</p>
-                  
-                  
-                    <div class="post-tags">
-                      
-                        <a href="/tag/fen-xiang/" class="post-tag">分享</a>
-                      
-                    </div>
-                  
-                </div>
-              </article>
-            
-          
-            
-              <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260616010623554.jpg" alt="Noteshelf笔记_含资源_最终选择的笔记软件" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-10T08:56:59+08:00</time>
-                  <a href="/post/noteshelf-notes-with-resources-chosen-note-app/"><h2 class="post-card-title">Noteshelf笔记_含资源_最终选择的笔记软件</h2></a>
-                  
-                    <p class="post-card-excerpt">因为疫情在家学习的缘故，网课学习需要一个合适的笔记软件。开始想到有道云笔记，但是使用过后觉得这根本不能做上课笔记，然后听说 ipad 上有 GoodNote 这样的应用，意识到这种才是最适合我的笔记软件。当然，安卓设备上没有这个软件
-...</p>
-                  
+中华人民共和国司法部 (moj.gov.cn)
+中国法院网法律文库 (chinacourt.org)
+法律法规查询-找法网法规库提供法律法规、司法...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -266,24 +246,41 @@ https://1814498793.share.123pan.cn/123pan/NvPZVv-t1aaH?pwd=ai9A#</p>
                       
                     </div>
                   
+                  <span class="post-card-reading-time">15 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260616011300625.jpg" alt="《星游记》全集新4K重置" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-10T01:10:56+08:00</time>
-                  <a href="/post/star-wars-new-4k-reset/"><h2 class="post-card-title">《星游记》全集新4K重置</h2></a>
+                <time class="post-card-date">2026-06-10T08:56:59+08:00</time>
+                <a href="/post/noteshelf-notes-with-resources-chosen-note-app/"><h2 class="post-card-title">Noteshelf笔记_含资源_最终选择的笔记软件</h2></a>
+                <p class="post-card-excerpt">因为疫情在家学习的缘故，网课学习需要一个合适的笔记软件。开始想到有道云笔记，但是使用过后觉得这根本不能做上课笔记，然后听说 ipad 上有 GoodNote 这样的应用，意识到这种才是最适合我的笔记软件。当然，安卓设备上没有这个软件
+于是，Onenote 我也试了一下，确实是我想要的类型，拥有富文本自由排版、手写、画图功能。但是微软 Onenote 同...</p>
+                <div class="post-card-footer">
                   
-                    <p class="post-card-excerpt">这是B站UP分享的高清重制版
+                    <div class="post-tags">
+                      
+                        <a href="/tag/fen-xiang/" class="post-tag">分享</a>
+                      
+                    </div>
+                  
+                  <span class="post-card-reading-time">1 分钟阅读</span>
+                </div>
+              </article>
+            
+          
+            
+              <article class="post-card">
+                <time class="post-card-date">2026-06-10T01:10:56+08:00</time>
+                <a href="/post/star-wars-new-4k-reset/"><h2 class="post-card-title">《星游记》全集新4K重置</h2></a>
+                <p class="post-card-excerpt">这是B站UP分享的高清重制版
 原链接：https://www.bilibili.com/opus/677394768827777095?from=search&amp;amp;spm_id_from=333.337.0.0
 
-请您务必转存保存...</p>
-                  
+请您务必转存保存后再进行下载，以免消耗分享者的免登流量
+https://www.123pan.com/s/NvPZVv-cEApH
+ht...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -291,24 +288,20 @@ https://1814498793.share.123pan.cn/123pan/NvPZVv-t1aaH?pwd=ai9A#</p>
                       
                     </div>
                   
+                  <span class="post-card-reading-time">149 分钟阅读</span>
                 </div>
               </article>
             
           
             
               <article class="post-card">
-                
-                  <img src="https://2.tdrme.cn/tdrme/img/main/20260616013311712.webp" alt="可商用免费字体-打包下载" class="post-card-image" />
-                
-                <div class="post-card-meta">
-                  <time class="post-card-date">2026-06-10T01:09:35+08:00</time>
-                  <a href="/post/free-commercial-fonts-pack-download/"><h2 class="post-card-title">可商用免费字体-打包下载</h2></a>
-                  
-                    <p class="post-card-excerpt">从其他地方搞的字体，打包分享一下。这就不得不分享几个网站了。提供前端字体CDN的网站：中文网字计划、释放字体自由。字体免费下载网站：自由字体、字体天下。
+                <time class="post-card-date">2026-06-10T01:09:35+08:00</time>
+                <a href="/post/free-commercial-fonts-pack-download/"><h2 class="post-card-title">可商用免费字体-打包下载</h2></a>
+                <p class="post-card-excerpt">从其他地方搞的字体，打包分享一下。这就不得不分享几个网站了。提供前端字体CDN的网站：中文网字计划、释放字体自由。字体免费下载网站：自由字体、字体天下。
 
 免费商用简体中文 必备字体
-思源黑体-著名开源免费字体、思源宋体-著名开源免费...</p>
-                  
+思源黑体-著名开源免费字体、思源宋体-著名开源免费字体、阿里巴巴普惠体-阿里品牌字体、HarmonyOS Sans-华为品牌字体、MiSans小米品牌字体、OPPO Sa...</p>
+                <div class="post-card-footer">
                   
                     <div class="post-tags">
                       
@@ -316,6 +309,7 @@ https://1814498793.share.123pan.cn/123pan/NvPZVv-t1aaH?pwd=ai9A#</p>
                       
                     </div>
                   
+                  <span class="post-card-reading-time">8 分钟阅读</span>
                 </div>
               </article>
             
@@ -353,9 +347,9 @@ https://1814498793.share.123pan.cn/123pan/NvPZVv-t1aaH?pwd=ai9A#</p>
   </div>
 
 
-  </main>
+      </main>
 
-  <footer class="site-footer">
+      <footer class="site-footer">
   <div class="container">
     
       <div class="footer-info">Powered by <a href="https://www.gridea.pro/" target="_blank">Gridea Pro</a>
@@ -368,6 +362,8 @@ https://1814498793.share.123pan.cn/123pan/NvPZVv-t1aaH?pwd=ai9A#</p>
   </div>
 </footer>
 
+    </div>
+  </div>
 
   
   <div id="searchOverlay" class="search-overlay" aria-hidden="true" style="display:none">
@@ -387,33 +383,20 @@ https://1814498793.share.123pan.cn/123pan/NvPZVv-t1aaH?pwd=ai9A#</p>
   </div>
 
   <script>
-  /* 移动端导航：class 驱动展开/收回 */
+  /* 移动端侧边栏：checkbox 驱动展开/收回 */
   (function() {
     var toggle = document.getElementById('nav-toggle');
     if (!toggle) return;
-    var header = toggle.closest('.site-header');
-    var nav = header && header.querySelector('.site-nav');
-    var label = document.querySelector('label[for="nav-toggle"]');
-    if (!nav || !label) return;
-
-    function syncNav() {
-      if (toggle.checked) {
-        nav.classList.add('nav-open');
-        header.classList.add('nav-open-state');
-      } else {
-        nav.classList.remove('nav-open');
-        header.classList.remove('nav-open-state');
-      }
-    }
+    var sidebar = document.getElementById('sidebar');
+    var label = document.querySelector('.sidebar-mobile-toggle');
+    var overlay = document.getElementById('sidebarOverlay');
+    if (!sidebar || !label || !overlay) return;
 
     function closeNav() {
       toggle.checked = false;
-      syncNav();
     }
-
     function openNav() {
       toggle.checked = true;
-      syncNav();
     }
 
     /* 点击汉堡 → 手动切换（阻止原生 label-for 行为，避免重复触发） */
@@ -422,16 +405,16 @@ https://1814498793.share.123pan.cn/123pan/NvPZVv-t1aaH?pwd=ai9A#</p>
       toggle.checked ? closeNav() : openNav();
     });
 
-    /* 点击导航链接 → 收回 */
-    nav.addEventListener('click', function(e) {
-      if (e.target.closest('a')) closeNav();
+    /* 点击导航链接或搜索按钮 → 收回 */
+    sidebar.addEventListener('click', function(e) {
+      if (e.target.closest('a') || e.target.closest('button')) {
+        closeNav();
+      }
     });
 
-    /* 点击导航以外区域 → 收回 */
-    document.addEventListener('click', function(e) {
-      if (!toggle.checked) return;
-      if (label.contains(e.target)) return;
-      if (!nav.contains(e.target)) closeNav();
+    /* 点击遮罩 → 收回 */
+    overlay.addEventListener('click', function() {
+      closeNav();
     });
   })();
   </script>
@@ -514,6 +497,20 @@ https://1814498793.share.123pan.cn/123pan/NvPZVv-t1aaH?pwd=ai9A#</p>
           }
 
           if (newTitle) document.title = newTitle.textContent;
+
+          // 切换页面后自动回到顶部
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+
+          // 重新标记当前页面对应的侧边栏链接
+          var links = document.querySelectorAll('.sidebar-link');
+          var path = window.location.pathname.replace(/\/+$/, '') || '/';
+          links.forEach(function(a) {
+            a.classList.remove('active');
+            var href = a.getAttribute('href').replace(/\/+$/, '') || '/';
+            if (href === path || (path !== '/' && href !== '/' && path.indexOf(href) === 0)) {
+              a.classList.add('active');
+            }
+          });
         })
         .catch(function() {
           main.classList.remove('is-loading');
