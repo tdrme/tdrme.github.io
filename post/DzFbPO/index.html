@@ -39,6 +39,8 @@ window.location.href = &#39;..." />
 </head>
 <body>
 
+  <div class="pjax-progress" id="pjaxProgress"></div>
+
   <div class="app-layout">
     
 <input type="checkbox" id="nav-toggle" class="nav-toggle">
@@ -60,11 +62,11 @@ window.location.href = &#39;..." />
       
       <a href="/post/about" class="sidebar-link">关于</a>
       
-      <a href="https://www.travellings.cn/go" class="sidebar-link">🚇开往</a>
+      <a href="https://www.travellings.cn/go" class="sidebar-link" target="_blank">🚇开往</a>
       
-      <a href="https://www.foreverblog.cn/go.html" class="sidebar-link">🌀虫洞</a>
+      <a href="https://www.foreverblog.cn/go.html" class="sidebar-link" target="_blank">🌀虫洞</a>
       
-      <a href="https://travel.moe/go?travel=on" class="sidebar-link">🪐异次元之旅</a>
+      <a href="https://travel.moe/go?travel=on" class="sidebar-link" target="_blank">🪐异次元之旅</a>
       
     </nav>
 
@@ -284,6 +286,26 @@ return false;
     var main = document.querySelector('main');
     if (!main) return;
 
+    var progress = document.getElementById('pjaxProgress');
+    var progressTimer = null;
+
+    function showProgress() {
+      if (!progress) return;
+      progress.classList.remove('is-done');
+      progress.classList.add('is-active');
+    }
+
+    function doneProgress() {
+      if (!progress) return;
+      progress.classList.remove('is-active');
+      progress.classList.add('is-done');
+      if (progressTimer) clearTimeout(progressTimer);
+      progressTimer = setTimeout(function() {
+        progress.classList.remove('is-done');
+        progress.style.width = '0';
+      }, 500);
+    }
+
     function reinitComments(container) {
       var commentEl = container.querySelector('#tcomment');
       if (!commentEl) return;
@@ -326,6 +348,7 @@ return false;
 
     function load(url, push) {
       main.classList.add('is-loading');
+      showProgress();
       fetch(url)
         .then(function(r) { return r.text(); })
         .then(function(html) {
@@ -336,6 +359,7 @@ return false;
 
           main.innerHTML = newMain.innerHTML;
           main.classList.remove('is-loading');
+          doneProgress();
 
           if (push) history.pushState({url: url}, '', url);
 
@@ -373,6 +397,7 @@ return false;
         })
         .catch(function() {
           main.classList.remove('is-loading');
+          doneProgress();
           location.href = url;
         });
     }
