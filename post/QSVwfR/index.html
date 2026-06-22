@@ -18,6 +18,8 @@ prismjs 很强大，支持全部语言。还有很多功能插件，比如 copy�
   <link rel="alternate" type="application/rss+xml" title="听得入迷" href="/feed.xml" />
   
   
+  <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
+  
   
 <meta name="description" content="插件使用起来很麻烦，所以直接修改主题好了，也是百度的结果，但是不好找，于是在这里记下来。 下载 js 和 css 文件 首先在prismjs选择你需要的语言及插件(不可贪多，选的语言过多，js 文件会很大，严重影响网站加载速度)。 prismjs 很强大，支持全部语言。还有很多功能插件，比如 copy、显示语言、预览等等。 &amp;hellip;">
 <meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
@@ -153,15 +155,19 @@ prismjs 很强大，支持全部语言。还有很多功能插件，比如 copy�
 
     
       
-<div id="waline"></div>
-<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
-<script type="module">
-  import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
-  init({
-    el: '#waline',
-    serverURL: 'https://talk.tdrme.cn/',
-    locale: { placeholder: '说点什么吧…' }
-  });
+<div id="tcomment"></div>
+<script>
+  (function() {
+    if (typeof twikoo === 'undefined') return;
+    var el = document.getElementById('tcomment');
+    if (!el) return;
+    el.innerHTML = '';
+    el._twikooInited = true;
+    twikoo.init({
+      envId: 'https://talk.tdrme.cn',
+      el: '#tcomment'
+    });
+  })();
 </script>
 
     

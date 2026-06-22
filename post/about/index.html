@@ -31,6 +31,8 @@
   <link rel="alternate" type="application/rss+xml" title="听得入迷" href="/feed.xml" />
   
   
+  <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
+  
   
 <meta name="description" content="这里是听得入迷空间，记录与分享。">
 <meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
@@ -179,15 +181,19 @@ logo：
 
     
       
-<div id="waline"></div>
-<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
-<script type="module">
-  import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
-  init({
-    el: '#waline',
-    serverURL: 'https://talk.tdrme.cn/',
-    locale: { placeholder: '说点什么吧…' }
-  });
+<div id="tcomment"></div>
+<script>
+  (function() {
+    if (typeof twikoo === 'undefined') return;
+    var el = document.getElementById('tcomment');
+    if (!el) return;
+    el.innerHTML = '';
+    el._twikooInited = true;
+    twikoo.init({
+      envId: 'https://talk.tdrme.cn',
+      el: '#tcomment'
+    });
+  })();
 </script>
 
     

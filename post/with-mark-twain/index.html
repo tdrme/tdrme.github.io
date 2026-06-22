@@ -16,6 +16,8 @@
   <link rel="alternate" type="application/rss+xml" title="听得入迷" href="/feed.xml" />
   
   
+  <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
+  
   
 <meta name="description" content="董衡巽译 几个月以前，我被提名为纽约州州长候选人，代表独立党参加竞选，对方是斯坦华特·L·伍福特先生和约翰·T·霍夫曼先生。我总觉得自己名声不错，同这两位先生相比，这是我显著的长处。从报上很容易看出：如果说这两位先生也曾知道爱护名声的好处，那是过去的事情了，近年来他们显然已经把各种各样的无耻勾当看作家常便饭。当时，我虽然醉心于自己的长处，暗自得意，但是一想到我得让自己和这些人的名字混在一&amp;hellip;">
 <meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
@@ -183,15 +185,19 @@
 
     
       
-<div id="waline"></div>
-<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
-<script type="module">
-  import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
-  init({
-    el: '#waline',
-    serverURL: 'https://talk.tdrme.cn/',
-    locale: { placeholder: '说点什么吧…' }
-  });
+<div id="tcomment"></div>
+<script>
+  (function() {
+    if (typeof twikoo === 'undefined') return;
+    var el = document.getElementById('tcomment');
+    if (!el) return;
+    el.innerHTML = '';
+    el._twikooInited = true;
+    twikoo.init({
+      envId: 'https://talk.tdrme.cn',
+      el: '#tcomment'
+    });
+  })();
 </script>
 
     
