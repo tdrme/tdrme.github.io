@@ -24,8 +24,6 @@ http://m.iciba.com/hello
   <link rel="alternate" type="application/rss+xml" title="听得入迷" href="/feed.xml" />
   
   
-  <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
-  
   
 <meta name="description" content="用小米传送能翻译单词偶然发现这么个翻译链接，可能是我火星了，记下来，没准有用 金山词霸搜单词链接 http://m.iciba.com/单词Copy 如此就能出结果，例如： 搜索hello http://m.iciba.com/hello 如果是短句，则以%20为空位符号，例如： 搜索*hell&amp;hellip;">
 <meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
@@ -162,19 +160,15 @@ http://m.iciba.com/hello
 
     
       
-<div id="tcomment"></div>
-<script>
-  (function() {
-    if (typeof twikoo === 'undefined') return;
-    var el = document.getElementById('tcomment');
-    if (!el) return;
-    el.innerHTML = '';
-    el._twikooInited = true;
-    twikoo.init({
-      envId: 'https://talk.tdrme.cn',
-      el: '#tcomment'
-    });
-  })();
+<div id="waline"></div>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<script type="module">
+  import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+  init({
+    el: '#waline',
+    serverURL: 'https://talk.tdrme.cn/',
+    locale: { placeholder: '说点什么吧…' }
+  });
 </script>
 
     

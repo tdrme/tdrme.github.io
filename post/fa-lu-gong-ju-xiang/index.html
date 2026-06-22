@@ -21,8 +21,6 @@
   <link rel="alternate" type="application/rss+xml" title="听得入迷" href="/feed.xml" />
   
   
-  <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
-  
   
 <meta name="description" content="国家政务服务平台 (www.gov.cn) 法律法规与国家标准 法律检索|案例检索|类案检索|法律法规数据库|律师智能检索工具——律呗 (farbun.com) [国家法律法规数据库 (npc.gov.cn)](https://flk.npc.gov&amp;hellip;">
 <meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
@@ -288,19 +286,15 @@
 
     
       
-<div id="tcomment"></div>
-<script>
-  (function() {
-    if (typeof twikoo === 'undefined') return;
-    var el = document.getElementById('tcomment');
-    if (!el) return;
-    el.innerHTML = '';
-    el._twikooInited = true;
-    twikoo.init({
-      envId: 'https://talk.tdrme.cn',
-      el: '#tcomment'
-    });
-  })();
+<div id="waline"></div>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<script type="module">
+  import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+  init({
+    el: '#waline',
+    serverURL: 'https://talk.tdrme.cn/',
+    locale: { placeholder: '说点什么吧…' }
+  });
 </script>
 
     

@@ -15,8 +15,6 @@
   <link rel="alternate" type="application/rss+xml" title="听得入迷" href="/feed.xml" />
   
   
-  <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
-  
   
 <meta name="description" content="从开眼看到的推荐，觉得很有创意。其素材来自于广告素材依旧来源于由网友在 Twitter 上发布的话题照片，经过了 68 天的隔离抗疫之后，人们终于解除隔离迎接新生活，除了开门的动作之外，续集中还出现了人们走出家门的所见所闻，可爱的小动物、风筝、日落、各种各样的交通工具依次出镜，最后以打开的门做为结束，象征着印度正在从疫情的阴霾下逐渐苏醒，为人们送上信心和希望。 &amp;lt;video width=&amp;ldquo;1&amp;hellip;">
 <meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
@@ -137,19 +135,15 @@
 
     
       
-<div id="tcomment"></div>
-<script>
-  (function() {
-    if (typeof twikoo === 'undefined') return;
-    var el = document.getElementById('tcomment');
-    if (!el) return;
-    el.innerHTML = '';
-    el._twikooInited = true;
-    twikoo.init({
-      envId: 'https://talk.tdrme.cn',
-      el: '#tcomment'
-    });
-  })();
+<div id="waline"></div>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<script type="module">
+  import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+  init({
+    el: '#waline',
+    serverURL: 'https://talk.tdrme.cn/',
+    locale: { placeholder: '说点什么吧…' }
+  });
 </script>
 
     

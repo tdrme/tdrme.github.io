@@ -17,8 +17,6 @@
   <link rel="alternate" type="application/rss+xml" title="听得入迷" href="/feed.xml" />
   
   
-  <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
-  
   
 <meta name="description" content="这是typecho社区文档给的官方方案 &amp;lt;!--面包屑导航--&amp;gt; &amp;lt;div class=&amp;quot;crumbs_patch&amp;quot; style=&amp;quot;padding:10px 20px 10px 20px; border-bottom:1px solid var(--border-dark);font-size:1em;&amp;quot;&amp;gt; &amp;lt;a href=&amp;quot;&amp;lt;?php $this-&amp;gt;opti...">
 <meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
@@ -146,19 +144,15 @@
 
     
       
-<div id="tcomment"></div>
-<script>
-  (function() {
-    if (typeof twikoo === 'undefined') return;
-    var el = document.getElementById('tcomment');
-    if (!el) return;
-    el.innerHTML = '';
-    el._twikooInited = true;
-    twikoo.init({
-      envId: 'https://talk.tdrme.cn',
-      el: '#tcomment'
-    });
-  })();
+<div id="waline"></div>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<script type="module">
+  import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+  init({
+    el: '#waline',
+    serverURL: 'https://talk.tdrme.cn/',
+    locale: { placeholder: '说点什么吧…' }
+  });
 </script>
 
     

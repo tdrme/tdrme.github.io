@@ -21,8 +21,6 @@
   <link rel="alternate" type="application/rss+xml" title="听得入迷" href="/feed.xml" />
   
   
-  <script src="https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js"></script>
-  
   
 <meta name="description" content="b站iframe插入视频大小是不能自适应的，所以用固定比例的方式使之适应网页宽度。 固定长宽比例为16/9，保持宽度100%。 /*b站iframe优化*/ .iframe_video{ position:relative; height:0; padding-bottom:56.25%; ove...">
 <meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
@@ -163,19 +161,15 @@
 
     
       
-<div id="tcomment"></div>
-<script>
-  (function() {
-    if (typeof twikoo === 'undefined') return;
-    var el = document.getElementById('tcomment');
-    if (!el) return;
-    el.innerHTML = '';
-    el._twikooInited = true;
-    twikoo.init({
-      envId: 'https://talk.tdrme.cn',
-      el: '#tcomment'
-    });
-  })();
+<div id="waline"></div>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+<script type="module">
+  import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+  init({
+    el: '#waline',
+    serverURL: 'https://talk.tdrme.cn/',
+    locale: { placeholder: '说点什么吧…' }
+  });
 </script>
 
     
