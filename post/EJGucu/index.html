@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="generator" content="Gridea Pro 1.3.0-beta.2">
+  <meta name="generator" content="Gridea Pro 1.2.2">
   <title>高斯模糊 | 听得入迷</title>
   <meta name="description" content="CSS样式
 /* 设置背景颜色 */
@@ -18,6 +18,8 @@ backdrop-filter: brightness(200%) saturate(150%) blur(6px);..." />
   <link rel="stylesheet" href="/styles/fancybox.css" />
   <link rel="alternate" type="application/rss+xml" title="听得入迷" href="/feed.xml" />
   
+  
+  <script src="https://jsdelivr.tdrme.cn/npm/twikoo@1/dist/twikoo.all.min.js"></script>
   
   
 <meta name="description" content="CSS样式 /* 设置背景颜色 */ background-color: rgba(255, 255, 255, 0.89); /* 应用backdrop-filter属性来创建毛玻璃效果 */ backdrop-filter: brightness(200%) saturate(150%) blur(6px); brightness(200%)：【亮度】这个函数将背&amp;hellip;">
@@ -146,6 +148,34 @@ backdrop-filter: brightness(200%) saturate(60%) blur(30px);
   </article>
 
   
+
+
+<section class="comments-section">
+  <div class="container">
+    <h2 class="comments-title">评论</h2>
+
+    
+      
+<div id="tcomment"></div>
+<script>
+  (function() {
+    if (typeof twikoo === 'undefined') return;
+    var el = document.getElementById('tcomment');
+    if (!el) return;
+    el.innerHTML = '';
+    el._twikooInited = true;
+    twikoo.init({
+      envId: 'https://talk.tdrme.cn',
+      el: '#tcomment'
+    });
+  })();
+</script>
+
+    
+
+  </div>
+</section>
+
 
 
 
@@ -371,6 +401,6 @@ backdrop-filter: brightness(200%) saturate(60%) blur(30px);
     });
   })();
   </script>
-<script>console.log("\n%c ✦ Gridea Pro v1.3.0-beta.2 %c · Theme: ink v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+<script>console.log("\n%c ✦ Gridea Pro v1.2.2 %c · Theme: ink v1.2.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
 </body>
 </html>
