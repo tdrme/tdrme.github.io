@@ -6,9 +6,10 @@
   <meta name="generator" content="Gridea Pro 1.3.0-beta.2">
   <title>添加倒计时 | 听得入迷</title>
   <meta name="description" content="之前有过网站正计时，现在有了倒计时。这次的倒计时是从Tiger_Root博客要来的，进行了简化小改。
-2030倒计时 天 时 分 秒  
-function getRTime() {      
-var EndTime = new Date(&#39;2030/01/01 00:00:00&#39;);//目标时间     ..." />
+2030倒计时 天 时 分 秒
+function getRTime() {
+var EndTime = new Date(&#39;2030/01/01 00:00:00&#39;);//目标时间
+var NowTime = n..." />
   <!-- MiSans Web 字体 -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="/styles/MiSans-Medium.min.css" />
@@ -24,7 +25,7 @@ var EndTime = new Date(&#39;2030/01/01 00:00:00&#39;);//目标时间     ..." /
 <meta name="description" content="之前有过网站正计时，现在有了倒计时。这次的倒计时是从Tiger_Root博客要来的，进行了简化小改。">
 <meta name="keywords" content="听得入迷,听得入迷空间,tdrme,博客,听得入迷博客">
 <link rel="canonical" href="https://blog.tdrme.cn/post/wv0K28/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"添加倒计时","url":"https://blog.tdrme.cn/post/wv0K28/","description":"之前有过网站正计时，现在有了倒计时。这次的倒计时是从Tiger_Root博客要来的，进行了简化小改。","image":"https://2.tdrme.cn/tdrme/img/main/20260616014446505.webp","datePublished":"2026-06-17T15:00:36+08:00","dateModified":"2026-06-17T15:00:36+08:00","author":{"@type":"Person","name":"听得入迷"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"听得入迷"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"添加倒计时","url":"https://blog.tdrme.cn/post/wv0K28/","description":"之前有过网站正计时，现在有了倒计时。这次的倒计时是从Tiger_Root博客要来的，进行了简化小改。","datePublished":"2026-06-17T15:00:36+08:00","dateModified":"2026-11-07T20:01:59+08:00","author":{"@type":"Person","name":"听得入迷"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"听得入迷"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://blog.tdrme.cn","name":"听得入迷","position":1},{"@type":"ListItem","item":"https://blog.tdrme.cn/post/wv0K28/","name":"添加倒计时","position":2}]}</script>
 <!--logo-->
 <!-- 浏览器标签页显示的图标 -->
@@ -121,35 +122,35 @@ var EndTime = new Date(&#39;2030/01/01 00:00:00&#39;);//目标时间     ..." /
 
       
       <div class="post-content">
-        <p>之前有过<a href="https://blog.tdrme.cn/53.html">网站正计时</a>，现在有了倒计时。这次的倒计时是从<a href="https://blog.tigerroot.cn/">Tiger_Root博客</a>要来的，进行了简化小改。</p>
-<div style="text-align:center; padding:2em 1em 1em 1em;color:#fff;background:#353A40;border-radius:1em;"><font style="font-size:1.5em;">2030倒计时</font><div id="CountMsg" class="HotDate" style="margin:0;"><span id="t_d" class="time"> 天</span><span id="t_h" class="time"> 时</span><span id="t_m" class="time"> 分</span><span id="t_s" class="time"> 秒</span></div></div><script type="text/javascript">  
-function getRTime() {      
-var EndTime = new Date('2030/01/01 00:00:00');//目标时间     
-var NowTime = new Date();     
-var t = EndTime.getTime() - NowTime.getTime();            
-var d = Math.floor(t / 1000 / 60 / 60 / 24); 
-var h = Math.floor(t / 1000 / 60 / 60 % 24);         
-var m = Math.floor(t / 1000 / 60 % 60);              
-var s = Math.floor(t / 1000 % 60);    
-var day = document.getElementById("t_d");   
-if (day != null) {       
-day.innerHTML = d + " 天";      
-}   
-var hour = document.getElementById("t_h");   
-if (hour != null) {       
-hour.innerHTML = h + " 时";     
-}   
-var min = document.getElementById("t_m");   
-if (min != null) {       
-min.innerHTML = m + " 分";      
-}   
-var sec = document.getElementById("t_s");   
-if (sec != null) {       
-sec.innerHTML = s + " 秒";   
-} 
-}    
-setInterval(getRTime, 1000);    
-</script> 
+        <p>之前有过<a href="https://blog.tdrme.cn/post/sh4gG2/">网站正计时</a>，现在有了倒计时。这次的倒计时是从<a href="https://blog.tigerroot.cn/">Tiger_Root博客</a>要来的，进行了简化小改。</p>
+<div style="text-align:center; padding:2em 1em 1em 1em;color:#fff;background:#353A40;border-radius:1em;"><font style="font-size:1.5em;">2030倒计时</font><div id="CountMsg" class="HotDate" style="margin:0;"><span id="t_d" class="time"> 天</span><span id="t_h" class="time"> 时</span><span id="t_m" class="time"> 分</span><span id="t_s" class="time"> 秒</span></div></div><script type="text/javascript">
+function getRTime() {
+var EndTime = new Date('2030/01/01 00:00:00');//目标时间
+var NowTime = new Date();
+var t = EndTime.getTime() - NowTime.getTime();
+var d = Math.floor(t / 1000 / 60 / 60 / 24);
+var h = Math.floor(t / 1000 / 60 / 60 % 24);
+var m = Math.floor(t / 1000 / 60 % 60);
+var s = Math.floor(t / 1000 % 60);
+var day = document.getElementById("t_d");
+if (day != null) {
+day.innerHTML = d + " 天";
+}
+var hour = document.getElementById("t_h");
+if (hour != null) {
+hour.innerHTML = h + " 时";
+}
+var min = document.getElementById("t_m");
+if (min != null) {
+min.innerHTML = m + " 分";
+}
+var sec = document.getElementById("t_s");
+if (sec != null) {
+sec.innerHTML = s + " 秒";
+}
+}
+setInterval(getRTime, 1000);
+</script>
 <hr />
 <pre><code class="language-html">&lt;div style=&quot;text-align:center; padding:2em 1em 1em 1em;color:#fff;background:#353A40;border-radius:1em;&quot;&gt;
 &lt;font style=&quot;font-size:1.5em;&quot;&gt;考研倒计时&lt;/font&gt;
